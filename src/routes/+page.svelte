@@ -8,7 +8,7 @@
 
 <h2 class="py-6 text-center text-xl font-bold lowercase tracking-wider">Tech Blog.</h2>
 
-<ul class="mx-auto mb-8 grid max-w-lg gap-5 bg-slate-100 p-4 lg:max-w-none lg:grid-cols-1">
+<ul class="mx-auto mb-8 grid max-w-lg gap-5 bg-slate-200 p-4 lg:max-w-none lg:grid-cols-1">
 	{#each featuredPosts as { url, title, description, author, date, tags }}
 		<PostCard {url} {title} {description} {date} {tags} />
 	{/each}

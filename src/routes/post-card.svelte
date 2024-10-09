@@ -15,7 +15,7 @@
 	$: formattedTags = tags.join(', ');
 </script>
 
-<li class="overflow-hidden rounded border border-slate-200 bg-white p-6">
+<li class="overflow-hidden rounded border border-slate-100 bg-white p-6 hover:bg-slate-100">
 	<a href={url} class="mt-2 block">
 		<p class="text-2xl font-semibold">
 			{title}

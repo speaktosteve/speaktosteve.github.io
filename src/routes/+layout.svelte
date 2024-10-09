@@ -2,8 +2,8 @@
 	import '../app.css';
 </script>
 
-<div class="bg-slate-100 pt-10">
-	<div class="mx-auto min-h-screen w-full pb-20 shadow-2xl md:w-3/4 lg:pb-28">
+<div class="bg-slate-100 py-10">
+	<div class="mx-auto min-h-screen w-full shadow-2xl md:w-3/4">
 		<div
 			class="flex justify-between bg-white px-4 py-4 sm:px-6 lg:px-8 dark:bg-slate-950 dark:text-white"
 		>

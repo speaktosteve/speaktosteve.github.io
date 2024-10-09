@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { base } from '$app/paths';
+
 	export let url = '';
 	export let title = '';
 	export let description = '';
@@ -13,12 +15,13 @@
 	});
 
 	$: formattedTags = tags.join(', ');
+	$: fullUrl = base + url;
 </script>
 
 <li
 	class="overflow-hidden rounded border border-slate-100 bg-white p-6 shadow-sm hover:bg-slate-100"
 >
-	<a href={url} class="mt-2 block">
+	<a href={fullUrl} class="mt-2 block">
 		<p class="text-2xl font-semibold">
 			{title}
 		</p>

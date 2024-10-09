@@ -1,11 +1,11 @@
+
 export const POSTS_LIST = [
 	{
 		title: 'Using Tailwind CSS, CLSX and Prettier',
 		url: '/first',
 		description:
-			'A high-level view of features and pricing from the newest and best online text to speech generators on the market',
-		author: 'Kyle',
-		date: '2023-02-05',
+			'A high-level view of features and pricing from the newest and best online text to speech generators on the marketA high-level view of features and pricing from the newest and best online text to speech generators on the marketA high-level view of features and pricing from the newest and best online text to speech generators on the marketA high-level view of features and pricing from the newest and best online text to speech generators on the marketA high-level view of features and pricing from the newest and best online text to speech generators on the market',
+		date: new Date('01 Jan 1970 GMT'),
 		isFeatured: true,
 		tags: ['tailwind', 'clsx', 'prettier']
 	},
@@ -14,9 +14,8 @@ export const POSTS_LIST = [
 		url: '/second',
 		description:
 			'A high-level view of features and pricing from the newest and best online text to speech generators on the market',
-		author: 'Kyle',
-		date: '2023-02-05',
-		isFeatured: true,
+			date: new Date('01 Jan 1970 GMT'),
+			isFeatured: true,
 		tags: ['next.js', 'docker']
 	},
 	{
@@ -25,7 +24,7 @@ export const POSTS_LIST = [
 		description:
 			'A high-level view of features and pricing from the newest and best online text to speech generators on the market',
 		author: 'Kyle',
-		date: '2023-02-05',
+		date: new Date('01 Jan 1970 GMT'),
 		isFeatured: true,
 		tags: ['next.js', 'azure', 'static web apps']
 	},
@@ -35,7 +34,7 @@ export const POSTS_LIST = [
 		description:
 			'A high-level view of features and pricing from the newest and best online text to speech generators on the market',
 		author: 'Kyle',
-		date: '2023-02-05',
+		date: new Date('01 Jan 1970 GMT'),
 		isFeatured: false,
 		tags: ['remix', 'azure', 'container app']
 	},
@@ -45,7 +44,7 @@ export const POSTS_LIST = [
 		description:
 			'A high-level view of features and pricing from the newest and best online text to speech generators on the market',
 		author: 'Kyle',
-		date: '2023-02-05',
+		date: new Date('01 Jan 1970 GMT'),
 		isFeatured: false,
 		tags: ['remix', 'azure', 'app services']
 
@@ -56,7 +55,7 @@ export const POSTS_LIST = [
 		description:
 			'A high-level view of features and pricing from the newest and best online text to speech generators on the market',
 		author: 'Kyle',
-		date: '2023-02-05',
+		date: new Date('01 Jan 1970 GMT'),
 		isFeatured: false,
 		tags: ['remix', 'azure', 'container app', 'bicep']
 	},

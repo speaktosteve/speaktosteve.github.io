@@ -31,8 +31,12 @@ const config = {
 			fallback: undefined,
 			precompress: false,
 			strict: true
-		})
-	}
+		}),
+		paths: {
+			base: '/blog'
+		}
+	},
+	
 };
 
 export default config;

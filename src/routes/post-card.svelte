@@ -15,7 +15,7 @@
 	$: formattedTags = tags.join(', ');
 </script>
 
-<div class="flex flex-col overflow-hidden rounded border border-slate-200 p-6">
+<li class="overflow-hidden rounded border border-slate-200 bg-white p-6">
 	<a href={url} class="mt-2 block">
 		<p class="text-2xl font-semibold">
 			{title}
@@ -26,4 +26,4 @@
 		<p class="mt-6 text-sm font-medium">{formattedTags}</p>
 		<p class="mt-4 text-sm font-medium text-slate-500">{publishedAt}</p>
 	</a>
-</div>
+</li>

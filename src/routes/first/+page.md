@@ -1,8 +1,8 @@
 ---
 title: 'Best online text to speech generators'
 description: 'A high-level view of features and pricing from the newest and best online text to speech generators on the market'
-author: 'Kyle'
 publishedAtIso: '2023-02-05'
+tags: ['tailwind', 'clsx', 'prettier']
 ---
 
 <script>

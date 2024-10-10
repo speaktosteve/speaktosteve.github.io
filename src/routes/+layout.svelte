@@ -7,7 +7,9 @@
 		<div
 			class="flex justify-between bg-white px-4 py-4 sm:px-6 lg:px-8 dark:bg-slate-950 dark:text-white"
 		>
-			<h1 class="text-left text-xl font-bold tracking-wider sm:text-2xl">speaktosteve</h1>
+			<a href="/">
+				<h1 class="text-left text-xl font-bold tracking-wider sm:text-2xl">speaktosteve</h1>
+			</a>
 			<div class="flex items-center gap-3">
 				<a href="https://github.com/speaktosteve">
 					<svg viewBox="0 0 98 96" width="25" height="24" xmlns="http://www.w3.org/2000/svg"
@@ -34,9 +36,6 @@
 				</a>
 			</div>
 		</div>
-		<div class="bg-banner bg-cover pt-36"></div>
-		<div class="bg-white px-4 sm:px-6 lg:px-8">
-			<slot />
-		</div>
+		<slot />
 	</div>
 </div>

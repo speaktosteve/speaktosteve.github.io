@@ -1,6 +1,5 @@
 <script lang="ts">
-	// import { DateTime } from 'luxon';
-	import { onMount } from 'svelte';
+	import Banner from './banner.svelte';
 
 	export let title = '';
 	export let date = new Date();
@@ -14,15 +13,12 @@
 	$: formattedTags = tags.join(', ');
 </script>
 
-<article class="p-3 md:p-6">
-	<!-- <h2 class="text-lg uppercase font-semibold text-gray-900">{tags}</h2> -->
-	<h1 class="text-center text-3xl font-semibold">
-		{title}
-	</h1>
-	<p class="mt-6 text-center text-sm font-medium">{formattedTags}</p>
+<article class="pb-12">
+	<Banner {title} />
+	<p class="mt-10 text-center text-sm font-medium">{formattedTags}</p>
 	<p class="mt-4 text-center text-sm font-medium text-slate-500">{publishedAt}</p>
 
-	<section class="prose py-4 text-slate-900">
+	<section class="prose mx-auto w-full text-slate-900">
 		<slot />
 	</section>
 </article>

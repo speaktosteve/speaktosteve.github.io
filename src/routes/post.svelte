@@ -19,7 +19,7 @@
 	<p class="mt-10 text-center text-sm font-medium">{formattedTags}</p>
 	<p class="mt-4 text-center text-sm font-medium text-slate-500">{publishedAt}</p>
 
-	<section class="prose mx-auto w-full text-slate-900">
+	<section class="prose mx-auto w-full px-4 text-slate-900">
 		<slot />
 	</section>
 </article>

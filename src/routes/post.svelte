@@ -2,6 +2,7 @@
 	import Banner from './banner.svelte';
 
 	export let title = '';
+	export let description = '';
 	export let date = new Date();
 	export let tags = [''];
 
@@ -14,7 +15,7 @@
 </script>
 
 <article class="pb-12">
-	<Banner {title} />
+	<Banner {title} {description} />
 	<p class="mt-10 text-center text-sm font-medium">{formattedTags}</p>
 	<p class="mt-4 text-center text-sm font-medium text-slate-500">{publishedAt}</p>
 

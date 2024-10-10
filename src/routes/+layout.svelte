@@ -1,5 +1,6 @@
 <script>
 	import '../app.css';
+	import { base } from '$app/paths';
 </script>
 
 <div class="bg-slate-100 py-0 md:py-10">
@@ -7,7 +8,7 @@
 		<div
 			class="flex justify-between bg-white px-4 py-4 sm:px-6 lg:px-8 dark:bg-slate-950 dark:text-white"
 		>
-			<a href="/">
+			<a href={base}>
 				<h1 class="text-left text-xl font-bold tracking-wider sm:text-2xl">speaktosteve</h1>
 			</a>
 			<div class="flex items-center gap-3">

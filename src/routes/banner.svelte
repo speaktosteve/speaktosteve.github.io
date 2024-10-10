@@ -15,8 +15,8 @@
 		<h3 class="px-2 text-center text-base tracking-wide">{description}</h3>
 	</div>
 </div> -->
-<div style={`background-image: url(${banner})`} class="p-4">
-	<div class="m-4 bg-white/30 p-2 backdrop-blur-lg">
+<div style={`background-image: url(${banner})`} class="bg-cover p-4">
+	<div class="m-4 mx-auto max-w-[40rem] bg-white/30 p-2 backdrop-blur-lg">
 		<h2 class="text-center text-xl font-bold tracking-wider">{title}</h2>
 		<h3 class="px-2 text-center text-base tracking-wide">{description}</h3>
 	</div>

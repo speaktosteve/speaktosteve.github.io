@@ -34,11 +34,12 @@ Please not, at the time of writing, there are a number of Next.js/SWA features t
 
 The setup is simple, create a basic Next.js app -> https://nextjs.org/docs/getting-started/installation
 
-<pre>npx create-next-app@latest</pre>
+```bash
+npx create-next-app@latest
+```
 
-Create a new Static Web App in Azure 
+Create a new Static Web App in Azure:
 
-<img src="{base}/src/lib/assets/1-1.png"/>
+<img src="{base}/post-assets/1/1.png">
 
-
-## Environment Variables
+## Environment Variables

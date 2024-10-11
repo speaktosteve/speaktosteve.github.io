@@ -47,7 +47,7 @@ Create a new Static Web App via the Azure marketplace:
 
 ![choose to create a new SWA via the  Azure portal]({base}/post-assets/1/1.png)
 
-On the first screen you will see an option to select GitHub as a deployment source, once selected enter the details of your new repository:
+On the first screen you will see an option to select GitHub as a deployment source, once selected enter the details of your new repository (and go through the auth flow if needed):
 
 ![deployment source option in the Azure portal]({base}/post-assets/1/2.png)
 
@@ -55,10 +55,68 @@ The summary screen should look similar to the below, not the output location is 
 
 ![creation summary of the SWA in the Azure portal]({base}/post-assets/1/3.png)
 
+When I first set the deployment process up there were additional, manual, steps need to create a GitHub action and wire it up with the SWA to allow deployments, but Azure now takes care of that for you. You will see that a new workflow file has been created in your repo:
 
+![workflow file created in GitHub]({base}/post-assets/1/4.png)
 
-Once it has been created you will need to get the deployment token to provide GitHub with permission to deploy to the SWA.
+And the deployment token has been added to the repository's Secrets and variables section:
 
-![obtaining the deployment token from the Azure portal]({base}/post-assets/1/13.png)
+![deployment token has been added to the repository's Secrets and variables section in GitHub]({base}/post-assets/1/5.png)
+
+The workflow created is basic, but gives you a working CI/CD process to build upon. 
+
+Firstly it will trigger with any direct pushes to the main branch. Or for any pull requests 
+
+```yaml
+name: Azure Static Web Apps CI/CD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches:
+      - main
+
+```
+
+```yaml
+jobs:
+  build_and_deploy_job:
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
+    runs-on: ubuntu-latest
+    name: Build and Deploy Job
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+          lfs: false
+      - name: Build And Deploy
+        id: builddeploy
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_AGREEABLE_GROUND_09FDE7F03 }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
+          action: "upload"
+          ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
+          # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
+          app_location: "/" # App source code path
+          api_location: "build/server" # Api source code path - optional
+          output_location: "build" # Built app content directory - optional
+          ###### End of Repository/Build Configurations ######
+
+  close_pull_request_job:
+    if: github.event_name == 'pull_request' && github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    name: Close Pull Request Job
+    steps:
+      - name: Close Pull Request
+        id: closepullrequest
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_AGREEABLE_GROUND_09FDE7F03 }}
+          action: "close"
+```
 
 ## Environment Variables

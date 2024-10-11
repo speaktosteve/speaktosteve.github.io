@@ -19,6 +19,7 @@
 		"@tailwindcss/typography": "^0.5.15",
 		"@types/eslint": "^9.6.0",
 		"@types/luxon": "^3.4.2",
+		"@types/node": "^22.7.5",
 		"autoprefixer": "^10.4.20",
 		"eslint": "^9.0.0",
 		"eslint-config-prettier": "^9.1.0",

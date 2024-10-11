@@ -27,6 +27,10 @@ See official docs: https://nextjs.org/docs/pages/building-your-application/confi
 
 *"With the App Router, we can safely read environment variables on the server during dynamic rendering"*
 
+![manage environment variables via the Azure portal]({base}/post-assets/2/1.png)
+
+
+
 ### Client-side Variables
 
 It's actually pretty simple once you remember that client-side environment variables need to be baked in to the app at build time, unlike standard environment variables that are available to the Node process at runtime. 

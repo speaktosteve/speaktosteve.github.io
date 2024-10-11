@@ -1,7 +1,7 @@
 ---
 title: 'Deploying a Next.js app to Azure Static Web Apps'
 description: 'A quick guide with example code for deploying a Next.js app to Azure Static Web Apps using GitHub actions'
-publishedAtIso: '2024-10-10'
+date: '2024-10-10'
 tags: ['next.js', 'azure', 'static web apps', 'github actions']
 ---
 
@@ -27,7 +27,7 @@ Most of the following was gleaned from https://learn.microsoft.com/en-us/azure/s
 
 ## Azure Static Web Apps
 
-I've used Azure SWAs a lot for prototyping and static apps, sacrificing the control and capability of App Services for simplicity of set up and low cost. And now hybrid Next.js websites on Azure Static Web Apps is in preview I can now deploy Next.js apps that use server components, SSR and API routes as an SWA. 
+I've used Azure SWAs a lot for prototypes and static apps, sacrificing the control and capability of App Services for simplicity of set up and low cost. And now hybrid Next.js websites on Azure Static Web Apps is in preview I can now deploy Next.js apps that use server components, SSR and API routes as an SWA. 
 
 Previously I would have to either switch to a statically generated Next.js app if I wanted to use Azure SWA, or used Azure App Services or Azure Container Apps. 
 
@@ -136,5 +136,3 @@ Finally, if the workflow was triggered by a PR being closed then the "close" act
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_AGREEABLE_GROUND_09FDE7F03 }}
           action: "close"
 ```
-
-## Environment Variables

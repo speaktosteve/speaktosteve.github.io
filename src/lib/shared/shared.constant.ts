@@ -19,6 +19,14 @@ export const POSTS_LIST = [
 	// 	tags: ['next.js', 'docker']
 	// },
 	{
+		title: 'Managing environment variables in NextJS on Azure Static Web Apps',
+		url: '/managing-environment-variables-nextjs-azure-static-web-apps',
+		description: 'A quick guide for managing Next.js environment variables for Azure Static Web Apps using GitHub actions',
+		date: new Date('11 Oct 2024'),
+		isFeatured: true,
+		tags: ['next.js', 'azure', 'static web apps', 'github actions', 'environment variables'],
+	},
+	{
 		title: 'Deploying a Next.js app to Azure Static Web Apps',
 		url: '/deploying-a-nextjs-app-to-azure-static-web-apps',
 		description:

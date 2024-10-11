@@ -51,7 +51,7 @@ On the first screen you will see an option to select GitHub as a deployment sour
 
 ![deployment source option in the Azure portal]({base}/post-assets/1/2.png)
 
-The summary screen should look similar to the below, not the output location is '/' - this is where Oryx will be looking to find the built application. For Svelte this should be '/build'.
+The summary screen should look similar to the below, not the output location is '/' - this is where Oryx will be looking to find the built application. For Svelte this should be '/build'. The provisioning process is quite clever here, its detected which framework (if any) is been used in the target repository and configured the output path accordingly.
 
 ![creation summary of the SWA in the Azure portal]({base}/post-assets/1/3.png)
 
@@ -136,3 +136,11 @@ Finally, if the workflow was triggered by a PR being closed then the "close" act
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_AGREEABLE_GROUND_09FDE7F03 }}
           action: "close"
 ```
+
+If I push a change to my main branch (or make a PR) I can see that the action is successfully executed:
+
+![Successful execution of the GH Action]({base}/post-assets/1/5.png)
+
+----
+
+So thats it, we have a Next.js app, a CI/CD process in GitHub Actions and a scalable, serverless hosting solution in Azure Static Web apps!

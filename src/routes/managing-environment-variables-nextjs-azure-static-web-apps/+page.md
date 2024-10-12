@@ -56,4 +56,215 @@ There are lots of approaches to how to solve this - to provide these client-side
 
 ### Experiment
 
-To demonstrate this approach I have created a simple Next.js app - code here: https://github.com/speaktosteve/next-env-vars
+To demonstrate this approach I have created a simple Next.js app - code here: https://github.com/speaktosteve/next-env-vars.
+
+It has:
+- a server component, rendering an environment variable 'RUNTIME_VARIABLE' read on the server:
+```ts
+import { unstable_noStore as noStore } from 'next/cache'
+
+export const ServerComponent = () => {
+    noStore()
+    return (
+        <section className="border p-5">
+            <h2>This is a server component</h2>
+            <ul className="mt-5">
+                <li>RUNTIME_VARIABLE: {process.env.RUNTIME_VARIABLE}</li>
+            </ul>
+        </section>
+    )
+}
+```
+- a client component, rendering an environment variable 'NEXT_PUBLIC_BROWSER_VARIABLE' read in the browser:
+```ts
+"use client"
+
+export const ClientComponent = () => {
+    return (
+        <section className="border p-5">
+        <h2>This is a client component</h2>
+
+        <ul className="mt-5">
+          <li>BROWSER_VARIABLE: {process.env.NEXT_PUBLIC_BROWSER_VARIABLE}</li>
+        </ul>
+        </section>
+        
+    )
+}
+```
+- a .env.local file that looks like this:
+```
+RUNTIME_VARIABLE=initial
+NEXT_PUBLIC_BROWSER_VARIABLE=initial
+```
+
+When I run `npm build` and `npm start` I can see my variables rendered as such:
+
+![simple Next.js app]({base}/post-assets/2/2.png)
+
+I have created a simple CI/CD using a GitHub action to deploy to an Azure Static App (see [this previous article](https://speaktosteve.github.io/blog/deploying-a-nextjs-app-to-azure-static-web-apps)) to see how it was set up.
+
+Now, when I view the deployed site I see this, as expected there are no environment variables to be rendered:
+
+![simple Next.js app]({base}/post-assets/2/3.png)
+
+If I add the RUNTIME_VARIABLE variable via the environment variables section in the Static Web App on the Azure Portal (or via the CLI):
+
+![managing env vars via the Azure portal]({base}/post-assets/2/1.png)
+
+After a minute I refresh my app and, behold, I can see that the variable is available. No rebuild or redeployment needed as the variable was updated and made available to the Node runtime:
+
+![simple Next.js app]({base}/post-assets/2/4.png)
+
+But what about the browser variable? I want to create a secure way to bundle this into the app prior deployment.
+
+### GitHub Workflowq
+
+Firstly, I add the NEXT_PUBLIC_BROWSER_VARIABLE variable as a secret via the 'Actions secrets and variables' section in the repository settings in GitHub.
+
+![adding a repository secret]({base}/post-assets/2/5.png)
+
+![adding a repository secret]({base}/post-assets/2/6.png)
+
+I then update the GitHub workflow file, which originally looks like this:
+
+```yaml
+name: Azure Static Web Apps CI/CD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches:
+      - main
+
+jobs:
+  build_and_deploy_job:
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
+    runs-on: ubuntu-latest
+    name: Build and Deploy Job
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+          lfs: false
+      - name: Build And Deploy
+        id: builddeploy
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_VICTORIOUS_WATER_02DD21B10 }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
+          action: "upload"
+          ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
+          # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
+          app_location: "/" # App source code path
+          api_location: "" # Api source code path - optional
+          output_location: "" # Built app content directory - optional
+          ###### End of Repository/Build Configurations ######
+
+  close_pull_request_job:
+    if: github.event_name == 'pull_request' && github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    name: Close Pull Request Job
+    steps:
+      - name: Close Pull Request
+        id: closepullrequest
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_VICTORIOUS_WATER_02DD21B10 }}
+          action: "close"
+
+```
+
+...adding a new, simple, step before the 'Build And Deploy' step. This creates a new .env file, piping in our environment secret: 
+
+```yaml
+      - name: Generate Env File
+        run: echo 'NEXT_PUBLIC_BROWSER_VARIABLE=${{ secrets.NEXT_PUBLIC_BROWSER_VARIABLE }}' >> .env
+```
+
+The final workflow looks like this:
+
+```yaml
+name: Azure Static Web Apps CI/CD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches:
+      - main
+
+jobs:
+  build_and_deploy_job:
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
+    runs-on: ubuntu-latest
+    name: Build and Deploy Job
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+          lfs: false
+      - name: Generate Env File
+        run: echo 'NEXT_PUBLIC_BROWSER_VARIABLE=${{ secrets.NEXT_PUBLIC_BROWSER_VARIABLE }}' >> .env
+      - name: Build And Deploy
+        id: builddeploy
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_VICTORIOUS_WATER_02DD21B10 }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
+          action: "upload"
+          ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
+          # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
+          app_location: "/" # App source code path
+          api_location: "" # Api source code path - optional
+          output_location: "" # Built app content directory - optional
+          ###### End of Repository/Build Configurations ######
+
+  close_pull_request_job:
+    if: github.event_name == 'pull_request' && github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    name: Close Pull Request Job
+    steps:
+      - name: Close Pull Request
+        id: closepullrequest
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_VICTORIOUS_WATER_02DD21B10 }}
+          action: "close"
+
+```
+
+One thing to note is that secrets are masked in the logs, so they won't appear in the output. This is key as we dont want to leak these secrets to people with view access to the action's output. The log masks these values as follows:
+
+![secret masking]({base}/post-assets/2/7.png)
+
+Ok, so once the workflow has completed we should check the deployed site again. The workflow should have created a temporary .env file which the build process then references in order to bake in our client-side environment variable.
+
+Success! We can see both the runtime and client-side environment variables:
+
+![both the runtime and client-side environment variables]({base}/post-assets/2/8.png)
+
+### Azure DevOps Pipelines:
+
+The above approach is just as easy when using Azure DevOps pipelines, although the YAML looks slightly different:
+
+```yaml
+  - script: echo 'NEXT_PUBLIC_BROWSER_VARIABLE=$(NEXT_PUBLIC_BROWSER_VARIABLE)' >> .env
+    displayName: 'Generate Env File'
+```
+
+#### Key Points:
+
+- Accessing Secrets: In Azure DevOps, secrets are accessed using $(SECRET_NAME). In this case, $(NEXT_PUBLIC_BROWSER_VARIABLE) refers to the secret added to your Azure DevOps pipeline.
+- Appending to File: The echo command appends the environment variable (NEXT_PUBLIC_BROWSER_VARIABLE) to the .env file, as it would in GitHub Actions.
+
+#### How to Add Secrets in Azure DevOps:
+
+- In Azure DevOps, go to your project.
+- Navigate to Pipelines > Library > Variable Groups (or Pipeline Variables if it’s specific to one pipeline).
+- Add NEXT_PUBLIC_BROWSER_VARIABLE as a secret variable.

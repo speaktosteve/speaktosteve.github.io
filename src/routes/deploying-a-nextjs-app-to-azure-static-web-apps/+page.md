@@ -45,23 +45,33 @@ Push it to a repo in GitHub -> https://docs.github.com/en/get-started/start-your
 
 Create a new Static Web App via the Azure marketplace:
 
-![choose to create a new SWA via the  Azure portal]({base}/post-assets/1/1.png)
+<a href="{base}/post-assets/1/1.png" target="_blank">
+<img src="{base}/post-assets/1/1.png" alt="choose to create a new SWA via the  Azure portal" />
+</a>
 
 On the first screen you will see an option to select GitHub as a deployment source, once selected enter the details of your new repository (and go through the auth flow if needed):
 
-![deployment source option in the Azure portal]({base}/post-assets/1/2.png)
+<a href="{base}/post-assets/1/2.png" target="_blank">
+<img src="{base}/post-assets/1/2.png" alt="deployment source option in the Azure portal" />
+</a>
 
 The summary screen should look similar to the below, not the output location is '/' - this is where Oryx will be looking to find the built application. For Svelte this should be '/build'. The provisioning process is quite clever here, its detected which framework (if any) is been used in the target repository and configured the output path accordingly.
 
-![creation summary of the SWA in the Azure portal]({base}/post-assets/1/3.png)
+<a href="{base}/post-assets/1/3.png" target="_blank">
+<img src="{base}/post-assets/1/3.png" alt="creation summary of the SWA in the Azure portal" />
+</a>
 
 When I first set the deployment process up there were additional, manual, steps need to create a GitHub action and wire it up with the SWA to allow deployments, but Azure now takes care of that for you. You will see that a new workflow file has been created in your repo:
 
-![workflow file created in GitHub]({base}/post-assets/1/4.png)
+<a href="{base}/post-assets/1/4.png" target="_blank">
+<img src="{base}/post-assets/1/4.png" alt="workflow file created in GitHub" />
+</a>
 
 And the deployment token has been added to the repository's Secrets and variables section:
 
-![deployment token has been added to the repository's Secrets and variables section in GitHub]({base}/post-assets/1/5.png)
+<a href="{base}/post-assets/1/5.png" target="_blank">
+<img src="{base}/post-assets/1/5.png" alt="deployment token has been added to the repository's Secrets and variables section in GitHub" />
+</a>
 
 The workflow created is basic, but gives you a working CI/CD process to build upon. 
 
@@ -139,7 +149,9 @@ Finally, if the workflow was triggered by a PR being closed then the "close" act
 
 If I push a change to my main branch (or make a PR) I can see that the action is successfully executed:
 
-![Successful execution of the GH Action]({base}/post-assets/1/5.png)
+<a href="{base}/post-assets/1/6.png" target="_blank">
+<img src="{base}/post-assets/1/6.png" alt="Successful execution of the GH Action" />
+</a>
 
 ----
 

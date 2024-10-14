@@ -7,6 +7,17 @@
 	export let date = '';
 	export let tags = [''];
 	export let references = [];
+
+	const getIcon = (type: string) => {
+		switch (type) {
+			case 'external':
+				return 'after:content-externalLink';
+			case 'repo':
+				return 'after:content-github';
+			default:
+				return '';
+		}
+	};
 </script>
 
 <article class="pb-12">
@@ -20,8 +31,7 @@
 						<a
 							href={reference.link}
 							target="_blank"
-							class="{reference.type === 'external' &&
-								'after:content-externalLink'} flex items-center gap-1">{reference.title}</a
+							class="{getIcon(reference.type)} flex items-center gap-1">{reference.title}</a
 						>
 					</li>
 				{/each}

@@ -6,17 +6,17 @@ tags: ['next.js', 'azure', 'static web apps', 'github actions']
 references: [{
    "type": "external", 
     "link": "https://learn.microsoft.com/en-us/azure/static-web-apps/deploy-nextjs-hybrid",
-    "title": "Azure Docs",
+    "title": "Azure docs",
   },
   {
     "type": "external", 
     "link": "https://nextjs.org/docs/getting-started/installation",
-    "title": "Next.js Docs",
+    "title": "Next.js docs",
   },
   {
     "type": "external", 
     "link": "https://docs.github.com/en/get-started/start-your-journey/hello-world",
-    "title": "GitHub Docs",
+    "title": "GitHub docs",
   }
 ]
 ---

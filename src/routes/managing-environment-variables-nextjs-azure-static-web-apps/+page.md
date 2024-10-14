@@ -4,9 +4,9 @@ description: 'A quick guide for managing Next.js environment variables for Azure
 date: '2024-10-12'
 tags: ['next.js', 'azure', 'static web apps', 'github actions', 'environment variables']
 references: [{
-   "type": "repo", 
+    "type": "repo", 
     "link": "https://github.com/speaktosteve/next-env-vars",
-    "title": "Reference Repo",
+    "title": "Reference repo",
   },
   {
     "type": "internal", 
@@ -16,7 +16,7 @@ references: [{
   {
     "type": "external", 
     "link": "https://nextjs.org/docs/app/building-your-application/configuring/environment-variables",
-    "title": "Next.js Docs",
+    "title": "Next.js docs",
   }
 ]
 ---

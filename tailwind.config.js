@@ -31,7 +31,10 @@ export const theme = {
 			'banner': "linear-gradient(transparent, white 95%), url('banner.jpeg') ",
 		},
 		content: {
-			'externalLink': 'url("$lib/assets/externalLink.svg")'		  },
+			'externalLink': 'url("$lib/assets/externalLink.svg")',
+			'github': 'url("$lib/assets/github.svg")',
+		
+		},
 	}
 };
 export const plugins = [typography];

@@ -1,6 +1,15 @@
 
 export const POSTS_LIST = [
-													{
+	{
+		title: 'Deploying a Remix app as an Azure Container App',
+		url: '/deploying-a-remix-app-as-an-azure-container-app',
+		description:
+			'Guide to developing and deploying your full-stack Remix web application to the cloud',
+		date: '10/14/2024',
+		isFeatured: true,
+		tags: ['remix', 'azure', 'container app', "bicep"]
+	},
+	{
 		title: 'Managing environment variables in NextJS on Azure Static Web Apps',
 		url: '/managing-environment-variables-nextjs-azure-static-web-apps',
 		description: 'A quick guide for managing Next.js environment variables for Azure Static Web Apps using GitHub actions',
@@ -17,15 +26,7 @@ export const POSTS_LIST = [
 		isFeatured: true,
 		tags: ['next.js', 'azure', 'static web apps', 'github actions']
 	},
-	{
-		title: 'Deploying a Remix app as an Azure Container App',
-		url: '/deploying-a-remix-app-as-an-azure-container-app',
-		description:
-			'Guide to developing and deploying your full-stack Remix web application to the cloud',
-		date: '10/14/2024',
-		isFeatured: true,
-		tags: ['remix', 'azure', 'container app', "bicep"]
-	},
+
 	// {
 	// 	title: 'Deploying a Remix app to Azure App Services',
 	// 	url: '/fourth',

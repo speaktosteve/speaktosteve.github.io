@@ -4,18 +4,19 @@ description: 'Guide to developing and deploying your full-stack Remix web applic
 date: '2024-10-14'
 tags: ['remix', 'azure', 'container app', "bicep"]
 references: [{
+    "type": "repo", 
     "link": "https://github.com/speaktosteve/remix-on-azure-container-app",
-    "title": "Reference Repo",
+    "title": "Reference repo",
   },
   {
     "type": "external", 
     "link": "https://remix.run/docs",
-    "title": "Remix Docs",
+    "title": "Remix docs",
   },
   {
     "type": "external", 
     "link": "https://azure.microsoft.com/en-us/products/container-apps",
-    "title": "Azure Container App Docs",
+    "title": "Azure Container App docs",
   }
 ]
 ---

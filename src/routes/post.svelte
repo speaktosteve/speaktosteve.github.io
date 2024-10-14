@@ -8,7 +8,7 @@
 	export let tags = [''];
 	export let references = [];
 
-	const getIcon = (type: string) => {
+	const getIcon = (type) => {
 		switch (type) {
 			case 'external':
 				return 'after:content-externalLink';

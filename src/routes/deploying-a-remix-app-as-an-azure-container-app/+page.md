@@ -57,11 +57,11 @@ This starts your app in development mode, rebuilding assets on file changes.
 
 ## Infrastructure
 
-The Remix app can be run locally either directly using `npm run dev` or within a Docker container, which is defined in the [Dockerfile](Dockerfile). When deployed to the cloud, the app runs as a container.
+The Remix app can be run locally either directly using `npm run dev` or within a Docker container, which is defined in the [Dockerfile](https://github.com/speaktosteve/remix-on-azure-container-app/blob/main/Dockerfile). When deployed to the cloud, the app runs as a container.
 
 This accelerator deploys the Remix app to an [Azure Container App](https://azure.microsoft.com/en-us/products/container-apps) which provides a serverless host for the app to run on.
 
-The following infrastructure is provisioned as defined in the Bicep definition files found in the [infra/](infra) directory:
+The following infrastructure is provisioned as defined in the Bicep definition files found in the [infra/](https://github.com/speaktosteve/remix-on-azure-container-app/tree/main/infra) directory:
 
 - Resource group
   - Container registry
@@ -74,13 +74,15 @@ The following infrastructure is provisioned as defined in the Bicep definition f
 
 The following workflows are used to build and deploy the app to Azure. In order for these to work you will need to set up a number of secrets and variables in your repo. See Set Up.
 
-GitHub actions: see workflows in [.github/workflows](.github/workflows)
+GitHub actions: see workflows in [.github/workflows](https://github.com/speaktosteve/remix-on-azure-container-app/tree/main/.github/workflows)
 
 ### Build and Test workflow
 
 - Simply tries to build the app using standard NPM commands.
 
-![build-and-test workflow](docs/images/build-test-action.png?raw=true "Build and Test workflow")
+<a href="{base}/post-assets/3/1.png" target="_blank">
+<img src="{base}/post-assets/3/1.png" alt="Build and Test workflow" />
+</a>
 
 ### Provision and Deploy workflow
 
@@ -88,7 +90,9 @@ GitHub actions: see workflows in [.github/workflows](.github/workflows)
 - Builds and publishes the app as a Docker image to ACR (Azure Container Registry)
 - Deploys the image to the newly provisioned Azure Container App.
 
-![provision-and-deploy workflow](docs/images/provision-deploy-action.png?raw=true "Provision and Deploy workflow")
+<a href="{base}/post-assets/3/2.png" target="_blank">
+<img src="{base}/post-assets/3/2.png" alt="Provision and Deploy workflow" />
+</a>
 
 ### Respository set up
 
@@ -142,7 +146,10 @@ The following repo variables will need creating:
 - REMIX_APP_IMAGE_NAME - the name that the image will be given in the ACR repo
 
 Your repo variables should look like this:
-![variables](docs/images/repo-variables.png?raw=true "Repo Variables")
+
+<a href="{base}/post-assets/3/3.png" target="_blank">
+<img src="{base}/post-assets/3/3.png" alt="Repo Variables" />
+</a>
 
 **Secrets**
 
@@ -159,6 +166,8 @@ Once the infra is created, go to the ACR in the Azure Portal and grab the follow
 - REGISTRY_PASSWORD - the client secret of the service principal created above
 
 Your repo secrets should look like this:
-![secrets](docs/images/repo-secrets.png?raw=true "Repo Secrets")
+<a href="{base}/post-assets/3/4.png" target="_blank">
+<img src="{base}/post-assets/3/4.png" alt="Repo Secrets" />
+</a>
 
 If you then re-run the **Provision and Deploy workflow** it should complete successfully. You should then have a running app within the Container App service.

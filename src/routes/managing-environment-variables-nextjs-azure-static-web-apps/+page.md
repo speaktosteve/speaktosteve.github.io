@@ -3,6 +3,22 @@ title: 'Managing environment variables in NextJS on Azure Static Web Apps'
 description: 'A quick guide for managing Next.js environment variables for Azure Static Web Apps using GitHub actions'
 date: '2024-10-12'
 tags: ['next.js', 'azure', 'static web apps', 'github actions', 'environment variables']
+references: [{
+   "type": "repo", 
+    "link": "https://github.com/speaktosteve/next-env-vars",
+    "title": "Reference Repo",
+  },
+  {
+    "type": "internal", 
+    "link": "https://speaktosteve.github.io/blog/deploying-a-nextjs-app-to-azure-static-web-apps",
+    "title": "Deploying a Next.js app to Azure Static Web Apps",
+  },
+  {
+    "type": "external", 
+    "link": "https://nextjs.org/docs/app/building-your-application/configuring/environment-variables",
+    "title": "Next.js Docs",
+  }
+]
 ---
 
 <script context="module">

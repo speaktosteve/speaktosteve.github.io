@@ -5,10 +5,10 @@
 	export let title = '';
 	export let description = '';
 	export let isFeatured = false;
-	export let date = new Date();
+	export let date = '';
 	export let tags = [''];
 
-	$: publishedAt = date.toLocaleString('en-US', {
+	$: publishedAt = new Date(date).toLocaleString('en-US', {
 		year: 'numeric',
 		month: 'long',
 		day: 'numeric'

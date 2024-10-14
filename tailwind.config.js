@@ -29,7 +29,9 @@ export const theme = {
 		backgroundImage: {
 			'bg': "url('bg.jpg')",
 			'banner': "linear-gradient(transparent, white 95%), url('banner.jpeg') ",
-		}
+		},
+		content: {
+			'externalLink': 'url("$lib/assets/externalLink.svg")'		  },
 	}
 };
 export const plugins = [typography];

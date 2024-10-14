@@ -1,25 +1,35 @@
 <script lang="ts">
 	import Banner from './banner.svelte';
+	// import type { IReference } from './../lib/interfaces/reference.ts';
 
 	export let title = '';
 	export let description = '';
-	export let date = new Date();
+	export let date = '';
 	export let tags = [''];
-
-	$: publishedAt = date.toLocaleString('en-US', {
-		year: 'numeric',
-		month: 'long',
-		day: 'numeric'
-	});
-	$: formattedTags = tags.join(', ');
+	export let references = [];
 </script>
 
 <article class="pb-12">
-	<Banner {title} {description} />
-	<p class="mt-10 text-center text-sm font-medium">{formattedTags}</p>
-	<p class="my-4 text-center text-sm font-medium text-slate-500">{publishedAt}</p>
-	<hr class="mx-4 my-8" />
-	<section class="prose mx-auto w-full px-4 text-slate-900">
+	<Banner {title} {description} {date} {tags} />
+	{#if references.length > 0}
+		<aside class="prose mx-auto mt-6 p-4 text-slate-900">
+			<h3>References:</h3>
+			<ul>
+				{#each references as reference}
+					<li>
+						<a
+							href={reference.link}
+							target="_blank"
+							class="{reference.type === 'external' &&
+								'after:content-externalLink'} flex items-center gap-1">{reference.title}</a
+						>
+					</li>
+				{/each}
+			</ul>
+			<hr class="mx-4 mt-8" />
+		</aside>
+	{/if}
+	<section class="prose mx-auto p-4 text-slate-900">
 		<slot />
 	</section>
 </article>

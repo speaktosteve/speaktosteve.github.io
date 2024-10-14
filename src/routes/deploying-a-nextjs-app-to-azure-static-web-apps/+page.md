@@ -3,6 +3,22 @@ title: 'Deploying a Next.js app to Azure Static Web Apps'
 description: 'A quick guide with example code for deploying a Next.js app to Azure Static Web Apps using GitHub actions'
 date: '2024-10-10'
 tags: ['next.js', 'azure', 'static web apps', 'github actions']
+references: [{
+   "type": "external", 
+    "link": "https://learn.microsoft.com/en-us/azure/static-web-apps/deploy-nextjs-hybrid",
+    "title": "Azure Docs",
+  },
+  {
+    "type": "external", 
+    "link": "https://nextjs.org/docs/getting-started/installation",
+    "title": "Next.js Docs",
+  },
+  {
+    "type": "external", 
+    "link": "https://docs.github.com/en/get-started/start-your-journey/hello-world",
+    "title": "GitHub Docs",
+  }
+]
 ---
 
 <script context="module">
@@ -157,4 +173,4 @@ If I push a change to my main branch (or make a PR) I can see that the action is
 
 So thats it, we have a Next.js app, a CI/CD process in GitHub Actions and a scalable, serverless hosting solution in Azure Static Web apps!
 
-If you need to manage environment variables for your NextJS app and keep forgetting how, see [this  article](https://speaktosteve.github.io/blog/deploying-a-nextjs-app-to-azure-static-web-apps).
+If you need to manage environment variables for your NextJS app and keep forgetting how, see [this article](https://speaktosteve.github.io/blog/deploying-a-nextjs-app-to-azure-static-web-apps).

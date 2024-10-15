@@ -1,5 +1,5 @@
 ---
-title: 'Deploying a Next.js app to Azure Static Web Apps'
+heading: 'Deploying a Next.js app to Azure Static Web Apps'
 description: 'A quick guide with example code for deploying a Next.js app to Azure Static Web Apps using GitHub actions'
 date: '2024-10-10'
 tags: ['next.js', 'azure', 'static web apps', 'github actions']

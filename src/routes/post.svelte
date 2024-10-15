@@ -1,8 +1,7 @@
 <script lang="ts">
 	import Banner from './banner.svelte';
-	// import type { IReference } from './../lib/interfaces/reference.ts';
 
-	export let title = '';
+	export let heading = '';
 	export let description = '';
 	export let date = '';
 	export let tags = [''];
@@ -20,8 +19,13 @@
 	};
 </script>
 
+<svelte:head>
+	<title>speaktosteve | {heading}</title>
+	<meta name="description" content={description} />
+</svelte:head>
+
 <article class="pb-12">
-	<Banner {title} {description} {date} {tags} />
+	<Banner {heading} {description} {date} {tags} />
 	{#if references.length > 0}
 		<aside class="prose mx-auto mt-6 p-4 text-slate-900">
 			<h3>References:</h3>

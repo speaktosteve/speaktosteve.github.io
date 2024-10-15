@@ -28,7 +28,7 @@
 		<p class="mt-3 line-clamp-3 text-base">
 			{description}
 		</p>
-		<p class="mt-6 text-sm font-medium">{formattedTags}</p>
+		<p class="mt-6 text-sm font-medium">[{formattedTags}]</p>
 		<p class="mt-4 text-sm font-medium text-slate-500">{publishedAt}</p>
 	</a>
 </li>

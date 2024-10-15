@@ -1,6 +1,6 @@
 <script lang="ts">
 	import banner from '$lib/assets/banner.webp';
-	export let title = 'Tech Blog';
+	export let heading = 'Tech Blog';
 	export let description =
 		'More my own online notebook than any genuine thought leadership. If you find something useful then happy days!';
 	export let date = '';
@@ -20,7 +20,7 @@
 		{#if date}
 			<h3 class="pb-4 text-sm">{publishedAt}</h3>
 		{/if}
-		<h2 class="text-3xl font-bold tracking-wider">{title}</h2>
+		<h2 class="text-3xl">{heading}</h2>
 		<h3 class="space-x-5 pt-6 text-sm leading-6">{description}</h3>
 		{#if formattedTags}
 			<h3 class="pt-6 text-sm">[{formattedTags}]</h3>

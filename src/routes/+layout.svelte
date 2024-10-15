@@ -1,4 +1,5 @@
 <script>
+	import logo from '$lib/assets/logo2.png';
 	import '../app.css';
 	import { base } from '$app/paths';
 </script>
@@ -6,10 +7,12 @@
 <div class="bg-slate-100 py-0 md:py-10">
 	<div class="mx-auto min-h-screen w-11/12 shadow-2xl md:w-3/4">
 		<div
-			class=" sticky top-0 z-10 flex justify-between bg-white px-4 py-4 sm:px-6 lg:px-8 dark:bg-slate-950 dark:text-white"
+			class=" sticky top-0 z-10 flex items-center justify-between gap-2 bg-white px-4 py-4 sm:px-6 dark:bg-slate-950 dark:text-white"
 		>
 			<a href={base}>
-				<h1 class="text-left text-xl font-bold tracking-wider sm:text-2xl">speaktosteve</h1>
+				<h1 class="max-w-[12rem] text-left">
+					<img alt="speaktosteve logo" src={logo} />
+				</h1>
 			</a>
 			<div class="flex items-center gap-3">
 				<a href="https://github.com/speaktosteve">

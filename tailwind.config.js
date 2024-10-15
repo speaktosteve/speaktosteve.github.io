@@ -23,7 +23,7 @@ export const content = ['./src/**/*.{html,js,svelte,ts}'];
 export const theme = {
 	extend: {
 		fontFamily: {
-			sans: ['uncut-sans', ..._fontFamily.sans],
+			'sans': ['Trebuchet MS', ..._fontFamily.sans],
 			serif: ['sprat', ..._fontFamily.serif]
 		},
 		backgroundImage: {

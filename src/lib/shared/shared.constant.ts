@@ -4,9 +4,9 @@ export const POSTS_LIST = [
 		title: 'Deploying a Remix app as an Azure Container App',
 		url: '/deploying-a-remix-app-as-an-azure-container-app',
 		description:
-			'Guide to developing and deploying your full-stack Remix web application to the cloud',
+			'Comprehensive guide to developing and deploying your full-stack Remix web application to the cloud',
 		date: '10/14/2024',
-		isFeatured: true,
+		isFeatured: false,
 		tags: ['remix', 'azure', 'container app', "bicep"]
 	},
 	{
@@ -23,7 +23,7 @@ export const POSTS_LIST = [
 		description:
 			'A quick guide with example code for deploying a Next.js app to Azure Static Web Apps using GitHub actions',
 		date: '10/10/2024',
-		isFeatured: true,
+		isFeatured: false,
 		tags: ['next.js', 'azure', 'static web apps', 'github actions']
 	},
 

@@ -21,7 +21,7 @@
 <li
 	class={`${isFeatured ? 'border-2' : 'border'} overflow-hidden rounded border-slate-100 p-6 shadow-sm hover:bg-slate-100`}
 >
-	<a href={fullUrl} class="mt-2 block">
+	<a href={fullUrl} class="mt-2 block" aria-label={title}>
 		<p class="text-2xl font-semibold">
 			{title}
 		</p>

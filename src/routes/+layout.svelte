@@ -1,5 +1,5 @@
 <script>
-	import logo from '$lib/assets/logo2.png';
+	import logo from '$lib/assets/logo.webp';
 	import '../app.css';
 	import { base } from '$app/paths';
 </script>
@@ -9,13 +9,13 @@
 		<div
 			class=" sticky top-0 z-10 flex items-center justify-between gap-2 bg-white px-4 py-4 sm:px-6 dark:bg-slate-950 dark:text-white"
 		>
-			<a href={base}>
+			<a href={base} aria-label="Back to home page">
 				<h1 class="max-w-[12rem] text-left">
 					<img alt="speaktosteve logo" src={logo} />
 				</h1>
 			</a>
 			<div class="flex items-center gap-3">
-				<a href="https://github.com/speaktosteve">
+				<a href="https://github.com/speaktosteve" aria-label="Go to GitHub profile">
 					<svg viewBox="0 0 98 96" width="25" height="24" xmlns="http://www.w3.org/2000/svg"
 						><path
 							fill-rule="evenodd"
@@ -25,7 +25,7 @@
 						/></svg
 					>
 				</a>
-				<a href="https://www.linkedin.com/in/speaktosteve/">
+				<a href="https://www.linkedin.com/in/speaktosteve/" aria-label="Go to LinkedIn profile">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						width="24"

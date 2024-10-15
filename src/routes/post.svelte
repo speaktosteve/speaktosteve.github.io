@@ -33,6 +33,7 @@
 				{#each references as reference}
 					<li>
 						<a
+							aria-label={reference.title}
 							href={reference.link}
 							target="_blank"
 							class="{getIcon(reference.type)} flex items-center gap-1">{reference.title}</a

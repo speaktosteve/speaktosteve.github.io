@@ -10,7 +10,7 @@ references: [{
   },
   {
     "type": "internal", 
-    "link": "https://speaktosteve.github.io/blog/deploying-a-nextjs-app-to-azure-static-web-apps",
+    "link": "https://speaktosteve.github.io/blog/deploying-a-next-js-app-to-azure-static-web-apps",
     "title": "Deploying a Next.js app to Azure Static Web Apps",
   },
   {
@@ -121,7 +121,7 @@ When I run `npm build` and `npm start` I can see my variables rendered as such:
 <img src="{base}/post-assets/2/2.png" alt="simple Next.js app" />
 </a>
 
-I have created a simple CI/CD using a GitHub action to deploy to an Azure Static App (see [this previous article](https://speaktosteve.github.io/blog/deploying-a-nextjs-app-to-azure-static-web-apps)) to see how it was set up.
+I have created a simple CI/CD using a GitHub action to deploy to an Azure Static App (see [this previous article](https://speaktosteve.github.io/blog/deploying-a-next-js-app-to-azure-static-web-apps)) to see how it was set up.
 
 Now, when I view the deployed site I see this, as expected there are no environment variables to be rendered:
 

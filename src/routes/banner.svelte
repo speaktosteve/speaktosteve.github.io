@@ -18,7 +18,7 @@
 <div style={`background-image: url(${bannerPath})`} class="bg-cover p-4">
 	<div class="m-4 mx-auto max-w-[65ch] bg-black/30 p-6 text-white backdrop-blur-lg">
 		{#if date}
-			<h3 class="pb-4 text-sm">{publishedAt}</h3>
+			<span class="pb-4 text-sm">{publishedAt}</span>
 		{/if}
 		<h2 class="text-3xl">{heading}</h2>
 		<h3 class="space-x-5 pt-6 text-sm leading-6">{description}</h3>

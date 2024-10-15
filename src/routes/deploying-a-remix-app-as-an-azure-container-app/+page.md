@@ -1,6 +1,6 @@
 ---
-heading: 'Deploying a Remix app as an Azure Container App'
-description: 'Comprehensive guide to developing and deploying your full-stack Remix web application to the cloud.'
+heading: 'Deploying a Remix app via GitHub Actions as an Azure Container App'
+description: 'Comprehensive guide to developing and deploying your full-stack Remix web application to the cloud via GitHub Actions as an Azure Container App',
 date: '2024-10-14'
 tags: ['remix', 'azure', 'container app', "bicep"]
 references: [{

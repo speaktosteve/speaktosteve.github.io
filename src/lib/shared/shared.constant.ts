@@ -1,24 +1,24 @@
 
 export const POSTS_LIST = [
 	{
-		title: 'Deploying a Remix app as an Azure Container App',
+		title: 'Deploying a Remix app via GitHub Actions as an Azure Container App',
 		url: '/deploying-a-remix-app-as-an-azure-container-app',
 		description:
-			'Comprehensive guide to developing and deploying your full-stack Remix web application to the cloud',
+			'Comprehensive guide to developing and deploying your full-stack Remix web application to the cloud via GitHub Actions as an Azure Container App',
 		date: '10/14/2024',
 		isFeatured: false,
 		tags: ['remix', 'azure', 'container app', "bicep"]
 	},
 	{
-		title: 'Managing environment variables in Next.js on Azure Static Web Apps',
+		title: 'Managing environment variables in Next.js on Azure Static Web Apps via GitHub Actions',
 		url: '/managing-environment-variables-next-js-azure-static-web-apps',
-		description: 'A quick guide for managing Next.js environment variables for Azure Static Web Apps using GitHub actions',
+		description: 'A quick guide for managing Next.js environment variables for Azure Static Web Apps using GitHub actions or Azure DevOps pipelines',
 		date: '10/11/2024',
 		isFeatured: true,
-		tags: ['next.js', 'azure', 'static web apps', 'github actions', 'environment variables'],
+		tags: ['next.js', 'azure', 'static web apps', 'github actions', 'azure devops pipelines', 'environment variables'],
 	},
 	{
-		title: 'Deploying a Next.js app to Azure Static Web Apps',
+		title: 'Deploying a Next.js app to Azure Static Web Apps via GitHub Actions',
 		url: '/deploying-a-next-js-app-to-azure-static-web-apps',
 		description:
 			'A quick guide with example code for deploying a Next.js app to Azure Static Web Apps using GitHub actions',

@@ -2,16 +2,37 @@
 	import logo from '$lib/assets/logo.webp';
 	import '../app.css';
 	import { base } from '$app/paths';
+	import { onMount } from 'svelte';
+
+	// Reactive variable to store scroll position
+	let imageWidth = 32;
+
+	// Track scroll position
+	const handleScroll = () => {
+		let scrollY = window.scrollY;
+		if (scrollY < 630) {
+			imageWidth = 32 - scrollY / 50;
+		}
+	};
+
+	// Add scroll event listener when component is mounted
+	onMount(() => {
+		window.addEventListener('scroll', handleScroll);
+
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
+		};
+	});
 </script>
 
 <div class="bg-slate-300 py-0 md:py-10">
-	<div class="mx-auto min-h-screen w-11/12 shadow-2xl md:w-3/4 xl:w-2/3 2xl:w-1/2">
+	<div class="mx-auto w-11/12 shadow-2xl md:w-3/4 xl:w-2/3 2xl:w-1/2">
 		<div
 			class=" sticky top-0 z-10 flex items-center justify-between gap-2 bg-white px-4 py-4 sm:px-6 dark:bg-slate-950 dark:text-white"
 		>
 			<a href={base} aria-label="Back to home page">
-				<h1 class="max-w-[12rem] text-left">
-					<img alt="speaktosteve logo" src={logo} width="100%" />
+				<h1 class="max-w-[{imageWidth}rem] text-left">
+					<img alt="speaktosteve logo" src={logo} width="{imageWidth}%" />
 				</h1>
 			</a>
 			<div class="flex items-center gap-3">

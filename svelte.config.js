@@ -28,9 +28,10 @@ const config = {
 			// these options are set automatically — see below
 			pages: 'build',
 			assets: 'build',
-			fallback: undefined,
 			precompress: false,
-			strict: true
+			strict: true,
+			// fallback: '/blog/404.html'
+
 		}),
 		paths: {
 			base: '/blog'

@@ -21,11 +21,11 @@
 <li
 	class={`${isFeatured ? 'border-2' : 'border'} overflow-hidden rounded border-slate-100 p-6 shadow-sm hover:bg-slate-100`}
 >
-	<a href={fullUrl} class="mt-2 block" aria-label={title}>
-		<p class="text-2xl font-semibold">
+	<a href={fullUrl} class="mt-2 block" aria-label={title} title={description}>
+		<p class={`${isFeatured ? 'text-2xl' : 'text-lg'} font-semibold`}>
 			{title}
 		</p>
-		<p class="mt-3 line-clamp-3 text-base">
+		<p class="mt-3 {`${isFeatured ? 'line-clamp-3 text-base' : 'line-clamp-2 text-sm'}`}">
 			{description}
 		</p>
 		<p class="mt-6 text-sm font-medium">[{formattedTags}]</p>

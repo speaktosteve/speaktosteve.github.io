@@ -1,5 +1,5 @@
 ---
-heading: 'Managing environment variables in NextJS on Azure Static Web Apps'
+heading: 'Managing environment variables in Next.js on Azure Static Web Apps'
 description: 'A quick guide for managing Next.js environment variables for Azure Static Web Apps using GitHub actions'
 date: '2024-10-12'
 tags: ['next.js', 'azure', 'static web apps', 'github actions', 'environment variables']

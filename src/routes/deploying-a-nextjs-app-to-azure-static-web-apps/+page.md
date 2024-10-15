@@ -173,4 +173,4 @@ If I push a change to my main branch (or make a PR) I can see that the action is
 
 So thats it, we have a Next.js app, a CI/CD process in GitHub Actions and a scalable, serverless hosting solution in Azure Static Web apps!
 
-If you need to manage environment variables for your NextJS app and keep forgetting how, see [this article](https://speaktosteve.github.io/blog/deploying-a-nextjs-app-to-azure-static-web-apps).
+If you need to manage environment variables for your Next.js app and keep forgetting how, see [this article](https://speaktosteve.github.io/blog/deploying-a-nextjs-app-to-azure-static-web-apps).

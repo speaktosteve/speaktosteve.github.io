@@ -10,7 +10,7 @@ export const POSTS_LIST = [
 		tags: ['remix', 'azure', 'container app', "bicep"]
 	},
 	{
-		title: 'Managing environment variables in NextJS on Azure Static Web Apps',
+		title: 'Managing environment variables in Next.js on Azure Static Web Apps',
 		url: '/managing-environment-variables-nextjs-azure-static-web-apps',
 		description: 'A quick guide for managing Next.js environment variables for Azure Static Web Apps using GitHub actions',
 		date: '10/11/2024',

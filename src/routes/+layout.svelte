@@ -11,7 +11,7 @@
 		>
 			<a href={base} aria-label="Back to home page">
 				<h1 class="max-w-[12rem] text-left">
-					<img alt="speaktosteve logo" src={logo} />
+					<img alt="speaktosteve logo" src={logo} width="100%" />
 				</h1>
 			</a>
 			<div class="flex items-center gap-3">

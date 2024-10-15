@@ -24,7 +24,7 @@
 	<meta name="description" content={description} />
 </svelte:head>
 
-<article class="pb-12">
+<article class="bg-white pb-12">
 	<Banner {heading} {description} {date} {tags} />
 	{#if references.length > 0}
 		<aside class="prose mx-auto mt-6 p-4 text-slate-900">

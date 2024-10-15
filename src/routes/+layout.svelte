@@ -4,8 +4,8 @@
 	import { base } from '$app/paths';
 </script>
 
-<div class="bg-slate-100 py-0 md:py-10">
-	<div class="mx-auto min-h-screen w-11/12 shadow-2xl md:w-3/4">
+<div class="bg-slate-300 py-0 md:py-10">
+	<div class="mx-auto min-h-screen w-11/12 shadow-2xl md:w-3/4 xl:w-2/3 2xl:w-1/2">
 		<div
 			class=" sticky top-0 z-10 flex items-center justify-between gap-2 bg-white px-4 py-4 sm:px-6 dark:bg-slate-950 dark:text-white"
 		>

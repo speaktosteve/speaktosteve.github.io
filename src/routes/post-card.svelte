@@ -19,7 +19,7 @@
 </script>
 
 <li
-	class={`${isFeatured && 'bg-slate-200'} overflow-hidden rounded border border-slate-100 p-6 shadow-sm hover:bg-slate-100`}
+	class={`${isFeatured ? 'border-2' : 'border'} overflow-hidden rounded border-slate-100 p-6 shadow-sm hover:bg-slate-100`}
 >
 	<a href={fullUrl} class="mt-2 block">
 		<p class="text-2xl font-semibold">

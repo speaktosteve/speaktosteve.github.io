@@ -5,13 +5,13 @@
 	import { onMount } from 'svelte';
 
 	// Reactive variable to store scroll position
-	let imageWidth = 32;
+	let imageWidth = 320;
 
 	// Track scroll position
 	const handleScroll = () => {
 		let scrollY = window.scrollY;
-		if (scrollY < 630) {
-			imageWidth = 32 - scrollY / 50;
+		if (scrollY < 200) {
+			imageWidth = 320 - scrollY / 2;
 		}
 	};
 
@@ -31,8 +31,8 @@
 			class=" sticky top-0 z-10 flex items-center justify-between gap-2 bg-white px-4 py-4 sm:px-6 dark:bg-slate-950 dark:text-white"
 		>
 			<a href={base} aria-label="Back to home page">
-				<h1 class="max-w-[{imageWidth}rem] text-left">
-					<img alt="speaktosteve logo" src={logo} width="{imageWidth}%" />
+				<h1 class="text-left">
+					<img alt="speaktosteve logo" src={logo} width="{imageWidth}px" />
 				</h1>
 			</a>
 			<div class="flex items-center gap-3">

@@ -1,17 +1,23 @@
-<script>
+<script lang="ts">
 	import logo from '$lib/assets/logo.webp';
 	import '../app.css';
 	import { base } from '$app/paths';
 	import { onMount } from 'svelte';
 
 	// Reactive variable to store scroll position
-	let imageWidth = 320;
+	const initialImageWidth = 250;
+	const minScreenSize = 640;
+	const scrollLimit = 200;
+	let imageWidth = initialImageWidth;
 
 	// Track scroll position
 	const handleScroll = () => {
+		if (window.screen.width < minScreenSize) {
+			return;
+		}
 		let scrollY = window.scrollY;
-		if (scrollY < 200) {
-			imageWidth = 320 - scrollY / 2;
+		if (scrollY < scrollLimit) {
+			imageWidth = initialImageWidth - scrollY / 2;
 		}
 	};
 

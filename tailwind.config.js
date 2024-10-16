@@ -22,6 +22,13 @@ import typography from '@tailwindcss/typography';
 export const content = ['./src/**/*.{html,js,svelte,ts}'];
 export const theme = {
 	extend: {
+		typography: {
+			DEFAULT: {
+			  css: {
+				maxWidth: '80ch', // add required value here
+			  }
+			}
+		  },
 		fontFamily: {
 			'sans': ['Trebuchet MS', ..._fontFamily.sans],
 			serif: ['sprat', ..._fontFamily.serif]

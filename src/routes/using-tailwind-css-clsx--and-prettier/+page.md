@@ -5,7 +5,7 @@ date: '2024-10-16'
 tags: ['next.js', 'react', 'tailwind', 'clsx', 'prettier']
 references: [{
     "type": "repo", 
-    "link": "https://github.com/speaktosteve/next-env-vars",
+    "link": "https://github.com/speaktosteve/tailwind-clsx-prettier",
     "title": "Reference repo",
   },
   {
@@ -18,6 +18,12 @@ references: [{
     "link": "https://www.npmjs.com/package/clsx",
     "title": "clsx docs",
   },
+      {
+    "type": "external", 
+    "link": "https://github.com/tailwindlabs/prettier-plugin-tailwindcss",
+    "title": "prettier-plugin-tailwindcss docs",
+  },
+  
 ]
 ---
 
@@ -28,16 +34,18 @@ references: [{
 
 ## Overview
 
+[clsx](https://www.npmjs.com/package/clsx), the lightweight library generally used to simplify the use of conditional CSS class names in libraries such as React, is something I am pretty new to.
 
+Like a lot of these small, convenience tools, its great to have in your toolchain, but sometimes the set up is a little time consuming. Thats where I hope this article can help.
 
-clsx is generally used to conditionally apply a given className
+I am using clsx with tailwind at the moment, and its a must that my team are using tailwind in a consistent way. I have always reached for tools such as eslint and prettier to ensure our codebase stays as consistent as possible and so I was keen to make sure that, if we use clsx, we don't lose that consistency. This is where the prettier-plugin-tailwindcss plugin for prettier comes in.
 
-This syntax means that some class will only be applied if a given condition evaluates to true
+This article and corresponding [reference repo](https://github.com/speaktosteve/tailwind-clsx-prettier) explains how we set up our toolchain
+- a basic Next.js app with tailwind
+- clsx
+- prettier
+- the prettier-plugin-tailwindcss plugin
 
-small package, smaller than classnames
-Automatically removes false or null classes
-
-tailwind prettier for vs code
 ----
 
 ## Setup
@@ -318,3 +326,7 @@ export const Heading = ({ textColour }: { textColour: 'red' | 'blue' }) => {
 ```
 
 See [Sorting classes in function calls](https://github.com/tailwindlabs/prettier-plugin-tailwindcss?tab=readme-ov-file#sorting-classes-in-function-calls) part of the extension's docs for a full reference.
+
+---
+
+You can find the complete solution here: https://github.com/speaktosteve/tailwind-clsx-prettier

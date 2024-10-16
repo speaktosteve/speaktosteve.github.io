@@ -245,7 +245,7 @@ And then add a reference to the tailwind plugin that we just installed:
 }
 ```
 
-If you now save a file that contains tailwind class references you should see them being re-ordered as per the (recommended class order)[https://tailwindcss.com/blog/automatic-class-sorting-with-prettier#how-classes-are-sorted].
+If you now save a file that contains tailwind class references you should see them being re-ordered as per the [recommended class order](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier#how-classes-are-sorted).
 
 Before:
 
@@ -262,3 +262,59 @@ After saving (or explicitly running the 'format document' command):
   <!-- ... -->
 </div>
 ```
+
+## Supporting clsx
+
+In order for prettier to sort classes that are part of a clsx method call (and not in a className attribute) there is a further step.
+
+Consider this improvement on the clsx example above:
+
+```tsx
+import { clsx } from 'clsx'
+
+export const Heading = ({ textColour }: { textColour: 'red' | 'blue' }) => {
+    const classes = clsx(
+        'mx-auto pt-5 p-5 text-5xl',
+        textColour === 'red' && 'text-red-700',
+        textColour === 'blue' && 'text-blue-700'
+    )
+    return <h1 className={classes}>Heading</h1>
+}
+```
+The formatter wont pick up the tailwind classes that are part of the call to the cslx method in the 'classes' variable.
+
+All we need to do is add the following line to our prettier config:
+
+```json
+"tailwindFunctions": ["clsx"]
+```
+
+So the full file looks like this:
+```json
+{
+    "trailingComma": "es5",
+    "tabWidth": 4,
+    "semi": false,
+    "singleQuote": true,
+    "tailwindFunctions": ["clsx"],
+    "plugins": ["prettier-plugin-tailwindcss"]
+}
+```
+
+Now, after saving (or explicitly running the 'format document' command), you will see the classes have been sorted:
+
+```tsx
+import { clsx } from 'clsx'
+
+export const Heading = ({ textColour }: { textColour: 'red' | 'blue' }) => {
+    const classes = clsx(
+        'mx-auto p-5 pt-5 text-5xl',
+        textColour === 'red' && 'text-red-700',
+        textColour === 'blue' && 'text-blue-700'
+    )
+    return <h1 className={classes}>Heading</h1>
+}
+
+```
+
+See [Sorting classes in function calls](https://github.com/tailwindlabs/prettier-plugin-tailwindcss?tab=readme-ov-file#sorting-classes-in-function-calls) part of the extension's docs for a full reference.

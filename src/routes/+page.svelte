@@ -16,6 +16,10 @@
 		name="description"
 		content="More my own online notebook than any genuine thought leadership. If you find something useful then happy days!"
 	/>
+	<meta
+		name="keywords"
+		content="blog, front-end, dev-ops, azure, next.js, css, tailwind, static web apps, github actions, environment variables"
+	/>
 </svelte:head>
 
 <div style={`background-image: url(${bannerPath})`} class="bg-cover p-4 pb-16"></div>

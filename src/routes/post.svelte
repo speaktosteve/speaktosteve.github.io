@@ -8,7 +8,7 @@
 	export let tags = [''];
 	export let references = [];
 
-	const getIcon = (type) => {
+	const getIcon = (type: string) => {
 		switch (type) {
 			case 'external':
 				return 'after:content-externalLink';
@@ -23,6 +23,7 @@
 <svelte:head>
 	<title>speaktosteve | {heading}</title>
 	<meta name="description" content={description} />
+	<meta name="keywords" content={tags.join(', ')} />
 </svelte:head>
 
 <Banner {heading} {description} {date} {tags} />

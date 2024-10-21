@@ -6,7 +6,7 @@
 
 	// Reactive variable to store scroll position
 	const initialImageWidth = 250;
-	const minScreenSize = 640;
+	const minScreenSize = 200;
 	const scrollLimit = 200;
 	let imageWidth = initialImageWidth;
 

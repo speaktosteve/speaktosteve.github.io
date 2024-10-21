@@ -5,7 +5,6 @@ import { mdsvex } from 'mdsvex';
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	preprocess: [
-		vitePreprocess(),
 		// https://joshcollinsworth.com/blog/build-static-sveltekit-markdown-blog#approach-2-dynamic-routes
 		mdsvex({
 			extensions: ['.md', '.svx'],
@@ -15,7 +14,8 @@ const config = {
 			//   // _: './src/routes/post.svelte'
 			//   blog: './src/routes/post.svelte'
 			// }
-		})
+		}),
+		vitePreprocess()
 	],
 	extensions: ['.svelte', '.md', '.svx'],
 

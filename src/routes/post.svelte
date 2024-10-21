@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { getIcon } from '$lib/shared/utils';
 	import Banner from '../components/banner.svelte';
 	import ContentWrapper from '../components/content-wrapper.svelte';
 
@@ -7,17 +8,6 @@
 	export let date = '';
 	export let tags = [''];
 	export let references = [];
-
-	const getIcon = (type) => {
-		switch (type) {
-			case 'external':
-				return 'after:content-externalLink';
-			case 'repo':
-				return 'after:content-github';
-			default:
-				return '';
-		}
-	};
 </script>
 
 <svelte:head>

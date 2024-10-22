@@ -26,7 +26,10 @@
 	/>
 </svelte:head>
 
-<div style={`background-image: url(${bannerPath})`} class="bg-cover p-4 pb-16"></div>
+<div
+	style={`background-image: url(${bannerPath})`}
+	class="bg-cover p-4 pb-16 md:pb-24 lg:pb-32"
+></div>
 <ContentWrapper>
 	<p class="m-12 mt-4 border-b-4 border-slate-900 pb-4 text-center font-bold">
 		More my own online notebook than any genuine thought leadership. If you find something useful

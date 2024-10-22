@@ -1,5 +1,6 @@
 <script lang="ts">
 	import banner from '$lib/assets/banner.webp';
+	import logo from '$lib/assets/logo.webp';
 	export let heading = '';
 	export let description = '';
 	export let date = '';
@@ -14,7 +15,7 @@
 	$: formattedTags = tags.join(', ');
 </script>
 
-<div style={`background-image: url(${bannerPath})`} class="bg-cover p-4 pb-8">
+<div class="lg:bg-smallBanner bg-banner bg-cover p-4 pb-8">
 	<div class="m-4 mx-auto bg-black/30 p-6 text-white backdrop-blur-lg lg:max-w-[85ch]">
 		{#if date}
 			<span class="block pb-4 text-sm">{publishedAt}</span>

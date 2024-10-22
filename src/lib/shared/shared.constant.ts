@@ -46,6 +46,12 @@ export const POSTS_LIST = [
 		topic: 'front-end',
 		tags: ['next.js', 'ISR', 'Incremental Static Regeneration', 'SSG', 'Performance']
 	}
+
+	// animating via the offset path: https://developer.mozilla.org/en-US/docs/Web/CSS/offset-path
+
+
+	// https://2024.stateofcss.com/en-US/features/#reading_list
+
 	// Svelte-Specific Topics:
 		// "Getting Started with Svelte: The Modern Alternative to React"          
 		// A beginner’s guide introducing Svelte as a lightweight, reactive framework.
@@ -72,8 +78,6 @@ export const POSTS_LIST = [
 		// "Next.js vs SvelteKit: Which Framework is Right for You?"
 		// Comparison between Next.js and SvelteKit in terms of performance, ease of use, community, and ecosystem.
 
-		// "Incremental Static Regeneration (ISR) in Next.js: What, Why, and How?"
-		// Detailed explanation of ISR and how it can improve website performance with dynamic content.
 
 		// "Setting Up API Routes in Next.js for Full-Stack Applications"
 		// A guide on how to use Next.js API routes to build full-stack applications without external backends.

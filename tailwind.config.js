@@ -34,13 +34,11 @@ export const theme = {
 			serif: ['sprat', ..._fontFamily.serif]
 		},
 		backgroundImage: {
-			'bg': "url('bg.jpg')",
-			'banner': "linear-gradient(transparent, white 95%), url('banner.jpeg') ",
+			'banner': 'linear-gradient(transparent, black 90%), url("$lib/assets/banner.webp")',
 		},
 		content: {
 			'externalLink': 'url("$lib/assets/externalLink.svg")',
 			'github': 'url("$lib/assets/github.svg")',
-		
 		},
 	}
 };

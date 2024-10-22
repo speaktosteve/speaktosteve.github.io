@@ -5,9 +5,13 @@
 	import ContentWrapper from '../components/content-wrapper.svelte';
 	$: bannerPath = banner;
 
-	const featuredPosts = POSTS_LIST.filter((post) => post.isFeatured);
-	const devOpsPosts = POSTS_LIST.filter((post) => post.topic === 'devops' && !post.isFeatured);
-	const frontEndPosts = POSTS_LIST.filter((post) => post.topic === 'front-end' && !post.isFeatured);
+	const featuredPosts = POSTS_LIST.filter((post) => post.isFeatured && !post.isDisabled);
+	const devOpsPosts = POSTS_LIST.filter(
+		(post) => post.topic === 'devops' && !post.isFeatured && !post.isDisabled
+	);
+	const frontEndPosts = POSTS_LIST.filter(
+		(post) => post.topic === 'front-end' && !post.isFeatured && !post.isDisabled
+	);
 </script>
 
 <svelte:head>

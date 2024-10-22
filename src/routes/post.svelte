@@ -37,7 +37,9 @@
 				<hr class="mx-4 mt-8" />
 			</aside>
 		{/if}
-		<section class="prose mx-auto p-4 text-slate-900">
+		<section
+			class="prose mx-auto p-4 text-slate-900 prose-code:before:hidden prose-code:after:hidden"
+		>
 			<slot />
 		</section>
 	</article>

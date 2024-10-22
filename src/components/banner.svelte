@@ -15,7 +15,7 @@
 	$: formattedTags = tags.join(', ');
 </script>
 
-<div class="lg:bg-smallBanner bg-banner bg-cover p-4 pb-8">
+<div class="bg-banner bg-cover p-4 pb-8">
 	<div class="m-4 mx-auto bg-black/30 p-6 text-white backdrop-blur-lg lg:max-w-[85ch]">
 		{#if date}
 			<span class="block pb-4 text-sm">{publishedAt}</span>

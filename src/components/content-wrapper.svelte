@@ -19,7 +19,7 @@
 	});
 </script>
 
-<div class="parallax-container mt-[-1rem] rounded-t-3xl bg-white px-0 pt-4">
+<div class="mt-[-1rem] rounded-t-3xl bg-white px-0 pt-4">
 	<!-- Background element for parallax effect -->
 	<div
 		class="scale-[2] rounded-t-3xl bg-white pb-12"
@@ -28,9 +28,3 @@
 		<slot />
 	</div>
 </div>
-
-<style>
-	.parallax-container {
-		perspective: 1px; /* create a 3D effect for parallax */
-	}
-</style>

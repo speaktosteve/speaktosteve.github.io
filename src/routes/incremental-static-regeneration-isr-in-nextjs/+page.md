@@ -58,6 +58,11 @@ As the number of pages increases, the build time for static sites can grow signi
 
 ## How
 
+<div class="border p-4 not-italic">
+<strong>Side Note</strong>
+The following code examples are for Next.js, for both Page Router and App Router (available from Next.js 13 onwards) architecture. 
+</div>
+
 ### Basic Incremental Static Regeneration
 
 Statically generate pages initially and have ISR update the product page in the background at regular intervals, such as every 10 minutes:
@@ -66,13 +71,17 @@ Statically generate pages initially and have ISR update the product page in the 
 
 ```js
 export async function getStaticProps() {
-  const data = await fetchProductData();
+  const data = await fetch('https://api.example.com/products/');
   return {
     props: {
-      product: data,
+      products: data,
     },
     revalidate: 600, // Regenerate the page every 10 minutes
   };
+}
+
+export default function Index({ products }) {
+    return products.map((product) => <div>{product.name}</div>)
 }
 ```
 
@@ -87,8 +96,8 @@ Until the next revalidation, the cached static version of the page is served to 
 #### App Router:
 
 ```js
-async function fetchProductData(id) {
-  const res = await fetch(`https://api.example.com/products/${id}`, {
+async function fetchProductData() {
+  const res = await fetch(`https://api.example.com/products/`, {
     next: { revalidate: 600 }, // Revalidate the data every 10 minutes
   });
 
@@ -98,18 +107,28 @@ async function fetchProductData(id) {
 
   return res.json();
 }
+
+export default function Index() {
+  const products = await fetchProductData()
+
+  return products.map((product) => <div>{product.name}</div>)
+}
 ```
 
-The App Router equivalent is alot simpler than the Page Router although resulting behaviour is identical, the key is:
+The App Router equivalent is does not use `getStaticProps` method, instead it uses (in our case) `fetchProductData` to fetch the data. This looks like a very standard data fetch, but with a bit of magic:
 
 ```js
 next: { revalidate: 600 }:
 ```
 
-This is a Next.js-specific option used in the App Router (from Next.js 13 onwards).
-The `revalidate: 600` option enables ISR, telling Next.js to revalidate (regenerate) the data every 600 seconds (10 minutes). This is similar to how revalidate works in `getStaticProps` in the Pages Router example.
+This is a Next.js-specific option used in the App Router. The `revalidate: 600` option enables ISR, telling Next.js to revalidate (regenerate) the data every 600 seconds (10 minutes). This is similar to how revalidate works in `getStaticProps` in the Pages Router example.
 
 ### On Demand Incremental Static Regeneration
+
+<div class="border p-4 not-italic">
+<strong>Side Note</strong>
+In this following example I have a page that uses dynamic routes (hence the use of params.id). The id from the URL is used to retrieve the corresponding blog data via a fetchPostData method.
+</div>
 
 Instead of building all posts during deployment, ISR generates them when a user first visits, ensuring quick builds and up-to-date content:
 
@@ -174,6 +193,19 @@ export async function generateStaticParams() {
   return popularPosts.map((post) => ({
     id: post.id, // Map each post's id to generate the path
   }));
+}
+
+// This replaces getStaticProps
+export default async function PostPage({ params }) {
+  const { id } = params;
+  const post = await fetchPostData(id);
+
+  return (
+    <div>
+      <h1>{post.title}</h1>
+      <p>{post.content}</p>
+    </div>
+  );
 }
 
 ```

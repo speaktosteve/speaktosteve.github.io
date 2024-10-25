@@ -47,6 +47,11 @@ export const POSTS_LIST = [
 		tags: ['next.js', 'ISR', 'Incremental Static Regeneration', 'SSG', 'Performance']
 	}
 
+// component tests and stuff with cypress and next.js and msw
+
+
+
+
 	// animating via the offset path: https://developer.mozilla.org/en-US/docs/Web/CSS/offset-path
 
 

@@ -20,6 +20,7 @@ import { fontFamily as _fontFamily } from 'tailwindcss/defaultTheme';
 import typography from '@tailwindcss/typography';
 
 export const content = ['./src/**/*.{html,js,svelte,ts}'];
+export const darkMode = 'selector';
 export const theme = {
 	extend: {
 		typography: {

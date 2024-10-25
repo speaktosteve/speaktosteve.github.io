@@ -19,7 +19,7 @@
 </script>
 
 <li
-	class={`${isFeatured ? 'border-2' : 'border'} overflow-hidden rounded border-slate-100 p-6 shadow-sm hover:bg-slate-100`}
+	class={`${isFeatured ? 'border-2' : 'border'} overflow-hidden rounded border-slate-100 p-6 shadow-sm hover:bg-slate-100 hover:dark:bg-slate-950`}
 >
 	<a href={fullUrl} class="mt-2 block" aria-label={title} title={description}>
 		<p class={`${isFeatured ? 'text-2xl' : 'text-lg'} font-semibold`}>

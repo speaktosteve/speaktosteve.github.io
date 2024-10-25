@@ -39,7 +39,9 @@ export const theme = {
 		},
 		content: {
 			'externalLink': 'url("$lib/assets/externalLink.svg")',
+			'externalLinkDark': 'url("$lib/assets/externalLinkDark.svg")',
 			'github': 'url("$lib/assets/github.svg")',
+			'githubDark': 'url("$lib/assets/githubDark.svg")',
 		},
 	}
 };

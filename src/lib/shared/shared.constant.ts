@@ -49,6 +49,8 @@ export const POSTS_LIST = [
 
 // component tests and stuff with cypress and next.js and msw
 
+// offline mode testing - https://www.cypress.io/blog/testing-application-in-offline-network-mode
+
 // this blog 
 //- deploying to the root
 

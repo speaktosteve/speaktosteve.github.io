@@ -27,10 +27,12 @@
 						<li>
 							<a
 								aria-label={reference.title}
+								title={reference.title}
 								href={reference.link}
 								target="_blank"
-								class="{getIcon(reference.type)} flex items-center gap-1">{reference.title}</a
-							>
+								class="{getIcon(reference.type)} flex h-8 items-center gap-1 after:fill-white"
+								>{reference.title}
+							</a>
 						</li>
 					{/each}
 				</ul>

@@ -39,9 +39,9 @@
 	}
 </script>
 
-<div bind:this={container} class="mt-[-1rem] rounded-t-3xl bg-white px-0 pt-4 dark:bg-slate-900">
+<div bind:this={container} class="mt-[-1rem] rounded-t-xl bg-white px-0 pt-4 dark:bg-slate-900">
 	<div
-		class="scale-[2] rounded-t-3xl bg-white pb-12 dark:bg-slate-900"
+		class="scale-[2] rounded-t-xl bg-white pb-12 dark:bg-slate-900"
 		style="transform: translateY({scrollY * -0.5}px);"
 	>
 		<slot />

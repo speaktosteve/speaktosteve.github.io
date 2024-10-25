@@ -33,9 +33,9 @@ const config = {
 			// fallback: '/blog/404.html'
 
 		}),
-		paths: {
-			base: '/blog'
-		}
+		// paths: {
+		// 	base: '/blog'
+		// }
 	},
 	
 };

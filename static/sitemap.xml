@@ -7,38 +7,38 @@
 
 
   <url>
-    <loc>https://speaktosteve.github.io/blog/</loc>
+    <loc>https://speaktosteve.github.io</loc>
     <lastmod>2024-10-22T16:32:45+00:00</lastmod>
     <priority>1.00</priority>
   </url>
   <url>
-    <loc>https://speaktosteve.github.io/blog/.</loc>
+    <loc>https://speaktosteve.github.io.</loc>
     <lastmod>2024-10-22T16:32:45+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>
-      https://speaktosteve.github.io/blog/managing-environment-variables-in-nextjs-azure-static-web-apps</loc>
+      https://speaktosteve.github.iomanaging-environment-variables-in-nextjs-azure-static-web-apps</loc>
     <lastmod>2024-10-22T16:32:45+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://speaktosteve.github.io/blog/deploying-a-remix-app-as-an-azure-container-app</loc>
+    <loc>https://speaktosteve.github.iodeploying-a-remix-app-as-an-azure-container-app</loc>
     <lastmod>2024-10-22T16:32:45+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://speaktosteve.github.io/blog/deploying-a-nextjs-app-to-azure-static-web-apps</loc>
+    <loc>https://speaktosteve.github.iodeploying-a-nextjs-app-to-azure-static-web-apps</loc>
     <lastmod>2024-10-22T16:32:45+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://speaktosteve.github.io/blog/using-tailwind-css-clsx--and-prettier</loc>
+    <loc>https://speaktosteve.github.iousing-tailwind-css-clsx--and-prettier</loc>
     <lastmod>2024-10-22T16:32:45+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://speaktosteve.github.io/blog/incremental-static-regeneration-isr-in-nextjs</loc>
+    <loc>https://speaktosteve.github.ioincremental-static-regeneration-isr-in-nextjs</loc>
     <lastmod>2024-10-22T16:32:45+00:00</lastmod>
     <priority>0.80</priority>
   </url>

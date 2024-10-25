@@ -36,7 +36,7 @@
 		{/each}
 	</ul>
 
-	<h4 class="m-12 mb-8 border-b border-slate-900 pb-4 text-center dark:border-slate-600">
+	<h4 class="m-12 mb-8 border-b border-slate-800 pb-4 text-center dark:border-slate-600">
 		DevOps, Cloud, Automation
 	</h4>
 	<!-- Lists -->
@@ -46,7 +46,7 @@
 		{/each}
 	</ul>
 
-	<h4 class="m-12 mb-8 border-b border-slate-900 pb-4 text-center dark:border-slate-600">
+	<h4 class="m-12 mb-8 border-b border-slate-800 pb-4 text-center dark:border-slate-600">
 		Front-End
 	</h4>
 	<!-- Lists -->

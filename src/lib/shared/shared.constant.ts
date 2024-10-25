@@ -49,7 +49,8 @@ export const POSTS_LIST = [
 
 // component tests and stuff with cypress and next.js and msw
 
-
+// this blog 
+//- deploying to the root
 
 
 	// animating via the offset path: https://developer.mozilla.org/en-US/docs/Web/CSS/offset-path

@@ -1,12 +1,13 @@
 <script>
 	import { onMount } from 'svelte';
 
-	let theme = 'light';
+	let theme = 'dark';
 
 	// Toggle the theme and update the `theme` variable
 	const toggleTheme = () => {
 		document.documentElement.classList.toggle('dark');
 		theme = getTheme();
+		localStorage.setItem('theme', theme);
 	};
 
 	// Check the current theme
@@ -15,8 +16,8 @@
 	};
 
 	onMount(() => {
-		// Set the initial theme based on the current state of the document
-		theme = getTheme();
+		theme = localStorage.getItem('theme') || getTheme();
+		theme === 'dark' && document.documentElement.classList.add('dark');
 	});
 </script>
 

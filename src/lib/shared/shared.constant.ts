@@ -51,6 +51,9 @@ export const POSTS_LIST = [
 
 // offline mode testing - https://www.cypress.io/blog/testing-application-in-offline-network-mode
 
+// msal
+
+
 // this blog 
 //- deploying to the root
 

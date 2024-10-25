@@ -2,6 +2,7 @@
 	import banner from '$lib/assets/banner.webp';
 	import logo from '$lib/assets/logo.webp';
 	export let heading = '';
+	export let siteDescription = '';
 	export let description = '';
 	export let date = '';
 	export let tags = [''];
@@ -19,6 +20,9 @@
 	<div class="m-4 mx-auto bg-black/30 p-6 backdrop-blur-lg lg:max-w-[85ch]">
 		{#if date}
 			<span class="block pb-4 text-sm">{publishedAt}</span>
+		{/if}
+		{#if siteDescription}
+			<h2 class="text-center text-lg">{siteDescription}</h2>
 		{/if}
 		{#if heading}
 			<h2 class="pb-6 text-3xl">{heading}</h2>

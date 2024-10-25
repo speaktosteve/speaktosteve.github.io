@@ -39,7 +39,7 @@
 			<img alt="speaktosteve logo" src={logo} width="{imageWidth}px" />
 		</h1>
 	</a>
-	<div class="flex scale-75 items-center gap-3 text-white sm:scale-100">
+	<div class="flex scale-90 items-center gap-3 text-white sm:scale-100">
 		<ModeSwitch />
 		<a href="https://github.com/speaktosteve" aria-label="Go to GitHub profile">
 			<svg viewBox="0 0 98 96" width="25" height="24" xmlns="http://www.w3.org/2000/svg"

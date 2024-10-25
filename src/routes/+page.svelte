@@ -38,7 +38,9 @@
 		{/each}
 	</ul>
 
-	<h4 class="m-12 mb-8 border-b-4 border-slate-900 pb-4 text-center">DevOps, Cloud, Automation</h4>
+	<h4 class="m-12 mb-8 border-b border-slate-900 pb-4 text-center dark:border-slate-600">
+		DevOps, Cloud, Automation
+	</h4>
 	<!-- Lists -->
 	<ul class="mx-auto grid max-w-lg gap-5 p-4 lg:max-w-none lg:grid-cols-2">
 		{#each devOpsPosts as { url, title, description, date, tags, isFeatured }}
@@ -46,7 +48,9 @@
 		{/each}
 	</ul>
 
-	<h4 class="m-12 mb-8 border-b-4 border-slate-900 pb-4 text-center">Front-End</h4>
+	<h4 class="m-12 mb-8 border-b border-slate-900 pb-4 text-center dark:border-slate-600">
+		Front-End
+	</h4>
 	<!-- Lists -->
 	<ul class="mx-auto grid max-w-lg gap-5 p-4 lg:max-w-none lg:grid-cols-2">
 		{#each frontEndPosts as { url, title, description, date, tags, isFeatured }}

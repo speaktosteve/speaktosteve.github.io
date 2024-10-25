@@ -27,11 +27,6 @@ references: [{
 ]
 ---
 
-<script context="module">
-  import { base } from "$app/paths";
-</script>
-
-
 ## Overview
 
 [clsx](https://www.npmjs.com/package/clsx), the lightweight library generally used to simplify the use of conditional CSS class names in libraries such as React, is something I am pretty new to.
@@ -58,8 +53,8 @@ npx create-next-app@latest
 
 Choosing the defaults (TypeScript, ESLint, Tailwind CSS)
 
-<a href="{base}/post-assets/4/1.png" target="_blank">
-<img src="{base}/post-assets/4/1.png" alt="Setting up Next.js app" />
+<a href="/post-assets/4/1.png" target="_blank">
+<img src="/post-assets/4/1.png" alt="Setting up Next.js app" />
 </a>
 
 Create a simple component 'heading', running the following from the root of the new project folder:
@@ -70,8 +65,8 @@ mkdir -p src/app/components && cd $_ && touch heading.tsx
 
 This should create a blank 'heading.tsx' file in a new src/app/components folder:
 
-<a href="{base}/post-assets/4/2.png" target="_blank">
-<img src="{base}/post-assets/4/2.png" alt="Setting up Next.js app" />
+<a href="/post-assets/4/2.png" target="_blank">
+<img src="/post-assets/4/2.png" alt="Setting up Next.js app" />
 </a>
 
 Lets create a simple component in that file:
@@ -102,8 +97,8 @@ npm run dev
 
 And view the site in your browser (usually at http://localhost:3000), you should something like this:
 
-<a href="{base}/post-assets/4/3.png" target="_blank">
-<img src="{base}/post-assets/4/3.png" alt="Setting up Next.js app" />
+<a href="/post-assets/4/3.png" target="_blank">
+<img src="/post-assets/4/3.png" alt="Setting up Next.js app" />
 </a>
 
 Lets add a couple of Tailwind classes, make this pretty:
@@ -114,8 +109,8 @@ export const Heading = () => {
 }
 ```
 
-<a href="{base}/post-assets/4/4.png" target="_blank">
-<img src="{base}/post-assets/4/4.png" alt="Setting up Next.js app" />
+<a href="/post-assets/4/4.png" target="_blank">
+<img src="/post-assets/4/4.png" alt="Setting up Next.js app" />
 </a>
 
 Next, we are going to add a property to our heading component, so we can flip the colour of the text from a parent component
@@ -139,8 +134,8 @@ className={`text-5xl mx-auto p-5 ${textColour === 'red' && 'text-red-700'}
 
 The benefit is you dont have the annoying `' : ''` OR statement with the empty string that we see in the ternary expression. However, this results in your generated markup being littered with useless 'false' statements in your class list (which wont happen if you use clsx):
 
-<a href="{base}/post-assets/4/6.png" target="_blank">
-<img src="{base}/post-assets/4/6.png" alt="Setting up Next.js app" />
+<a href="/post-assets/4/6.png" target="_blank">
+<img src="/post-assets/4/6.png" alt="Setting up Next.js app" />
 </a>
 
 </div>
@@ -164,8 +159,8 @@ export default function Home() {
 
 Beautiful right?
 
-<a href="{base}/post-assets/4/5.png" target="_blank">
-<img src="{base}/post-assets/4/5.png" alt="Setting up Next.js app" />
+<a href="/post-assets/4/5.png" target="_blank">
+<img src="/post-assets/4/5.png" alt="Setting up Next.js app" />
 </a>
 
 ## Adding clsx
@@ -202,8 +197,8 @@ export const Heading = ({textColour}:{textColour: 'red'|'blue'}) => {
 
 Nice, the component still renders as before, but its cleaner and (in my mind) easier to read. There is no annoying `' : ''` empty OR bit and the resulting markup is clean (no 'false' strings being added):
 
-<a href="{base}/post-assets/4/7.png" target="_blank">
-<img src="{base}/post-assets/4/7.png" alt="Setting up Next.js app" />
+<a href="/post-assets/4/7.png" target="_blank">
+<img src="/post-assets/4/7.png" alt="Setting up Next.js app" />
 </a>
 
 ## Setting up the prettier-plugin-tailwindcss

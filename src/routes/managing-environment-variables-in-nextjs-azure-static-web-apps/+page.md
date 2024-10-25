@@ -21,11 +21,6 @@ references: [{
 ]
 ---
 
-<script context="module">
-  import { base } from "$app/paths";
-</script>
-
-
 ## Overview
 
 I've used Azure SWAs a lot for prototypes and static apps, sacrificing the control and capability of App Services for simplicity of set up and low cost. And now hybrid Next.js websites on Azure Static Web Apps is in preview I can now deploy Next.js apps that use server components, SSR and API routes as an SPA. 
@@ -43,8 +38,8 @@ See official docs: https://nextjs.org/docs/app/building-your-application/configu
 
 These are variables that are accessed server-side by the Node.js runtime, on parts of our Next.js app that are processed on the server. We can manage these via the 'Environment variables' blade in the Azure portal:
 
-<a href="{base}/post-assets/2/1.png" target="_blank">
-<img src="{base}/post-assets/2/1.png" alt="managing env vars via the Azure portal" />
+<a href="/post-assets/2/1.png" target="_blank">
+<img src="/post-assets/2/1.png" alt="managing env vars via the Azure portal" />
 </a>
 
 ### Client-side Environment Variables
@@ -117,28 +112,28 @@ NEXT_PUBLIC_BROWSER_VARIABLE=initial
 
 When I run `npm build` and `npm start` I can see my variables rendered as such:
 
-<a href="{base}/post-assets/2/2.png" target="_blank">
-<img src="{base}/post-assets/2/2.png" alt="simple Next.js app" />
+<a href="/post-assets/2/2.png" target="_blank">
+<img src="/post-assets/2/2.png" alt="simple Next.js app" />
 </a>
 
 I have created a simple CI/CD using a GitHub action to deploy to an Azure Static App (see [this previous article](https://speaktosteve.github.io/deploying-a-nextjs-app-to-azure-static-web-apps)) to see how it was set up.
 
 Now, when I view the deployed site I see this, as expected there are no environment variables to be rendered:
 
-<a href="{base}/post-assets/2/3.png" target="_blank">
-<img src="{base}/post-assets/2/3.png" alt="simple Next.js app" />
+<a href="/post-assets/2/3.png" target="_blank">
+<img src="/post-assets/2/3.png" alt="simple Next.js app" />
 </a>
 
 If I add the RUNTIME_VARIABLE variable via the environment variables section in the Static Web App on the Azure Portal (or via the CLI):
 
-<a href="{base}/post-assets/2/1.png" target="_blank">
-<img src="{base}/post-assets/2/1.png" alt="managing env vars via the Azure portal" />
+<a href="/post-assets/2/1.png" target="_blank">
+<img src="/post-assets/2/1.png" alt="managing env vars via the Azure portal" />
 </a>
 
 After a minute I refresh my app and, behold, I can see that the variable is available. No rebuild or redeployment needed as the variable was updated and made available to the Node runtime:
 
-<a href="{base}/post-assets/2/4.png" target="_blank">
-<img src="{base}/post-assets/2/4.png" alt="simple Next.js app" />
+<a href="/post-assets/2/4.png" target="_blank">
+<img src="/post-assets/2/4.png" alt="simple Next.js app" />
 </a>
 
 But what about the browser variable? I want to create a secure way to bundle this into the app prior deployment.
@@ -147,12 +142,12 @@ But what about the browser variable? I want to create a secure way to bundle thi
 
 Firstly, I add the NEXT_PUBLIC_BROWSER_VARIABLE variable as a secret via the 'Actions secrets and variables' section in the repository settings in GitHub.
 
-<a href="{base}/post-assets/2/5.png" target="_blank">
-<img src="{base}/post-assets/2/5.png" alt="adding a repository secret" />
+<a href="/post-assets/2/5.png" target="_blank">
+<img src="/post-assets/2/5.png" alt="adding a repository secret" />
 </a>
 
-  <a href="{base}/post-assets/2/6.png" target="_blank">
-  <img src="{base}/post-assets/2/6.png" alt="adding a repository secret" />
+  <a href="/post-assets/2/6.png" target="_blank">
+  <img src="/post-assets/2/6.png" alt="adding a repository secret" />
   </a>
 
 I then update the GitHub workflow file, which originally looks like this:
@@ -270,16 +265,16 @@ jobs:
 
 One thing to note is that secrets are masked in the logs, so they won't appear in the output. This is key as we dont want to leak these secrets to people with view access to the action's output. The log masks these values as follows:
 
-<a href="{base}/post-assets/2/7.png" target="_blank">
-<img src="{base}/post-assets/2/7.png" alt="secret masking" />
+<a href="/post-assets/2/7.png" target="_blank">
+<img src="/post-assets/2/7.png" alt="secret masking" />
 </a>
 
 Ok, so once the workflow has completed we should check the deployed site again. The workflow should have created a temporary .env file which the build process then references in order to bake in our client-side environment variable.
 
 Success! We can see both the runtime and client-side environment variables:
 
-<a href="{base}/post-assets/2/8.png" target="_blank">
-<img src="{base}/post-assets/2/8.png" alt="both the runtime and client-side environment variables" />
+<a href="/post-assets/2/8.png" target="_blank">
+<img src="/post-assets/2/8.png" alt="both the runtime and client-side environment variables" />
 </a>
 
 ### Azure DevOps Pipelines:

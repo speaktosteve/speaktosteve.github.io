@@ -1,7 +1,6 @@
 <script lang="ts">
 	import logo from '$lib/assets/logo.webp';
 	import '../app.css';
-	import { base } from '$app/paths';
 	import { onMount } from 'svelte';
 	import ModeSwitch from '../components/mode-switch.svelte';
 
@@ -35,7 +34,7 @@
 <div
 	class="sticky top-0 z-10 flex items-center justify-between gap-2 bg-slate-950 px-4 py-4 sm:px-6"
 >
-	<a href={base} aria-label="Back to home page">
+	<a href="/" aria-label="Back to home page">
 		<h1 class="text-left">
 			<img alt="speaktosteve logo" src={logo} width="{imageWidth}px" />
 		</h1>

@@ -31,10 +31,7 @@ const config = {
 			strict: true,
 			// fallback: '/blog/404.html'
 
-		}),
-		// paths: {
-		// 	base: '/blog'
-		// }
+		})
 	},
 	
 };

@@ -12,11 +12,6 @@ references: [
 ]
 ---
 
-<script context="module">
-  import { base } from "$app/paths";
-</script>
-
-
 ## Overview
 
 **Incremental Static Regeneration (ISR)** is a powerful feature in Next.js that allows you to generate or update static pages after the site has been built, on demand, without rebuilding the entire site.

@@ -21,11 +21,6 @@ references: [{
 ]
 ---
 
-<script context="module">
-  import { base } from "$app/paths";
-</script>
-
-
 ## Overview
 
 Whilst learning about [Remix](https://remix.run/docs) I wanted to create a reference repo that would help my colleagues quickly spin up the infra and CI/CD for such an application. 
@@ -81,8 +76,8 @@ GitHub actions: see workflows in [.github/workflows](https://github.com/speaktos
 
 - Simply tries to build the app using standard NPM commands.
 
-<a href="{base}/post-assets/3/1.png" target="_blank">
-<img src="{base}/post-assets/3/1.png" alt="Build and Test workflow" />
+<a href="/post-assets/3/1.png" target="_blank">
+<img src="/post-assets/3/1.png" alt="Build and Test workflow" />
 </a>
 
 ### Provision and Deploy workflow
@@ -91,8 +86,8 @@ GitHub actions: see workflows in [.github/workflows](https://github.com/speaktos
 - Builds and publishes the app as a Docker image to ACR (Azure Container Registry)
 - Deploys the image to the newly provisioned Azure Container App.
 
-<a href="{base}/post-assets/3/2.png" target="_blank">
-<img src="{base}/post-assets/3/2.png" alt="Provision and Deploy workflow" />
+<a href="/post-assets/3/2.png" target="_blank">
+<img src="/post-assets/3/2.png" alt="Provision and Deploy workflow" />
 </a>
 
 ### Respository set up
@@ -148,8 +143,8 @@ The following repo variables will need creating:
 
 Your repo variables should look like this:
 
-<a href="{base}/post-assets/3/3.png" target="_blank">
-<img src="{base}/post-assets/3/3.png" alt="Repo Variables" />
+<a href="/post-assets/3/3.png" target="_blank">
+<img src="/post-assets/3/3.png" alt="Repo Variables" />
 </a>
 
 **Secrets**
@@ -167,8 +162,8 @@ Once the infra is created, go to the ACR in the Azure Portal and grab the follow
 - REGISTRY_PASSWORD - the client secret of the service principal created above
 
 Your repo secrets should look like this:
-<a href="{base}/post-assets/3/4.png" target="_blank">
-<img src="{base}/post-assets/3/4.png" alt="Repo Secrets" />
+<a href="/post-assets/3/4.png" target="_blank">
+<img src="/post-assets/3/4.png" alt="Repo Secrets" />
 </a>
 
 If you then re-run the **Provision and Deploy workflow** it should complete successfully. You should then have a running app within the Container App service.

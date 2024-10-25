@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { base } from '$app/paths';
-
 	export let url = '';
 	export let title = '';
 	export let description = '';
@@ -15,13 +13,12 @@
 	});
 
 	$: formattedTags = tags.join(', ');
-	$: fullUrl = base + url;
 </script>
 
 <li
-	class={`${isFeatured ? 'border-2' : 'border'} overflow-hidden rounded border-slate-100 p-6 shadow-sm hover:bg-slate-100 hover:dark:bg-slate-950`}
+	class={`${isFeatured ? 'border-2' : 'border'} overflow-hidden rounded border-slate-100 p-6 shadow-sm hover:bg-slate-100 dark:border-slate-600 hover:dark:bg-slate-950`}
 >
-	<a href={fullUrl} class="mt-2 block" aria-label={title} title={description}>
+	<a href={url} class="mt-2 block" aria-label={title} title={description}>
 		<p class={`${isFeatured ? 'text-2xl' : 'text-lg'} font-semibold`}>
 			{title}
 		</p>

@@ -20,7 +20,7 @@
 <ContentWrapper>
 	<article>
 		{#if references.length > 0}
-			<aside class="prose mx-auto mt-[-1rem] p-4 pt-12 text-slate-900">
+			<aside class="prose mx-auto mt-[-1rem] p-4 pt-12 dark:prose-invert">
 				<h3>References:</h3>
 				<ul>
 					{#each references as reference}
@@ -38,7 +38,7 @@
 			</aside>
 		{/if}
 		<section
-			class="prose mx-auto p-4 text-slate-900 prose-code:before:hidden prose-code:after:hidden"
+			class="prose mx-auto p-4 dark:prose-invert prose-code:before:hidden prose-code:after:hidden"
 		>
 			<slot />
 		</section>

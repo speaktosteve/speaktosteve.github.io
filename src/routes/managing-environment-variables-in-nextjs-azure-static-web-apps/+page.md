@@ -23,7 +23,7 @@ references: [{
 
 ## Overview
 
-I've used Azure SWAs a lot for prototypes and static apps, sacrificing the control and capability of App Services for simplicity of set up and low cost. And now hybrid Next.js websites on Azure Static Web Apps is in preview I can now deploy Next.js apps that use server components, SSR and API routes as an SPA. 
+I've used Azure SWAs a lot for prototypes and static apps, sacrificing the control and capability of App Services for simplicity of set up and low cost. And now hybrid Next.js websites on Azure Static Web Apps is in preview I can deploy Next.js apps that use server components, SSR and API routes as an SPA. 
 
 Using environment variables in Next.js, when deploying to a serverless environment (or anywhere tbh) is something I always seem to struggle with, so I wanted to document how to set these up for my own benefit. 
 

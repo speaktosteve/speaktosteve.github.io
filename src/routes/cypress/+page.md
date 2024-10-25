@@ -24,7 +24,21 @@ references: [{
 
 ## Overview
 
-There is enough material out there that covers the value of automated testing, the test pyramid, the [https://testing.googleblog.com/2020/11/fixing-test-hourglass.html](terrible test hourglass)
+There is enough material out there that covers the value of automated testing, the [test pyramid](https://martinfowler.com/articles/practical-test-pyramid.html), the [terrible test hourglass](https://testing.googleblog.com/2020/11/fixing-test-hourglass.html), so I wont preach here.
+
+What I want to provide is a practical guide, on how to set up your Next.js app to included focussed component tests, for server and client rendered flavours.
+
+Component tests, like standard unit tests, should be rapid and only test the target code, i.e. not any external dependencies. Like unit tests, they should not result in things like network calls, database writes etc. 
+
+We are going to:
+
+- set up a simple, API-fed, client-side component in a new Next.js application
+- add Cypress and set up a component test
+- add interceptors to allow us to test how the component reacts to various API responses
+
+We also want to do the above with a server-side component
+
+---
 
 
 

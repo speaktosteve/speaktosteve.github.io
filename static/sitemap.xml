@@ -18,28 +18,33 @@
   </url>
   <url>
     <loc>
-      https://speaktosteve.github.iomanaging-environment-variables-in-nextjs-azure-static-web-apps</loc>
+      https://speaktosteve.github.io/managing-environment-variables-in-nextjs-azure-static-web-apps</loc>
     <lastmod>2024-10-22T16:32:45+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://speaktosteve.github.iodeploying-a-remix-app-as-an-azure-container-app</loc>
+    <loc>https://speaktosteve.github.io/deploying-a-remix-app-as-an-azure-container-app</loc>
     <lastmod>2024-10-22T16:32:45+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://speaktosteve.github.iodeploying-a-nextjs-app-to-azure-static-web-apps</loc>
+    <loc>https://speaktosteve.github.io/deploying-a-nextjs-app-to-azure-static-web-apps</loc>
     <lastmod>2024-10-22T16:32:45+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://speaktosteve.github.iousing-tailwind-css-clsx--and-prettier</loc>
+    <loc>https://speaktosteve.github.io/using-tailwind-css-clsx--and-prettier</loc>
     <lastmod>2024-10-22T16:32:45+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://speaktosteve.github.ioincremental-static-regeneration-isr-in-nextjs</loc>
+    <loc>https://speaktosteve.github.io/incremental-static-regeneration-isr-in-nextjs</loc>
     <lastmod>2024-10-22T16:32:45+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://speaktosteve.github.io/component-testing-in-nextjs-using-cypress-part-1-set-up</loc>
+    <lastmod>2024-11-05T16:32:45+00:00</lastmod>
     <priority>0.80</priority>
   </url>
 

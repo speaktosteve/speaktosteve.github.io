@@ -26,7 +26,7 @@ references: [{
 
 There is enough material out there that covers the value of automated testing, the [test pyramid](https://martinfowler.com/articles/practical-test-pyramid.html), and the [terrible test hourglass](https://testing.googleblog.com/2020/11/fixing-test-hourglass.html), so I won't preach here.
 
-What I want to provide is a practical guide, on how to set up your Next.js app to include focused component tests, for server and client rendered flavours.
+What I want to provide is a practical guide, on how to set up your Next.js app to include focused component tests, for server and client-rendered flavours.
 
 Component tests, like standard unit tests, should be rapid and only test the target code, i.e. not any external dependencies. Like unit tests, they should avoid instigating network calls, database writes, etc. 
 
@@ -384,4 +384,4 @@ Save that change and we can see the specification automatically re-run:
 
 ## Summary
 
-So far, so what right? We've set up our test tooling and a sample application, but read on for the really useful stuff such as intercepting network requests and covering server-side components.ß
+So far, so what, right? We've set up our test tooling and a sample application but read on for details on how to isolate your tests better using network intercepts and how to test server-side components.

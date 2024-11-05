@@ -1,6 +1,6 @@
 ---
 heading: 'Component testing in Next.js using Cypress - Part 1 - Set up'
-description: 'First part in a full explainer for setting up and writing component tests for Next.js using Cypress'
+description: 'The first part in a series of articles explaining how to set up and write component tests for Next.js using Cypress'
 date: '2024-10-25'
 tags: ['next.js', 'component testing', 'cypress', 'automated testing']
 references: [{
@@ -24,16 +24,16 @@ references: [{
 
 ## Overview
 
-There is enough material out there that covers the value of automated testing, the [test pyramid](https://martinfowler.com/articles/practical-test-pyramid.html), the [terrible test hourglass](https://testing.googleblog.com/2020/11/fixing-test-hourglass.html), so I wont preach here.
+There is enough material out there that covers the value of automated testing, the [test pyramid](https://martinfowler.com/articles/practical-test-pyramid.html), and the [terrible test hourglass](https://testing.googleblog.com/2020/11/fixing-test-hourglass.html), so I won't preach here.
 
-What I want to provide is a practical guide, on how to set up your Next.js app to included focussed component tests, for server and client rendered flavours.
+What I want to provide is a practical guide, on how to set up your Next.js app to include focused component tests, for server and client rendered flavours.
 
-Component tests, like standard unit tests, should be rapid and only test the target code, i.e. not any external dependencies. Like unit tests, they should avoid instigating things like network calls, database writes etc. 
+Component tests, like standard unit tests, should be rapid and only test the target code, i.e. not any external dependencies. Like unit tests, they should avoid instigating network calls, database writes, etc. 
 
 In this article we are going to:
 
 - set up a simple, API-fed, client-side component in a new Next.js application
-- add Cypress and set up a component test
+- add Cypress, and set up a component test
 
 In subsequent articles we are going to build on this to:
 
@@ -51,11 +51,11 @@ The usual Next.js setup, with all the defaults: https://nextjs.org/docs/getting-
 npx create-next-app@latest
 ```
 
-Now create a couple of files. I want to architect this in a realistic way, so we'll have a:
+Now create a couple of files. I want to architect realistically, so we'll have a:
 
 - client-side component that is responsible for rendering some products
 - a custom hook that is responsible for handling the collecting of product data along with loading and error states
-- a basic API service for fetching the data from an external API
+- a basic API service for fetching data from an external API
 
 ...which will have this structure:
 
@@ -169,7 +169,7 @@ export const getProducts = async (): Promise<IProduct[]> => {
 
 ```
 
-Finally, we we are going to update the root `main.tsx` to reference our new `Products` component:
+Finally, lets update the root `main.tsx` to reference our new `Products` component:
 
 ```tsx
 import { Products } from "./components/products";
@@ -186,15 +186,15 @@ const Home = () => {
 export default Home;
 ```
 
-In summary we now have:
+In summary, we now have:
  - products.tsx - a client component that renders a list of products retrieved using the useProducts hook
  - useProducts.ts - a custom hook responsible for handling the state of the retrieved products
  - product.ts - a simple interface defining our Product object
  - api.ts - a simple service for fetching products from the very useful https://fakestoreapi.com
 
-## Run the Next.js app
+### Run the Next.js app
 
-Now we have our components in place, its time to install the packages:
+We have our components in place, it's time to install the packages:
 
 
 ```bash
@@ -208,7 +208,7 @@ and then test run the app:
 npm run dev
 ```
 
-Navigate to http://localhost:3000/ and you should have a site that looks like:
+Navigate to http://localhost:3000/ and you should have a site that looks like this:
 
 <a href="/post-assets/5/1.png" target="_blank">
 <img src="/post-assets/5/1.png" alt="Running Next.js app" />
@@ -217,12 +217,11 @@ Navigate to http://localhost:3000/ and you should have a site that looks like:
 -----
 
 
-## Writing our first component test
+## Set up our test tooling
 
-Now we want to cover our client-side component with some simple tests. We are going to leverage the very popular [Cypress](https://www.cypress.io/) testing library to allow us to quickly set up and run our tests.
+We want to cover our client-side component with some simple tests. We will leverage the very popular [Cypress](https://www.cypress.io/) testing library to allow us to quickly set up and run our tests.
 
-Following the [Next.js docs for setting up Cypress](https://nextjs.org/docs/pages/building-your-application/testing/cypress)
-from 
+Following the [Next.js docs for setting up Cypress](https://nextjs.org/docs/pages/building-your-application/testing/cypress) documentation, we are going to set up Cypress.
 
 ### Install Cypress
 
@@ -256,15 +255,13 @@ You should see that Cypress will launch, offering you something like the followi
 <img src="/post-assets/5/2.png" alt="Cypress interface" />
 </a>
 
-For this first component we want to configure **Component Testing**. This will create the `cypress.config.js` file and allow us to execute focussed tests on our client-side `Products` component.
+For this first component, we want to configure **Component Testing**. This will create the `cypress.config.js` file and allow us to execute focussed tests on our client-side `Products` component.
 
 Once you have chosen **Component Testing** select **Next.js** as the front-end framework and move through the setup.
 
 <a href="/post-assets/5/3.png" target="_blank">
 <img src="/post-assets/5/3.png" alt="Cypress interface" />
 </a>
-
-### Executing Cypress
 
 Finally, choose how you wish to view and execute your tests:
 
@@ -275,9 +272,9 @@ Finally, choose how you wish to view and execute your tests:
 <div class="border p-4 not-italic">
 <strong>Side Note</strong>
 
-I typically choose the very rapid <strong>Electron</strong> browser which comes built-in to Chromium (used by Cypress as the environment for exectuting our tests) if I want the shiny interface.
+I typically choose the very rapid <strong>Electron</strong> browser which comes built-in to Chromium (used by Cypress as the environment for executing our tests) if I want the shiny interface.
 
-Alternatively I use the command line if I want to use my VS Code terminal, adding the `cypress:run-component` command to the `packages.json` file:
+Alternatively, I use the command line if I want to use my VS Code terminal, adding the `cypress:run-component` command to the `packages.json` file:
 
 ```bash
 {
@@ -305,23 +302,22 @@ You should now be up and running, with Cypress in its starting state:
 <img src="/post-assets/5/5.png" alt="Cypress interface" />
 </a>
 
-Cypress has a very convenient **Create from component** option for generating our first test specification - lets do that:
+
+### Create a basic test specification
+
+Cypress has a very convenient **Create from component** option for generating our first test specification - let's do that:
 
 <a href="/post-assets/5/6.png" target="_blank">
 <img src="/post-assets/5/6.png" alt="Cypress interface" />
 </a>
 
-And select our `Products` component:
-
-
-
-Click through and you should have Cypress generating the test specification for you. Its conveniently added the `productsProducts.tsx` file containing the scaffolding for our first test.
+And select our `Products` component. Click through and you should have Cypress generating the test specification for you. Its has added the `productsProducts.tsx` file containing the scaffolding for our first test.
 
 <a href="/post-assets/5/7.png" target="_blank">
 <img src="/post-assets/5/7.png" alt="Cypress interface" />
 </a>
 
-I'm going to rename it to `products.cy.txt` because I am precious/weird like that. We should now have the following structure:
+I'll rename it to `products.cy.txt` because I am precious/weird like that. We should now have the following structure:
 
 ```md
 src
@@ -365,7 +361,7 @@ Selecting the **products** specification, Cypress will run the tests and display
 <img src="/post-assets/5/9.png" alt="Cypress interface showing test execution" />
 </a>
 
-If we change the test file, chacking that the header text is as expected:
+If we change the test file, to assert that the header text is as expected:
 
 ```tsx
 import React from 'react'
@@ -386,20 +382,6 @@ Save that change and we can see the specification automatically re-run:
 <img src="/post-assets/5/10.png" alt="Cypress interface showing test execution" />
 </a>
 
+## Summary
 
-----
-
-https://docs.cypress.io/app/guides/network-requests
-
-https://docs.cypress.io/api/commands/intercept
-
-
-### TODO
-
-intercepts
-
-screen shots
-
-server component testing
-
-CI/CD  and reporting
+So far, so what right? We've set up our test tooling and a sample application, but read on for the really useful stuff such as intercepting network requests and covering server-side components.ß

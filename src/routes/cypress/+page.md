@@ -28,7 +28,7 @@ There is enough material out there that covers the value of automated testing, t
 
 What I want to provide is a practical guide, on how to set up your Next.js app to included focussed component tests, for server and client rendered flavours.
 
-Component tests, like standard unit tests, should be rapid and only test the target code, i.e. not any external dependencies. Like unit tests, they should not result in things like network calls, database writes etc. 
+Component tests, like standard unit tests, should be rapid and only test the target code, i.e. not any external dependencies. Like unit tests, they should avoid instigating things like network calls, database writes etc. 
 
 We are going to:
 
@@ -68,8 +68,11 @@ src
         └─── product.ts
     └─── utils
         └─── api.ts
+    └─── page.tsx
 
 ```
+
+Here are the main files you will need to add/update, you can leave the rest of the app alone for now.
 
 
 ```tsx
@@ -163,6 +166,50 @@ export const getProducts = async (): Promise<IProduct[]> => {
 }
 
 ```
+
+Finally, we we are going to update the root `main.tsx` to reference our new `Products` component:
+
+```tsx
+import { Products } from "./components/products";
+
+const Home = () => {
+  return (
+    <div className="mx-auto py-8 w-3/4">
+      <Products />
+    </div>
+  )
+}
+
+
+export default Home;
+```
+
+## Run the Next.js app
+
+Now we have our components in place, its time to install the packages:
+
+
+```bash
+npm i
+```
+
+and then test run the app:
+
+
+```bash
+npm run dev
+```
+
+Navigate to http://localhost:3000/ and you should have a site that looks like:
+
+<a href="/post-assets/5/1.png" target="_blank">
+<img src="/post-assets/5/1.png" alt="Build and Test workflow" />
+</a>
+
+-----
+
+
+TODO
 
 
 from https://nextjs.org/docs/pages/building-your-application/testing/cypress

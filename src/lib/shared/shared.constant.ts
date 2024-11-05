@@ -55,6 +55,15 @@ export const POSTS_LIST = [
 		topic: 'front-end',
 		tags: ['next.js', 'component testing', 'cypress', 'automated testing']
 	},
+	{
+		title: 'Component testing in Next.js using Cypress - Part 2 - Intercepting network requests',
+		url: '/component-testing-in-nextjs-using-cypress-part-2-network-intercepting',
+		description: 'The second part in a series of articles explaining how to set up and write component tests for Next.js using Cypress. It describes the benefits of intercepting network requests and how to set it up.',
+		date: '11/5/2024',
+		isFeatured: true,
+		topic: 'front-end',
+		tags: ['next.js', 'component testing', 'cypress', 'automated testing']
+	},
 
 
 	// https://docs.cypress.io/app/guides/network-requests

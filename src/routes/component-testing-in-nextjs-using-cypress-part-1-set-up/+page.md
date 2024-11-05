@@ -8,6 +8,11 @@ references: [{
     "link": "https://github.com/speaktosteve/nextjs-cypress",
     "title": "Reference repo",
   },
+  #   {
+  #   "type": "internal", 
+  #   "link": "/component-testing-in-nextjs-using-cypress-part-2-network-intercepting",
+  #   "title": "Component testing in Next.js using Cypress - Part 2 - Intercepting network requests",
+  # },
   {
     "type": "external", 
     "link": "https://nextjs.org/docs/app/building-your-application/configuring/environment-variables",
@@ -40,6 +45,8 @@ In subsequent articles we are going to build on this to:
 - use interceptors to allow us to test how the component reacts to various API responses
 - get it to work without a network connection
 - get test coverage over our server-side components 👍
+
+You can find the full code here: https://github.com/speaktosteve/nextjs-cypress
 
 ---
 
@@ -338,6 +345,8 @@ src
 With the `products.cy.tsx` file looking like:
 
 ```tsx
+//src/app/components/products.cy.tsx
+
 import React from 'react'
 import { Products } from './products'
 
@@ -364,6 +373,8 @@ Selecting the **products** specification, Cypress will run the tests and display
 If we change the test file, to assert that the header text is as expected:
 
 ```tsx
+//src/app/components/products.cy.tsx
+
 import React from 'react'
 import { Products } from './products'
 
@@ -382,6 +393,69 @@ Save that change and we can see the specification automatically re-run:
 <img src="/post-assets/5/10.png" alt="Cypress interface showing test execution" />
 </a>
 
+### Add further test cases to scenario
+
+Now we have a working specification I want to add some more cases:
+
+```tsx
+//src/app/components/products.cy.tsx
+
+import React from 'react'
+import { Products } from './products'
+
+describe('Tests for the <Products /> component', () => {
+  it('renders component', () => {
+    cy.mount(<Products />)
+  })
+  // test that the component shows the correct header
+   it('renders header', () => {
+    cy.mount(<Products />)
+    cy.get('h1').should('have.text', 'Products')
+  })
+  // test that the component shows a loading message
+  it('shows loading message', () => {
+    cy.mount(<Products />)
+    cy.contains('Loading...').should('be.visible')
+  })
+  // test that the component renders the products
+  it('renders at least one item', () => {
+    cy.mount(<Products />)
+    cy.get('li').should('have.length.gt', 0)
+  })
+  // test that the component renders the product title
+  it('renders a product title', () => {
+    cy.mount(<Products />)
+    cy.get('li').first().get('h2').should('exist').invoke('text').should('not.be.empty')
+  })
+  // test that the component renders some product details
+  it('renders product details', () => {
+    cy.mount(<Products />)
+    cy.get('li') 
+    .first() 
+    .find('p')
+    .should('have.length', 3)         
+    .each(($p) => {                   
+      cy.wrap($p)                     
+        .invoke('text')               
+        .should('not.be.empty');      
+    });
+  })
+})
+```
+
+The cases above are very simple and mostly just check that some products were rendered. Sure, you could combine some of these tests, but I was taught that a good test covered as little of the target code as possible. This is important.
+
+Writing concise, targetted tests:
+
+- helps the reader understand what you are testing for
+- is vital when performing test-driven development
+- lowers the cost of maintenance, changes to the target code should impact as few of the tests as possible
+- speeds the test runs up 
+
 ## Summary
 
 So far, so what, right? We've set up our test tooling and a sample application but read on for details on how to isolate your tests better using network intercepts and how to test server-side components.
+
+Note, you can find the full code here: https://github.com/speaktosteve/nextjs-cypress
+
+<!-- Next article - [Component testing in Next.js using Cypress - Part 2 - Intercepting network requests](/component-testing-in-nextjs-using-cypress-part-2-network-intercepting) -->

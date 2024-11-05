@@ -1,6 +1,6 @@
 ---
-heading: 'Component testing in Next.js using Cypress and Cypress Intercept'
-description: ''
+heading: 'Component testing in Next.js using Cypress - Part 1 - Set up'
+description: 'First part in a full explainer for setting up and writing component tests for Next.js using Cypress'
 date: '2024-10-25'
 tags: ['next.js', 'component testing', 'cypress', 'automated testing']
 references: [{
@@ -30,14 +30,16 @@ What I want to provide is a practical guide, on how to set up your Next.js app t
 
 Component tests, like standard unit tests, should be rapid and only test the target code, i.e. not any external dependencies. Like unit tests, they should avoid instigating things like network calls, database writes etc. 
 
-We are going to:
+In this article we are going to:
 
 - set up a simple, API-fed, client-side component in a new Next.js application
 - add Cypress and set up a component test
-- add interceptors to allow us to test how the component reacts to various API responses
-- get it to work without a network connection
 
-We also want to do the above with a server-side component 👍
+In subsequent articles we are going to build on this to:
+
+- use interceptors to allow us to test how the component reacts to various API responses
+- get it to work without a network connection
+- get test coverage over our server-side components 👍
 
 ---
 
@@ -209,7 +211,7 @@ npm run dev
 Navigate to http://localhost:3000/ and you should have a site that looks like:
 
 <a href="/post-assets/5/1.png" target="_blank">
-<img src="/post-assets/5/1.png" alt="Build and Test workflow" />
+<img src="/post-assets/5/1.png" alt="Running Next.js app" />
 </a>
 
 -----
@@ -251,7 +253,7 @@ npm run cypress:open
 You should see that Cypress will launch, offering you something like the following options:
 
 <a href="/post-assets/5/2.png" target="_blank">
-<img src="/post-assets/5/2.png" alt="Build and Test workflow" />
+<img src="/post-assets/5/2.png" alt="Cypress interface" />
 </a>
 
 For this first component we want to configure **Component Testing**. This will create the `cypress.config.js` file and allow us to execute focussed tests on our client-side `Products` component.
@@ -259,7 +261,7 @@ For this first component we want to configure **Component Testing**. This will c
 Once you have chosen **Component Testing** select **Next.js** as the front-end framework and move through the setup.
 
 <a href="/post-assets/5/3.png" target="_blank">
-<img src="/post-assets/5/3.png" alt="Build and Test workflow" />
+<img src="/post-assets/5/3.png" alt="Cypress interface" />
 </a>
 
 ### Executing Cypress
@@ -267,7 +269,7 @@ Once you have chosen **Component Testing** select **Next.js** as the front-end f
 Finally, choose how you wish to view and execute your tests:
 
 <a href="/post-assets/5/4.png" target="_blank">
-<img src="/post-assets/5/4.png" alt="Build and Test workflow" />
+<img src="/post-assets/5/4.png" alt="Cypress interface" />
 </a>
 
 <div class="border p-4 not-italic">
@@ -300,23 +302,23 @@ npm run cypress:run-component
 You should now be up and running, with Cypress in its starting state:
 
 <a href="/post-assets/5/5.png" target="_blank">
-<img src="/post-assets/5/5.png" alt="Build and Test workflow" />
+<img src="/post-assets/5/5.png" alt="Cypress interface" />
 </a>
 
-Cypress has a very convenient **Create from component** option for generating our first test fixture - lets do that:
+Cypress has a very convenient **Create from component** option for generating our first test specification - lets do that:
 
 <a href="/post-assets/5/6.png" target="_blank">
-<img src="/post-assets/5/6.png" alt="Build and Test workflow" />
+<img src="/post-assets/5/6.png" alt="Cypress interface" />
 </a>
 
 And select our `Products` component:
 
 
 
-Click through and you should have Cypress generating the test fixture for you. Its conveniently added the `productsProducts.tsx` file containing the scaffolding for our first test.
+Click through and you should have Cypress generating the test specification for you. Its conveniently added the `productsProducts.tsx` file containing the scaffolding for our first test.
 
 <a href="/post-assets/5/7.png" target="_blank">
-<img src="/post-assets/5/7.png" alt="Build and Test workflow" />
+<img src="/post-assets/5/7.png" alt="Cypress interface" />
 </a>
 
 I'm going to rename it to `products.cy.txt` because I am precious/weird like that. We should now have the following structure:
@@ -350,6 +352,40 @@ describe('<Products />', () => {
   })
 })
 ```
+
+Now, when you look at the Cypress window, you should see the **products** specification in the **Specs** section:
+
+<a href="/post-assets/5/8.png" target="_blank">
+<img src="/post-assets/5/8.png" alt="Cypress interface" />
+</a>
+
+Selecting the **products** specification, Cypress will run the tests and display the results:
+
+<a href="/post-assets/5/9.png" target="_blank">
+<img src="/post-assets/5/9.png" alt="Cypress interface showing test execution" />
+</a>
+
+If we change the test file, chacking that the header text is as expected:
+
+```tsx
+import React from 'react'
+import { Products } from './products'
+
+describe('<Products />', () => {
+  it('renders', () => {
+    // see: https://on.cypress.io/mounting-react
+    cy.mount(<Products />)
+    cy.get('h1').should('have.text', 'Products')
+  })
+})
+```
+
+Save that change and we can see the specification automatically re-run:
+
+<a href="/post-assets/5/10.png" target="_blank">
+<img src="/post-assets/5/10.png" alt="Cypress interface showing test execution" />
+</a>
+
 
 ----
 

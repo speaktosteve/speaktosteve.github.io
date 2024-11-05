@@ -45,7 +45,18 @@ export const POSTS_LIST = [
 		isFeatured: false,
 		topic: 'front-end',
 		tags: ['next.js', 'ISR', 'Incremental Static Regeneration', 'SSG', 'Performance']
-	}
+	},
+	{
+		title: 'Component testing in Next.js using Cypress - Part 1 - Set up',
+		url: '/component-testing-in-nextjs-using-cypress-part-1-set-up',
+		description: 'First part in a full explainer for setting up and writing component tests for Next.js using Cypress',
+		date: '10/25/2024',
+		isFeatured: true,
+		topic: 'front-end',
+		tags: ['next.js', 'component testing', 'cypress', 'automated testing']
+	},
+
+	
 
 // component tests and stuff with cypress and next.js and msw
 

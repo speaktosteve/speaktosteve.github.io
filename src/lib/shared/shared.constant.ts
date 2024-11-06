@@ -14,7 +14,7 @@ export const POSTS_LIST = [
 		url: '/managing-environment-variables-in-nextjs-azure-static-web-apps',
 		description: 'A quick guide for managing Next.js environment variables for Azure Static Web Apps using GitHub actions or Azure DevOps pipelines',
 		date: '10/11/2024',
-		isFeatured: true,
+		isFeatured: false,
 		topic: 'devops',
 		tags: ['next.js', 'azure', 'static web apps', 'github actions', 'azure devops pipelines', 'environment variables'],
 	},

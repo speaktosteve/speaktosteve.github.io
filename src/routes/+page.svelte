@@ -5,12 +5,8 @@
 	import ContentWrapper from '../components/content-wrapper.svelte';
 
 	const featuredPosts = POSTS_LIST.filter((post) => post.isFeatured && !post.isDisabled);
-	const devOpsPosts = POSTS_LIST.filter(
-		(post) => post.topic === 'devops' && !post.isFeatured && !post.isDisabled
-	);
-	const frontEndPosts = POSTS_LIST.filter(
-		(post) => post.topic === 'front-end' && !post.isFeatured && !post.isDisabled
-	);
+	const devOpsPosts = POSTS_LIST.filter((post) => post.topic === 'devops' && !post.isDisabled);
+	const frontEndPosts = POSTS_LIST.filter((post) => post.topic === 'front-end' && !post.isDisabled);
 </script>
 
 <svelte:head>
@@ -30,7 +26,12 @@
 		then happy&nbsp;days!"
 />
 <ContentWrapper>
-	<ul class="mx-auto grid max-w-lg gap-5 p-4 lg:max-w-none lg:grid-cols-1">
+	<h4
+		class="m-12 mb-8 hidden border-b border-slate-800 pb-4 text-center lg:block dark:border-slate-600"
+	>
+		Featured
+	</h4>
+	<ul class="mx-auto grid max-w-lg gap-5 p-4 lg:max-w-none lg:grid-cols-2">
 		{#each featuredPosts as { url, title, description, date, tags, isFeatured }}
 			<PostCard {url} {title} {description} {date} {tags} {isFeatured} />
 		{/each}
@@ -41,8 +42,8 @@
 	</h4>
 	<!-- Lists -->
 	<ul class="mx-auto grid max-w-lg gap-5 p-4 lg:max-w-none lg:grid-cols-2">
-		{#each devOpsPosts as { url, title, description, date, tags, isFeatured }}
-			<PostCard {url} {title} {description} {date} {tags} {isFeatured} />
+		{#each devOpsPosts as { url, title, description, date, tags }}
+			<PostCard {url} {title} {description} {date} {tags} />
 		{/each}
 	</ul>
 
@@ -51,8 +52,8 @@
 	</h4>
 	<!-- Lists -->
 	<ul class="mx-auto grid max-w-lg gap-5 p-4 lg:max-w-none lg:grid-cols-2">
-		{#each frontEndPosts as { url, title, description, date, tags, isFeatured }}
-			<PostCard {url} {title} {description} {date} {tags} {isFeatured} />
+		{#each frontEndPosts as { url, title, description, date, tags }}
+			<PostCard {url} {title} {description} {date} {tags} />
 		{/each}
 	</ul>
 </ContentWrapper>

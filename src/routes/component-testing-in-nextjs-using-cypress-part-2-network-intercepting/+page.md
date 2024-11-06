@@ -616,6 +616,8 @@ describe('Tests for the <Products /> component', () => {
 
 ```
 
+Note, you can find the full code here: https://github.com/speaktosteve/nextjs-cypress
+
 ## Other features of cy.intercept
 
 With the use of the `cy.intercept` you can also:

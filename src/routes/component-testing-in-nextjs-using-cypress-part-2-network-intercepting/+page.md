@@ -29,6 +29,10 @@ references: [{
 
 ## Overview
 
+My team often works on component-centric projects, building component libraries and using frameworks such as Storybook to present each component in isolation, in all of its various states.
+
+Using component tests on these types of projects is vital, we need fast, repeatable automated tests to ensure that our components are functioning and appearing correctly.
+
 There is enough material out there that covers the value of automated testing, the [test pyramid](https://martinfowler.com/articles/practical-test-pyramid.html), and the [terrible test hourglass](https://testing.googleblog.com/2020/11/fixing-test-hourglass.html), I won't preach here.
 
 What I want to provide is a practical guide, on how to set up your Next.js app to include focused component tests, for server and client-rendered flavours.

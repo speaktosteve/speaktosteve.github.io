@@ -26,7 +26,7 @@ export const theme = {
 		typography: {
 			DEFAULT: {
 			  css: {
-				maxWidth: '60rem', // add required value here
+				maxWidth: '50rem', // add required value here
 			  }
 			}
 		  },

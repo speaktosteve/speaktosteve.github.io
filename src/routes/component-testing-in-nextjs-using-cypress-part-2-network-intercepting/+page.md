@@ -247,5 +247,232 @@ After a new run, we can spot a couple of differences:
 <img src="/post-assets/6/3.png" alt="Cypress interface showing test execution" />
 </a>
 
-The routes output confirms that we are now hitting the stubbed API, we can also see in the visual that the test data is coming back (spot the 'Fake Product....' item). Also, the entire run was substantially faster than before.
+The 'ROUTES' output confirms that we are now hitting the stubbed API, we can also see in the visual that the test data is coming back (spot the 'Fake Product....' item). Also, the entire run was substantially faster than before.
+
+## Test for non-success HTTP status codes and timeouts
+
+Now we have stubbing set up, lets add some more tests around our component. We want to make sure the component handles a situation where the external API is not available, having a bad day, or not being as responsive as we would like.
+
+### Non-success status codes
+
+We want our component to display a catch-all 'something went wrong fetching the data' message if a fetch operation to our API fails. This is hard to test for with end-to-end tests, but the work of a moment if we are using `cy.intercept()`.
+
+Lets move the API URL to a constant, so we arent repeating ourselves
+
+```tsx
+const apiURL = 'https://fakestoreapi.com/products'
+```
+
+And create a new test, to re-define an interceptor to return a stubbed response with an error status code and expect that an error message is displayed:
+
+```tsx
+  // test that the component shows an error message if the API call failsß
+  it('shows error message', () => {
+    // set up the API call to return a 500 status code
+    cy.intercept('GET', apiURL, {
+      statusCode: 500
+    })
+    
+    cy.mount(<Products />)
+    
+    cy.contains('Something went wrong...').should('be.visible')
+  })
+```
+
+The entire file should look like this:
+
+```tsx
+//src/app/components/products.cy.tsx
+import React from 'react'
+import { Products } from './products'
+
+const apiURL = 'https://fakestoreapi.com/products'
+
+describe('Tests for the <Products /> component', () => {
+  beforeEach(() => {
+    cy.log('Adding interceptor to return stubbed data')
+    cy.intercept('GET', apiURL, { fixture: 'fakeProducts.json' })
+  })
+  it('renders component', () => {
+    cy.mount(<Products />)
+  })
+  // test that the component shows the correct header
+   it('renders header', () => {
+    cy.mount(<Products />)
+    cy.get('h1').should('have.text', 'Products')
+  })
+  // test that the component shows a loading message
+  it('shows loading message', () => {
+    cy.mount(<Products />)
+    cy.contains('Loading...').should('be.visible')
+  })
+  // test that the component renders the products
+  it('renders at least one item', () => {
+    cy.mount(<Products />)
+    cy.get('li').should('have.length.gt', 0)
+  })
+  // test that the component renders the product title
+  it('renders product title', () => {
+    cy.mount(<Products />)
+    cy.get('li').first().get('h2').should('exist').invoke('text').should('not.be.empty')
+  })
+  // test that the component renders the product details
+  it('renders product details', () => {
+    cy.mount(<Products />)
+    cy.get('li') 
+    .first() 
+    .find('p')
+    .should('have.length', 3)         
+    .each(($p) => {                   
+      cy.wrap($p)                     
+        .invoke('text')               
+        .should('not.be.empty');      
+    });
+  })
+  // test that the component shows an error message if the API call failsß
+  it('shows error message', () => {
+    // set up the API call to return a 500 status code
+    cy.intercept('GET', apiURL, {
+      statusCode: 500
+    })
+    
+    cy.mount(<Products />)
+    
+    cy.contains('Something went wrong...').should('be.visible')
+  })
+})
+```
+
+When the test is run, we can see the new 'shows error message'. This time there are two entries in the routes table, the first is the one defined in the `beforeAll` method, the second is the one defined in the new test.
+
+We can also see that the fetch method is returning a 500 and the error message is displayed in the visual - proof that our interceptor is working.
+
+<a href="/post-assets/6/4.png" target="_blank">
+<img src="/post-assets/6/4.png" alt="Cypress interface showing test execution" />
+</a>
+
+### Timeouts
+
+On many web and native apps you would have seen a message displayed if the app is deems that its taking too long to retrieve and display some information, e.g. 'Sorry, this is taking longer than expected'. Testing for this type of network latency is pretty hard in standard end-to-end automated tests, but not if we fake it using our interceptor!
+
+Firstly lets update our custom hook to handle a state if the data retrieval from the API is taking longer than 5 seconds:
+
+```tsx
+//src/app/hooks/useProducts.ts
+
+import { useEffect, useState } from "react";
+import { getProducts } from "../utils/api";
+import { IProduct } from "../types/product";
+
+export const useProducts = () => {
+    const [products, setProducts] = useState<IProduct[]>();
+    const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [isLoadingTooSlow, setIsLoadingTooSlow] = useState<boolean>(false);
+    const [isError, setIsError] = useState<boolean>(false);
+    const slowLoadingTolerance = 5000; // 5 seconds
+
+    useEffect(() => {
+        const fetchProducts = async () => {
+            const slowLoadingTimer = setTimeout(() => {
+                setIsLoadingTooSlow(true);
+            }, slowLoadingTolerance); // 5 seconds delay
+
+            try {
+                const products = await getProducts();
+                setProducts(products);
+            }
+            catch (error: unknown) {
+                console.error("Error fetching products", error);
+                setIsError(true);
+            } finally {
+                clearTimeout(slowLoadingTimer); // clear timer if fetch completes
+                setIsLoading(false);
+                setIsLoadingTooSlow(false); // Reset to false when response arrives
+            }
+        };
+
+        fetchProducts();
+    }, []);
+
+    return { products, isLoading, isLoadingTooSlow, isError };
+};
+
+```
+
+What's new?
+ - A `slowLoadingTimer` is set with a setTimeout function to delay setting isLoadingTooSlow to true after 5 seconds.
+ - If `getProducts` completes within 5 seconds, the timeout is cleared, and `isLoadingTooSlow` remains false.
+ - Once the response is received or an error occurs, `isLoadingTooSlow` is reset to false, and `isLoading` is also set to false.
+
+Next, update our component to react to this `isLoadingTooSlow` state, displaying a "This is taking longer than expected..." message if the flag is true:
+
+```tsx
+//src/app/components/products.tsx
+
+"use client"
+
+import Image from "next/image";
+import { useProducts } from "../hooks/useProducts";
+
+export const Products = () => {
+    const { products, isLoading, isError, isLoadingTooSlow } = useProducts();
+    
+    return (
+        <section>
+        <h1 className="text-xl pb-4">Products</h1>
+        <ul className="grid md:grid-cols-2">
+            {isLoading && <p>Loading...</p>}
+            {isError && <p>Something went wrong...</p>}
+            {isLoadingTooSlow && <p>This is taking longer than expected...</p>}
+            {products && products.length === 0 && <p>No products found</p>}
+
+            {products && products.map((product) => (
+                <li key={product.id} className="border rounded m-4 p-8">
+                    <h2>{product.title}</h2>
+                    <p>{product.price}</p>
+                    <p>{product.category}</p>   
+                    <p>{product.description}</p>
+                    <Image src={product.image} alt={product.title} width={100} height={100} />
+                </li>
+            ))}
+        </ul>
+        </section>
+    );
+}
+```
+
+
+ We can then write a new test to ensure that the "This is taking longer than expected..." message is displayed if the response takes longer than the tolerated time.
+
+```tsx
+ // test that the component shows a message if the API call takes too long
+  it('shows slow loading message', {
+      // set the default timeout to 10 seconds, so this test doesnt time out
+      defaultCommandTimeout: 20000
+    }, () => {
+    // set up the API call to delay for 6 seconds
+    cy.intercept('GET', apiURL, {
+      delay: 10000
+    })
+    
+    cy.mount(<Products />)
+    
+    cy.contains('This is taking longer than expected...').should('be.visible')
+  })
+```
+
+Note the following addition to the test declaration:
+
+```tsx
+{
+  // set the default timeout to 10 seconds, so this test doesn't time out
+  defaultCommandTimeout: 20000
+}
+```
+
+We are updating the default duration (just for this test) that Cypress will wait until it deems the test to have timed out - i.e. the amount of time allowed for our `cy.contains('This is taking longer than expected...').should('be.visible')` assertion to be true. Without this, the test will timeout before the message appears.
+
+Like the previous test, we are re-defining the interceptor for our API request, this time adding a delay of 10 seconds before a response is returned. Note, we don't care what the response is for this test, just that the component reacts to this latency in the correct way.
+
+
 

@@ -330,7 +330,7 @@ describe('Tests for the <Products /> component', () => {
     });
   })
   // test that the component shows an error message if the API call failsß
-  it('shows error message', () => {
+  it('shows error message if the API returns a 500 status code', () => {
     // set up the API call to return a 500 status code
     cy.intercept('GET', apiURL, {
       statusCode: 500
@@ -350,6 +350,40 @@ We can also see that the fetch method is returning a 500 and the error message i
 <a href="/post-assets/6/4.png" target="_blank">
 <img src="/post-assets/6/4.png" alt="Cypress interface showing test execution" />
 </a>
+
+### Network errors
+
+Imagine that the network connection fails, something that is common when browsing on a mobile device. The end result on the component might be the same - a generic "something went wrong" message is displayed - but the cause is different to the previous 500 status code, so we want to test for this unhappy path as well.
+
+```tsx
+    // test that the component shows an error message if there is a network error
+    it('shows error message if there is a network error', () => {
+        cy.intercept('GET', apiURL, { forceNetworkError: true }).as('err')
+        // assert that this request happened
+        cy.mount(<Products />)
+        cy.contains('Something went wrong...').should('be.visible')
+        // and that it ended in a network error
+        cy.wait('@err').should('have.property', 'error')
+    })
+```
+
+A few new things are happening here:
+
+```tsx
+cy.intercept('GET', apiURL, { forceNetworkError: true }).as('err')
+```
+
+`cy.intercept` is used to intercept the GET request to the API with `{ forceNetworkError: true }` used to force this request to fail, simulating a network error.
+`.as('err')` gives this intercepted request the alias 'err' so it can be referenced later.
+
+
+```tsx
+cy.wait('@err').should('have.property', 'error')
+```
+
+`cy.wait('@err')` waits for the GET request to apiURL to complete. Since this request is set to fail, Cypress expects an error.
+.should('have.property', 'error') verifies that the intercepted request has an error property, confirming the network error occurred as intended.
+
 
 ### Timeouts
 
@@ -441,7 +475,6 @@ export const Products = () => {
 }
 ```
 
-
  We can then write a new test to ensure that the "This is taking longer than expected..." message is displayed if the response takes longer than the tolerated time.
 
 ```tsx
@@ -474,5 +507,9 @@ We are updating the default duration (just for this test) that Cypress will wait
 
 Like the previous test, we are re-defining the interceptor for our API request, this time adding a delay of 10 seconds before a response is returned. Note, we don't care what the response is for this test, just that the component reacts to this latency in the correct way.
 
+## Other things we can test
 
+With the use of the `cy.intercept` you can also:
 
+ - stub outgoing requests, to remove outbound traffic from your target code
+ - use middleware to fake add auth headers that your external API is expected to add - https://docs.cypress.io/api/commands/intercept#Passing-a-request-to-the-next-request-handler

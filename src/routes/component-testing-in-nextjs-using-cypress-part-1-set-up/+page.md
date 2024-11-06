@@ -8,11 +8,11 @@ references: [{
     "link": "https://github.com/speaktosteve/nextjs-cypress",
     "title": "Reference repo",
   },
-  #   {
-  #   "type": "internal", 
-  #   "link": "/component-testing-in-nextjs-using-cypress-part-2-network-intercepting",
-  #   "title": "Component testing in Next.js using Cypress - Part 2 - Intercepting network requests",
-  # },
+    {
+    "type": "internal", 
+    "link": "/component-testing-in-nextjs-using-cypress-part-2-network-intercepting",
+    "title": "Component testing in Next.js using Cypress - Part 2 - Intercepting network requests",
+  },
   {
     "type": "external", 
     "link": "https://nextjs.org/docs/app/building-your-application/configuring/environment-variables",
@@ -87,34 +87,41 @@ Here are the main files you will need to add/update, you can leave the rest of t
 ```tsx
 //src/app/components/products.tsx
 
-"use client"
+'use client'
 
-import Image from "next/image";
-import { useProducts } from "../hooks/useProducts";
+import Image from 'next/image'
+import { useProducts } from '../hooks/useProducts'
 
 export const Products = () => {
-    const { products, isLoading, isError } = useProducts();
-    
+    const { products, isLoading, isError } = useProducts()
+
     return (
         <section>
-        <h1 className="text-xl pb-4">Products</h1>
-        <ul className="grid md:grid-cols-2">
+            <h1 className="text-xl pb-4">Products</h1>
             {isLoading && <p>Loading...</p>}
             {isError && <p>Something went wrong...</p>}
             {products && products.length === 0 && <p>No products found</p>}
-            {products && products.map((product) => (
-                <li key={product.id} className="border rounded m-4 p-8">
-                    <h2>{product.title}</h2>
-                    <p>{product.price}</p>
-                    <p>{product.category}</p>   
-                    <p>{product.description}</p>
-                    <Image src={product.image} alt={product.title} width={100} height={100} />
-                </li>
-            ))}
-        </ul>
+            <ul className="grid md:grid-cols-2">
+                {products &&
+                    products.map((product) => (
+                        <li key={product.id} className="border rounded m-4 p-8">
+                            <h2>{product.title}</h2>
+                            <p>{product.price}</p>
+                            <p>{product.category}</p>
+                            <p>{product.description}</p>
+                            <Image
+                                src={product.image}
+                                alt={product.title}
+                                width={100}
+                                height={100}
+                            />
+                        </li>
+                    ))}
+            </ul>
         </section>
-    );
+    )
 }
+
 ```
 
 ```tsx
@@ -458,4 +465,4 @@ So far, so what, right? We've set up our test tooling and a sample application b
 
 Note, you can find the full code here: https://github.com/speaktosteve/nextjs-cypress
 
-<!-- Next article - [Component testing in Next.js using Cypress - Part 2 - Intercepting network requests](/component-testing-in-nextjs-using-cypress-part-2-network-intercepting) -->
+Next article - [Component testing in Next.js using Cypress - Part 2 - Intercepting network requests](/component-testing-in-nextjs-using-cypress-part-2-network-intercepting)

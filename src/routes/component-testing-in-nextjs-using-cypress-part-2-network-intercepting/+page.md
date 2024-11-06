@@ -443,37 +443,49 @@ Next, update our component to react to this `isLoadingTooSlow` state, displaying
 ```tsx
 //src/app/components/products.tsx
 
-"use client"
+'use client'
 
-import Image from "next/image";
-import { useProducts } from "../hooks/useProducts";
+import Image from 'next/image'
+import { useProducts } from '../hooks/useProducts'
 
 export const Products = () => {
-    const { products, isLoading, isError, isLoadingTooSlow } = useProducts();
-    
+    const { products, isLoading, isError, isLoadingTooSlow } = useProducts()
+
     return (
         <section>
-        <h1 className="text-xl pb-4">Products</h1>
-        <ul className="grid md:grid-cols-2">
+            <h1 className="text-xl pb-4">Products</h1>
             {isLoading && <p>Loading...</p>}
             {isError && <p>Something went wrong...</p>}
             {isLoadingTooSlow && <p>This is taking longer than expected...</p>}
             {products && products.length === 0 && <p>No products found</p>}
-
-            {products && products.map((product) => (
-                <li key={product.id} className="border rounded m-4 p-8">
-                    <h2>{product.title}</h2>
-                    <p>{product.price}</p>
-                    <p>{product.category}</p>   
-                    <p>{product.description}</p>
-                    <Image src={product.image} alt={product.title} width={100} height={100} />
-                </li>
-            ))}
-        </ul>
+            <ul className="grid md:grid-cols-2">
+                {products &&
+                    products.map((product) => (
+                        <li key={product.id} className="border rounded m-4 p-8">
+                            <h2>{product.title}</h2>
+                            <p>{product.price}</p>
+                            <p>{product.category}</p>
+                            <p>{product.description}</p>
+                            <Image
+                                src={product.image}
+                                alt={product.title}
+                                width={100}
+                                height={100}
+                            />
+                        </li>
+                    ))}
+            </ul>
         </section>
-    );
+    )
 }
+
 ```
+
+For a situation where the request is taking longer than the tolerance, the user should see:
+
+<a href="/post-assets/6/5.png" target="_blank">
+<img src="/post-assets/6/5.png" alt="Cypress interface showing test execution" />
+</a>
 
  We can then write a new test to ensure that the "This is taking longer than expected..." message is displayed if the response takes longer than the tolerated time.
 
@@ -507,9 +519,107 @@ We are updating the default duration (just for this test) that Cypress will wait
 
 Like the previous test, we are re-defining the interceptor for our API request, this time adding a delay of 10 seconds before a response is returned. Note, we don't care what the response is for this test, just that the component reacts to this latency in the correct way.
 
-## Other things we can test
+The final test file looks like this:
+
+```tsx
+//src/app/components/products.cy.tsx
+import React from 'react'
+import { Products } from './products'
+
+const apiURL = 'https://fakestoreapi.com/products'
+
+describe('Tests for the <Products /> component', () => {
+    beforeEach(() => {
+        cy.log('Adding interceptor to return stubbed data')
+        cy.intercept('GET', apiURL, { fixture: 'fakeProducts.json' })
+    })
+    it('renders component', () => {
+        cy.mount(<Products />)
+    })
+    // test that the component shows the correct header
+    it('renders header', () => {
+        cy.mount(<Products />)
+        cy.get('h1').should('have.text', 'Products')
+    })
+    // test that the component shows a loading message
+    it('shows loading message', () => {
+        cy.mount(<Products />)
+        cy.contains('Loading...').should('be.visible')
+    })
+    // test that the component renders the products
+    it('renders at least one item', () => {
+        cy.mount(<Products />)
+        cy.get('li').should('have.length.gt', 0)
+    })
+    // test that the component renders the product title
+    it('renders product title', () => {
+        cy.mount(<Products />)
+        cy.get('li')
+            .first()
+            .get('h2')
+            .should('exist')
+            .invoke('text')
+            .should('not.be.empty')
+    })
+    // test that the component renders the product details
+    it('renders product details', () => {
+        cy.mount(<Products />)
+        cy.get('li')
+            .first()
+            .find('p')
+            .should('have.length', 3)
+            .each(($p) => {
+                cy.wrap($p).invoke('text').should('not.be.empty')
+            })
+    })
+    // test that the component shows an error message if the API call fails
+    it('shows error message if the API returns a 500 status code', () => {
+        // set up the API call to return a 500 status code
+        cy.intercept('GET', apiURL, {
+            statusCode: 500,
+        })
+
+        cy.mount(<Products />)
+
+        cy.contains('Something went wrong...').should('be.visible')
+    })
+    // test that the component shows an error message if there is a network error
+    it('shows error message if there is a network error', () => {
+        cy.intercept('GET', apiURL, { forceNetworkError: true }).as('err')
+        // assert that this request happened
+        cy.mount(<Products />)
+        cy.contains('Something went wrong...').should('be.visible')
+        // and that it ended in a network error
+        cy.wait('@err').should('have.property', 'error')
+    })
+    // test that the component shows a message if the API call takes too long
+    it(
+        'shows slow loading message',
+        {
+            // set the default timeout to 10 seconds, so this test doesn't time out
+            defaultCommandTimeout: 20000,
+        },
+        () => {
+            // set up the API call to delay for 6 seconds
+            cy.intercept('GET', apiURL, {
+                delay: 10000,
+            })
+
+            cy.mount(<Products />)
+
+            cy.contains('This is taking longer than expected...').should(
+                'be.visible'
+            )
+        }
+    )
+})
+
+```
+
+## Other feature of cy.intercept
 
 With the use of the `cy.intercept` you can also:
 
  - stub outgoing requests, to remove outbound traffic from your target code
  - use middleware to fake add auth headers that your external API is expected to add - https://docs.cypress.io/api/commands/intercept#Passing-a-request-to-the-next-request-handler
+ - see official docs for lots more: https://docs.cypress.io/api/commands/intercept

@@ -1,6 +1,6 @@
 ---
 heading: 'Component testing in Next.js using Cypress - Part 1 - Set up'
-description: 'The first part in a series of articles explaining how to set up and write component tests for Next.js using Cypress'
+description: 'This is the first part in a series of articles explaining how to set up and write component tests for Next.js using Cypress'
 date: '2024-10-25'
 tags: ['next.js', 'component testing', 'cypress', 'automated testing']
 references: [{
@@ -29,7 +29,12 @@ references: [{
 
 ## Overview
 
-There is enough material out there that covers the value of automated testing, the [test pyramid](https://martinfowler.com/articles/practical-test-pyramid.html), and the [terrible test hourglass](https://testing.googleblog.com/2020/11/fixing-test-hourglass.html), so I won't preach here.
+
+My team often works on component-centric projects, building component libraries and using frameworks such as Storybook to present each component in isolation, in all of its various states.
+
+Using component tests on these types of projects is vital, we need fast, repeatable automated tests to ensure that our components are functioning and appearing correctly.
+
+There is enough material out there that covers the value of automated testing, the [test pyramid](https://martinfowler.com/articles/practical-test-pyramid.html), and the [terrible test hourglass](https://testing.googleblog.com/2020/11/fixing-test-hourglass.html), I won't preach here.
 
 What I want to provide is a practical guide, on how to set up your Next.js app to include focused component tests, for server and client-rendered flavours.
 
@@ -233,9 +238,9 @@ Navigate to http://localhost:3000/ and you should have a site that looks like th
 
 ## Set up our test tooling
 
-We want to cover our client-side component with some simple tests. We will leverage the very popular [Cypress](https://www.cypress.io/) testing library to allow us to quickly set up and run our tests.
+We want to cover our client-side component with some simple tests. We will leverage the very popular [Cypress](https://www.cypress.io/) testing framework to set up and drive our tests.
 
-Following the [Next.js docs for setting up Cypress](https://nextjs.org/docs/pages/building-your-application/testing/cypress) documentation, we are going to set up Cypress.
+Here are the steps for setting up Cypress, taken from the [Next.js docs for setting up Cypress](https://nextjs.org/docs/pages/building-your-application/testing/cypress) documentation:
 
 ### Install Cypress
 
@@ -310,7 +315,7 @@ npm run cypress:run-component
 ```
 </div>
 
-You should now be up and running, with Cypress in its starting state:
+You should now be up and running, with Cypress in it's starting state:
 
 <a href="/post-assets/5/5.png" target="_blank">
 <img src="/post-assets/5/5.png" alt="Cypress interface" />
@@ -325,7 +330,7 @@ Cypress has a very convenient **Create from component** option for generating ou
 <img src="/post-assets/5/6.png" alt="Cypress interface" />
 </a>
 
-And select our `Products` component. Click through and you should have Cypress generating the test specification for you. Its has added the `productsProducts.tsx` file containing the scaffolding for our first test.
+And select our `Products` component. Click through and you should have Cypress generating the test specification for you. Cypress has added the `productsProducts.tsx` file containing the scaffolding for our first test.
 
 <a href="/post-assets/5/7.png" target="_blank">
 <img src="/post-assets/5/7.png" alt="Cypress interface" />
@@ -450,7 +455,7 @@ describe('Tests for the <Products /> component', () => {
 })
 ```
 
-The cases above are very simple and mostly just check that some products were rendered. Sure, you could combine some of these tests, but I was taught that a good test covered as little of the target code as possible. This is important.
+The cases above are simple and focus on ensuring that products are rendered. Sure, you could combine some of these tests, but I was taught that a good test covered as little of the target code as possible. This is important.
 
 Writing concise, targetted tests:
 

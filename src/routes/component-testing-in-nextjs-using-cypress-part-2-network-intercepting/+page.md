@@ -1,6 +1,6 @@
 ---
 heading: 'Component testing in Next.js using Cypress - Part 2 - Intercepting network requests'
-description: 'The second part in a series of articles explaining how to set up and write component tests for Next.js using Cypress. It describes the benefits of intercepting network requests and how to set it up.'
+description: 'This is the second part in a series of articles explaining how to set up and write component tests for Next.js using Cypress. It describes the benefits of intercepting network requests and how to set it up.'
 date: '2024-10-25'
 tags: ['next.js', 'component testing', 'cypress', 'automated testing']
 references: [{
@@ -29,9 +29,9 @@ references: [{
 
 ## Overview
 
-There is enough material out there that covers the value of automated testing, the [test pyramid](https://martinfowler.com/articles/practical-test-pyramid.html), and the [terrible test hourglass](https://testing.googleblog.com/2020/11/fixing-test-hourglass.html), so I won't preach here.
+There is enough material out there that covers the value of automated testing, the [test pyramid](https://martinfowler.com/articles/practical-test-pyramid.html), and the [terrible test hourglass](https://testing.googleblog.com/2020/11/fixing-test-hourglass.html), I won't preach here.
 
-What I want to provide is a practical guide, on how to set up your Next.js app to ßnclude focused component tests, for server and client-rendered flavours.
+What I want to provide is a practical guide, on how to set up your Next.js app to include focused component tests, for server and client-rendered flavours.
 
 Component tests, like standard unit tests, should be rapid and only test the target code, i.e. not any external dependencies. Like unit tests, they should avoid instigating network calls, database writes, etc. 
 
@@ -42,7 +42,7 @@ Refer to the previous article this series, which details how to set up an exampl
 In this article we are going to:
 
 - build out a test specification for our **Products** client-side component
-- introduce the the **intercept** method to gain fine-grained control of the data passed into our component. This allows us to test how the component reacts to various API responses
+- introduce the **intercept** method to gain fine-grained control of the data passed into our component. This allows us to test how the component reacts to various API responses
 
 ---
 
@@ -54,13 +54,13 @@ However, in a complex system, running e2e tests across all user journeys, both h
 
 e2e tests involve seeding different test data for different test scenarios, they are typically slow to run and make testing edge cases and failure states a headache. They can have a monetary impact too - imagine sending real SMS notifications every time a test runs, or causing some infrastructure to have to scale to handle the fake traffic you are generating**
 
-** in reality you should not be running these e2e tests at scale without understanding and planning for the impact on your infrastructure and external providers. It does happen though! A lot!
+** In reality you should not be running these e2e tests at scale without understanding and planning for the impact on your infrastructure and external providers. It does happen though! A lot!
 
 The Cypress docs [Network Requests article](https://docs.cypress.io/app/guides/network-requests) recommends that you have end-to-end tests around the critical paths of your application. 
 
 The rest of the time the use of stubbed responses is ideal, allowing you to control the data entering your component and ensure that the component is reacting correctly.
 
-Using `cy.intercept()` we can control all aspects of an HTTP response, the headers, status code, body. We can also add delays to simulate latency.
+`cy.intercept()` can be used to control all aspects of an HTTP response, headers, status code, and the body. We can also add delays to simulate latency.
 
 ## Setup
 
@@ -145,7 +145,7 @@ Spot the `(fetch)GET https://fakestoreapi.com/products` outputted to the log wit
 
 Also note the execution time is a whopping 953ms (this is a fresh request, before any responses were cached).
 
-Right now, every time we run these tests, data is being retrieved from the external API. This is the end-to-end behaviour that we want to avoid, so lets introduce our first `cy.intercept()`.
+Right now, every time we run these tests, data is being retrieved from the external API. This is the end-to-end behaviour that we want to avoid - we need to use our first `cy.intercept()`.
 
 Firstly, add a `beforeEach` step to the tests. This will execute before each step. It basically avoids you writing the same code for every test.
 
@@ -251,13 +251,13 @@ The 'ROUTES' output confirms that we are now hitting the stubbed API, we can als
 
 ## Test for non-success HTTP status codes and timeouts
 
-Now we have stubbing set up, lets add some more tests around our component. We want to make sure the component handles a situation where the external API is not available, having a bad day, or not being as responsive as we would like.
+Now we have stubbing set up it would be good to add some more tests around our component. We want to make sure the component handles a situation where the external API is not available, having a bad day, or not being as responsive as we would like.
 
 ### Non-success status codes
 
 We want our component to display a catch-all 'something went wrong fetching the data' message if a fetch operation to our API fails. This is hard to test for with end-to-end tests, but the work of a moment if we are using `cy.intercept()`.
 
-Lets move the API URL to a constant, so we arent repeating ourselves
+Let's move the API URL to a constant, so we arent repeating ourselves:
 
 ```tsx
 const apiURL = 'https://fakestoreapi.com/products'
@@ -389,7 +389,7 @@ cy.wait('@err').should('have.property', 'error')
 
 On many web and native apps you would have seen a message displayed if the app is deems that its taking too long to retrieve and display some information, e.g. 'Sorry, this is taking longer than expected'. Testing for this type of network latency is pretty hard in standard end-to-end automated tests, but not if we fake it using our interceptor!
 
-Firstly lets update our custom hook to handle a state if the data retrieval from the API is taking longer than 5 seconds:
+Firstly, update our custom hook to handle a state if the data retrieval from the API is taking longer than 5 seconds:
 
 ```tsx
 //src/app/hooks/useProducts.ts
@@ -517,7 +517,7 @@ Note the following addition to the test declaration:
 
 We are updating the default duration (just for this test) that Cypress will wait until it deems the test to have timed out - i.e. the amount of time allowed for our `cy.contains('This is taking longer than expected...').should('be.visible')` assertion to be true. Without this, the test will timeout before the message appears.
 
-Like the previous test, we are re-defining the interceptor for our API request, this time adding a delay of 10 seconds before a response is returned. Note, we don't care what the response is for this test, just that the component reacts to this latency in the correct way.
+Like the previous test, we are defining the interceptor for our API request, this time adding a delay of 10 seconds before a response is returned. We aren't concerned with the response from the API for this test, just that the component reacts to this latency in the correct way.
 
 The final test file looks like this:
 
@@ -616,7 +616,7 @@ describe('Tests for the <Products /> component', () => {
 
 ```
 
-## Other feature of cy.intercept
+## Other features of cy.intercept
 
 With the use of the `cy.intercept` you can also:
 

@@ -49,7 +49,7 @@ export const POSTS_LIST = [
 	{
 		title: 'Component testing in Next.js using Cypress - Part 1 - Set up',
 		url: '/component-testing-in-nextjs-using-cypress-part-1-set-up',
-		description: 'The first part in a series of articles explaining how to set up and write component tests for Next.js using Cypress',
+		description: 'This is the first part in a series of articles explaining how to set up and write component tests for Next.js using Cypress',
 		date: '10/25/2024',
 		isFeatured: true,
 		topic: 'front-end',
@@ -58,7 +58,7 @@ export const POSTS_LIST = [
 	{
 		title: 'Component testing in Next.js using Cypress - Part 2 - Intercepting network requests',
 		url: '/component-testing-in-nextjs-using-cypress-part-2-network-intercepting',
-		description: 'The second part in a series of articles explaining how to set up and write component tests for Next.js using Cypress. It describes the benefits of intercepting network requests and how to set it up.',
+		description: 'This is the second part in a series of articles explaining how to set up and write component tests for Next.js using Cypress. It describes the benefits of intercepting network requests and how to set it up.',
 		date: '11/5/2024',
 		isFeatured: true,
 		topic: 'front-end',

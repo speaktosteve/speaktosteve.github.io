@@ -15,7 +15,7 @@ references: [{
   },
   {
     "type": "external", 
-    "link": "https://nextjs.org/docs/app/building-your-application/configuring/environment-variables",
+    "link": "https://nextjs.org/docs",
     "title": "Next.js docs",
   },
   {

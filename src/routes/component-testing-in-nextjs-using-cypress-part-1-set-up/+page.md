@@ -5,7 +5,7 @@ date: '2024-10-25'
 tags: ['next.js', 'component testing', 'cypress', 'automated testing']
 references: [{
     "type": "repo", 
-    "link": "https://github.com/speaktosteve/nextjs-cypress",
+    "link": "https://github.com/speaktosteve/nextjs-cypress-part1-and-part2",
     "title": "Reference repo",
   },
     {
@@ -51,14 +51,13 @@ In subsequent articles we are going to build on this to:
 - get it to work without a network connection
 - get test coverage over our server-side components 👍
 
-You can find the full code here: https://github.com/speaktosteve/nextjs-cypress
+You can find the full code here: https://github.com/speaktosteve/nextjs-cypress-part1-and-part2
 
 ---
 
 ## Setup Next.js app
 
 The usual Next.js setup, with all the defaults: https://nextjs.org/docs/getting-started/installation
-
 ```bash
 npx create-next-app@latest
 ```
@@ -468,6 +467,6 @@ Writing concise, targetted tests:
 
 So far, so what, right? We've set up our test tooling and a sample application but read on for details on how to isolate your tests better using network intercepts and how to test server-side components.
 
-Note, you can find the full code here: https://github.com/speaktosteve/nextjs-cypress
+Note, you can find the full code here: https://github.com/speaktosteve/nextjs-cypress-part1-and-part2
 
 Next article - [Component testing in Next.js using Cypress - Part 2 - Intercepting network requests](/component-testing-in-nextjs-using-cypress-part-2-network-intercepting)

@@ -1,11 +1,11 @@
 ---
 heading: 'Component testing in Next.js using Cypress - Part 2 - Intercepting network requests'
 description: 'This is the second part in a series of articles explaining how to set up and write component tests for Next.js using Cypress. It describes the benefits of intercepting network requests and how to set it up.'
-date: '2024-10-25'
+date: '2024-11-05'
 tags: ['next.js', 'component testing', 'cypress', 'automated testing']
 references: [{
     "type": "repo", 
-    "link": "https://github.com/speaktosteve/nextjs-cypress",
+    "link": "https://github.com/speaktosteve/nextjs-cypress-part1-and-part2",
     "title": "Reference repo",
   },
   {
@@ -620,7 +620,7 @@ describe('Tests for the <Products /> component', () => {
 
 ```
 
-Note, you can find the full code here: https://github.com/speaktosteve/nextjs-cypress
+Note, you can find the full code here: https://github.com/speaktosteve/nextjs-cypress-part1-and-part2
 
 ## Other features of cy.intercept
 

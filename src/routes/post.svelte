@@ -2,6 +2,7 @@
 	import { getIcon } from '$lib/shared/utils';
 	import Banner from '../components/banner.svelte';
 	import ContentWrapper from '../components/content-wrapper.svelte';
+	import { clickToCopy } from '$lib/shared/copyText.js';
 
 	export let heading = '';
 	export let description = '';
@@ -17,6 +18,7 @@
 </svelte:head>
 
 <Banner {heading} {description} {date} {tags} />
+
 <ContentWrapper>
 	<article>
 		{#if references.length > 0}
@@ -39,10 +41,12 @@
 				<hr class="mx-4 mt-8" />
 			</aside>
 		{/if}
+
 		<section
-			class="prose mx-auto p-4 dark:prose-invert prose-code:before:hidden prose-code:after:hidden"
+			class="prose mx-auto p-4 dark:prose-invert prose-code:before:hidden prose-code:after:hidden prose-pre:relative prose-pre:after:absolute prose-pre:after:right-0 prose-pre:after:top-0 prose-pre:after:content-['<button>test</button>']"
 		>
 			<slot />
 		</section>
 	</article>
 </ContentWrapper>
+<span id="test">here it is</span>

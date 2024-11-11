@@ -24,7 +24,7 @@
 		<slot />
 	</section>
 	{#if references.length > 0}
-		<aside class="prose mx-auto p-4 dark:prose-invert">
+		<aside class="prose mx-auto px-4 dark:prose-invert">
 			<ul>
 				{#each references as reference}
 					<li>

@@ -52,15 +52,12 @@ My team often works on component-centric projects, building component libraries 
 
 Using component tests on these types of projects is vital, we need fast, repeatable automated tests to ensure that our components are functioning and appearing correctly.
 
-There is enough material out there that covers the value of automated testing, the [test pyramid](https://martinfowler.com/articles/practical-test-pyramid.html), and the [terrible test hourglass](https://testing.googleblog.com/2020/11/fixing-test-hourglass.html), I won't preach here.
-
-What I want to provide is a practical guide, on how to set up your Next.js app to include focused component tests, for server and client-rendered flavours.
-
-Component tests, like standard unit tests, should be rapid and only test the target code, i.e. not any external dependencies. Like unit tests, they should avoid instigating network calls, database writes, etc. 
 
 <div class="border p-4 not-italic">
 Refer to the previous article this series, which details how to set up an example Next.js application with Cypress and how to get started with running and viewing component tests: <a href="/component-testing-in-nextjs-using-cypress-part-1-set-up">Component testing in Next.js using Cypress - Part 1 - Set up</a>.
 </div>
+
+Component tests, like standard unit tests, should be rapid and only test the target code, i.e. not any external dependencies. Like unit tests, they should avoid instigating network calls, database writes, etc. 
 
 In this article we are going to:
 

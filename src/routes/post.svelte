@@ -2,7 +2,6 @@
 	import { getIcon } from '$lib/shared/utils';
 	import Banner from '../components/banner.svelte';
 	import ContentWrapper from '../components/content-wrapper.svelte';
-	import { clickToCopy } from '$lib/shared/copyText.js';
 
 	export let heading = '';
 	export let description = '';

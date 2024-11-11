@@ -11,8 +11,29 @@ references: [
   }
 ]
 ---
+### Table of Contents
 
-## Overview
+<!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
+
+- [Overview](#overview)
+- [What](#what)
+- [Why](#why)
+- [How](#how)
+   * [Basic Incremental Static Regeneration](#basic-incremental-static-regeneration)
+      + [Page Router:](#page-router)
+      + [App Router:](#app-router)
+   * [On Demand Incremental Static Regeneration](#on-demand-incremental-static-regeneration)
+      + [Page Router:](#page-router-1)
+      + [App Router:](#app-router-1)
+- [When Not to Use Incremental Static Regeneration](#when-not-to-use-incremental-static-regeneration)
+- [References](#references)
+
+<!-- TOC end -->
+
+---
+
+<!-- TOC --><a name="overview"></a>
+### Overview
 
 **Incremental Static Regeneration (ISR)** is a powerful feature in Next.js that allows you to generate or update static pages after the site has been built, on demand, without rebuilding the entire site.
 
@@ -23,14 +44,16 @@ See official docs: https://nextjs.org/docs/canary/app/building-your-application/
 
 ----
 
-## What
+<!-- TOC --><a name="what"></a>
+### What
 
 Simply put, ISR allows you to update or generate pages after your statically-generated site has been built without requiring a full re-build.
 
 You can control whether you want pages to be regenerated in the background at specified intervals, or on demand when users visit.
 
 
-## Why
+<!-- TOC --><a name="why"></a>
+### Why
 
 Why would you want this behaviour? Imaging the following use cases:
 
@@ -51,18 +74,21 @@ For pages with content that updates often (such as reviews or comments), ISR ens
 As the number of pages increases, the build time for static sites can grow significantly. With ISR, you can pre-generate the most important pages and defer the generation of less important or less visited pages until they are requested by a user. This drastically reduces the build time.
 
 
-## How
+<!-- TOC --><a name="how"></a>
+### How
 
 <div class="border p-4 not-italic">
 <strong>Side Note</strong>
 The following code examples are for Next.js, for both Page Router and App Router (available from Next.js 13 onwards) architecture. 
 </div>
 
-### Basic Incremental Static Regeneration
+<!-- TOC --><a name="basic-incremental-static-regeneration"></a>
+#### Basic Incremental Static Regeneration
 
 Statically generate pages initially and have ISR update the product page in the background at regular intervals, such as every 10 minutes:
 
-#### Page Router:
+<!-- TOC --><a name="page-router"></a>
+##### Page Router:
 
 ```js
 export async function getStaticProps() {
@@ -88,7 +114,8 @@ In this case, the page will be revalidated every 600 seconds (10 minutes). This 
 Until the next revalidation, the cached static version of the page is served to users.
 
 
-#### App Router:
+<!-- TOC --><a name="app-router"></a>
+##### App Router:
 
 ```js
 async function fetchProductData() {
@@ -118,7 +145,8 @@ next: { revalidate: 600 }:
 
 This is a Next.js-specific option used in the App Router. The `revalidate: 600` option enables ISR, telling Next.js to revalidate (regenerate) the data every 600 seconds (10 minutes). This is similar to how revalidate works in `getStaticProps` in the Pages Router example.
 
-### On Demand Incremental Static Regeneration
+<!-- TOC --><a name="on-demand-incremental-static-regeneration"></a>
+#### On Demand Incremental Static Regeneration
 
 <div class="border p-4 not-italic">
 <strong>Side Note</strong>
@@ -127,7 +155,8 @@ In this following example I have a page that uses dynamic routes (hence the use 
 
 Instead of building all posts during deployment, ISR generates them when a user first visits, ensuring quick builds and up-to-date content:
 
-#### Page Router:
+<!-- TOC --><a name="page-router-1"></a>
+##### Page Router:
 
 ```js
 export async function getStaticPaths() {
@@ -157,7 +186,8 @@ The `params` object contains the dynamic route parameters, like id in this case,
 
 `revalidate: 3600` triggers ISR, telling Next.js to rebuild the page every hour (3600 seconds). So, every hour, Next.js will fetch fresh data for the post and regenerate the static page, ensuring that it stays updated over time.
 
-#### App Router:
+<!-- TOC --><a name="app-router-1"></a>
+##### App Router:
 
 In App Router ``getStaticPaths` is replaced with `generateStaticParams` and the returned object is a slightly different structure. See [App Router Docs](https://nextjs.org/docs/app/building-your-application/upgrading/app-router-migration#dynamic-paths-getstaticpaths) for full details.
 
@@ -205,11 +235,17 @@ export default async function PostPage({ params }) {
 
 ```
 
-## When Not to Use Incremental Static Regeneration
+<!-- TOC --><a name="when-not-to-use-incremental-static-regeneration"></a>
+### When Not to Use Incremental Static Regeneration
 
 Real-time data requirements: If your application requires real-time updates (e.g., stock prices, live sports scores), ISR is not the best option since the content will only be updated based on the revalidate time. In these cases, you should consider client-side fetching or server-side rendering (SSR).
 
 Data that rarely changes: If your content is mostly static and doesn't change often, you might not need ISR. Static site generation (SSG) might suffice in this case.
 
 Use ISR when you need a balance between performance (through static site generation) and data freshness (through on-demand or scheduled regeneration). It's particularly effective for large websites, SEO-optimized pages, and user-generated content where the build times could otherwise become unmanageable.
+
+---
+
+<!-- TOC --><a name="references"></a>
+### References
 

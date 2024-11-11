@@ -27,25 +27,12 @@ references: [{
 ]
 ---
 ## Table of Contents
-
-<!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
-
-   * [Overview](#overview)
-- [Setup Next.js app](#setup-nextjs-app)
-      + [Run the Next.js app](#run-the-nextjs-app)
-   * [Set up our test tooling](#set-up-our-test-tooling)
-      + [Install Cypress](#install-cypress)
-      + [Create a basic test specification](#create-a-basic-test-specification)
-      + [Add further test cases to scenario](#add-further-test-cases-to-scenario)
-   * [Summary](#summary)
-   * [References](#references)
-
-<!-- TOC end -->
+[TOC]
 
 ---
 
 <!-- TOC --><a name="overview"></a>
-### Overview
+## Overview
 
 
 My team often works on component-centric projects, building component libraries and using frameworks such as Storybook to present each component in isolation, in all of its various states.
@@ -230,7 +217,7 @@ In summary, we now have:
  - api.ts - a simple service for fetching products from the very useful https://fakestoreapi.com
 
 <!-- TOC --><a name="run-the-nextjs-app"></a>
-#### Run the Next.js app
+### Run the Next.js app
 
 We have our components in place, it's time to install the packages:
 
@@ -256,14 +243,14 @@ Navigate to http://localhost:3000/ and you should have a site that looks like th
 
 
 <!-- TOC --><a name="set-up-our-test-tooling"></a>
-### Set up our test tooling
+## Set up our test tooling
 
 We want to cover our client-side component with some simple tests. We will leverage the very popular [Cypress](https://www.cypress.io/) testing framework to set up and drive our tests.
 
 Here are the steps for setting up Cypress, taken from the [Next.js docs for setting up Cypress](https://nextjs.org/docs/pages/building-your-application/testing/cypress) documentation:
 
 <!-- TOC --><a name="install-cypress"></a>
-#### Install Cypress
+### Install Cypress
 
 ```bash
 npm i -D cypress
@@ -344,7 +331,7 @@ You should now be up and running, with Cypress in it's starting state:
 
 
 <!-- TOC --><a name="create-a-basic-test-specification"></a>
-#### Create a basic test specification
+### Create a basic test specification
 
 Cypress has a very convenient **Create from component** option for generating our first test specification - let's do that:
 
@@ -428,7 +415,7 @@ Save that change and we can see the specification automatically re-run:
 </a>
 
 <!-- TOC --><a name="add-further-test-cases-to-scenario"></a>
-#### Add further test cases to scenario
+### Add further test cases to scenario
 
 Now we have a working specification I want to add some more cases:
 
@@ -488,15 +475,10 @@ Writing concise, targetted tests:
 - speeds the test runs up 
 
 <!-- TOC --><a name="summary"></a>
-### Summary
+## Summary
 
 So far, so what, right? We've set up our test tooling and a sample application but read on for details on how to isolate your tests better using network intercepts and how to test server-side components.
 
 Note, you can find the full code here: https://github.com/speaktosteve/nextjs-cypress-part1-and-part2
 
 Next article - [Component testing in Next.js using Cypress - Part 2 - Intercepting network requests](/component-testing-in-nextjs-using-cypress-part-2-network-intercepting)
-
----
-
-<!-- TOC --><a name="references"></a>
-### References

@@ -20,8 +20,27 @@ references: [{
   }
 ]
 ---
+### Table of Contents
 
-## Overview
+<!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
+
+- [Overview](#overview)
+- [Development](#development)
+- [Running locally](#running-locally)
+- [Infrastructure](#infrastructure)
+- [Actions](#actions)
+   * [Build and Test workflow](#build-and-test-workflow)
+   * [Provision and Deploy workflow](#provision-and-deploy-workflow)
+   * [Respository set up](#respository-set-up)
+      + [Secrets and first time build and deployment](#secrets-and-first-time-build-and-deployment)
+- [References](#references)
+
+<!-- TOC end -->
+
+---
+
+<!-- TOC --><a name="overview"></a>
+### Overview
 
 Whilst learning about [Remix](https://remix.run/docs) I wanted to create a reference repo that would help my colleagues quickly spin up the infra and CI/CD for such an application. 
 
@@ -37,10 +56,12 @@ It includes:
 - infrastructure as code using Bicep, creating minimal Azure resources for the app
 - GitHub Actions to build and deploy your app
 
-## Development
+<!-- TOC --><a name="development"></a>
+### Development
 
 The app was created using `npx create-remix@latest`, using no stack as we define our own infra and deployment mechanisms.
 
+<!-- TOC --><a name="running-locally"></a>
 ### Running locally
 
 From your terminal:
@@ -51,7 +72,8 @@ npm run dev
 
 This starts your app in development mode, rebuilding assets on file changes.
 
-## Infrastructure
+<!-- TOC --><a name="infrastructure"></a>
+### Infrastructure
 
 The Remix app can be run locally either directly using `npm run dev` or within a Docker container, which is defined in the [Dockerfile](https://github.com/speaktosteve/remix-on-azure-container-app/blob/main/Dockerfile). When deployed to the cloud, the app runs as a container.
 
@@ -66,13 +88,15 @@ The following infrastructure is provisioned as defined in the Bicep definition f
   - Shared dashboard
   - Log Analytics workspace
 
-## Actions
+<!-- TOC --><a name="actions"></a>
+### Actions
 
 The following workflows are used to build and deploy the app to Azure. In order for these to work you will need to set up a number of secrets and variables in your repo. See Set Up.
 
 GitHub actions: see workflows in [.github/workflows](https://github.com/speaktosteve/remix-on-azure-container-app/tree/main/.github/workflows)
 
-### Build and Test workflow
+<!-- TOC --><a name="build-and-test-workflow"></a>
+#### Build and Test workflow
 
 - Simply tries to build the app using standard NPM commands.
 
@@ -80,7 +104,8 @@ GitHub actions: see workflows in [.github/workflows](https://github.com/speaktos
 <img src="/post-assets/3/1.png" alt="Build and Test workflow" />
 </a>
 
-### Provision and Deploy workflow
+<!-- TOC --><a name="provision-and-deploy-workflow"></a>
+#### Provision and Deploy workflow
 
 - Provisions the infrastructure defined in the bicep definitions using AZD (Azure Developer CLI)
 - Builds and publishes the app as a Docker image to ACR (Azure Container Registry)
@@ -90,9 +115,11 @@ GitHub actions: see workflows in [.github/workflows](https://github.com/speaktos
 <img src="/post-assets/3/2.png" alt="Provision and Deploy workflow" />
 </a>
 
-### Respository set up
+<!-- TOC --><a name="respository-set-up"></a>
+#### Respository set up
 
-#### Secrets and first time build and deployment
+<!-- TOC --><a name="secrets-and-first-time-build-and-deployment"></a>
+##### Secrets and first time build and deployment
 
 **Service Principal**
 
@@ -167,3 +194,8 @@ Your repo secrets should look like this:
 </a>
 
 If you then re-run the **Provision and Deploy workflow** it should complete successfully. You should then have a running app within the Container App service.
+
+---
+
+<!-- TOC --><a name="references"></a>
+### References

@@ -20,8 +20,21 @@ references: [{
   }
 ]
 ---
+### Table of Contents
 
-## Overview
+<!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
+
+- [Overview](#overview)
+- [Azure Static Web Apps](#azure-static-web-apps)
+- [Setup](#setup)
+- [References](#references)
+
+<!-- TOC end -->
+
+---
+
+<!-- TOC --><a name="overview"></a>
+### Overview
 
 Right now I am creating rapid prototypes for a client, with a need to get simple (but performant and beautiful) SPAs to a cheap, scalable cloud hosting platform. 
 
@@ -36,7 +49,8 @@ Most of the following was gleaned from https://learn.microsoft.com/en-us/azure/s
 ----
 
 
-## Azure Static Web Apps
+<!-- TOC --><a name="azure-static-web-apps"></a>
+### Azure Static Web Apps
 
 I've used Azure SWAs a lot for prototypes and static apps, sacrificing the control and capability of App Services for simplicity of set up and low cost. And now hybrid Next.js websites on Azure Static Web Apps is in preview I can now deploy Next.js apps that use server components, SSR and API routes as an SPA. 
 
@@ -44,7 +58,8 @@ Previously I would have to either switch to a statically generated Next.js app i
 
 *Please note, at the time of writing, there are a number of Next.js/SWA features that are not supported by hybrid Next.js websites on Azure Static Web Apps; ISR, routing rewrites and navigation fallbacks being the main ones.*
 
-## Setup
+<!-- TOC --><a name="setup"></a>
+### Setup
 
 The setup is simple, create a basic Next.js app -> https://nextjs.org/docs/getting-started/installation
 
@@ -169,3 +184,8 @@ If I push a change to my main branch (or make a PR) I can see that the action is
 So thats it, we have a Next.js app, a CI/CD process in GitHub Actions and a scalable, serverless hosting solution in Azure Static Web apps!
 
 If you need to manage environment variables for your Next.js app and keep forgetting how, see [this article](/managing-environment-variables-in-nextjs-azure-static-web-apps).
+
+---
+
+<!-- TOC --><a name="references"></a>
+### References

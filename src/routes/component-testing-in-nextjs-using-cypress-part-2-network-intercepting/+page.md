@@ -26,8 +26,27 @@ references: [{
 
 ]
 ---
+## Table of Contents
 
-## Overview
+<!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
+
+- [Overview](#overview)
+- [Stubbing network responses](#stubbing-network-responses)
+- [Setup](#setup)
+- [Introducing cy.intercept()](#introducing-cyintercept)
+- [Test for non-success HTTP status codes and timeouts](#test-for-non-success-http-status-codes-and-timeouts)
+   * [Non-success status codes](#non-success-status-codes)
+   * [Network errors](#network-errors)
+   * [Timeouts](#timeouts)
+- [Other features of cy.intercept](#other-features-of-cyintercept)
+- [References](#references)
+
+<!-- TOC end -->
+
+---
+
+<!-- TOC --><a name="overview"></a>
+### Overview
 
 My team often works on component-centric projects, building component libraries and using frameworks such as Storybook to present each component in isolation, in all of its various states.
 
@@ -50,7 +69,8 @@ In this article we are going to:
 
 ---
 
-## Stubbing network responses
+<!-- TOC --><a name="stubbing-network-responses"></a>
+### Stubbing network responses
 
 An end-to-end (e2e) test is one that drives your code in the same way that a real user would, resulting in real HTTP requests to APIs. This type of test provides a good level of confidence that your system is working as a whole.
 
@@ -66,7 +86,8 @@ The rest of the time the use of stubbed responses is ideal, allowing you to cont
 
 `cy.intercept()` can be used to control all aspects of an HTTP response, headers, status code, and the body. We can also add delays to simulate latency.
 
-## Setup
+<!-- TOC --><a name="setup"></a>
+### Setup
 
 For this article, I will assume you have a Next.js app set up as per [the previous article in this series](/component-testing-in-nextjs-using-cypress-part-1-set-up). 
 
@@ -137,7 +158,8 @@ describe('Tests for the <Products /> component', () => {
 })
 ```
 
-## Introducing cy.intercept()
+<!-- TOC --><a name="introducing-cyintercept"></a>
+### Introducing cy.intercept()
 
 Running the above we can see that the tests are passing. We can also see that the external API is getting hit.
 
@@ -253,11 +275,13 @@ After a new run, we can spot a couple of differences:
 
 The 'ROUTES' output confirms that we are now hitting the stubbed API, we can also see in the visual that the test data is coming back (spot the 'Fake Product....' item). Also, the entire run was substantially faster than before.
 
-## Test for non-success HTTP status codes and timeouts
+<!-- TOC --><a name="test-for-non-success-http-status-codes-and-timeouts"></a>
+### Test for non-success HTTP status codes and timeouts
 
 Now we have stubbing set up it would be good to add some more tests around our component. We want to make sure the component handles a situation where the external API is not available, having a bad day, or not being as responsive as we would like.
 
-### Non-success status codes
+<!-- TOC --><a name="non-success-status-codes"></a>
+#### Non-success status codes
 
 We want our component to display a catch-all 'something went wrong fetching the data' message if a fetch operation to our API fails. This is hard to test for with end-to-end tests, but the work of a moment if we are using `cy.intercept()`.
 
@@ -355,7 +379,8 @@ We can also see that the fetch method is returning a 500 and the error message i
 <img src="/post-assets/6/4.png" alt="Cypress interface showing test execution" />
 </a>
 
-### Network errors
+<!-- TOC --><a name="network-errors"></a>
+#### Network errors
 
 Imagine that the network connection fails, something that is common when browsing on a mobile device. The end result on the component might be the same - a generic "something went wrong" message is displayed - but the cause is different to the previous 500 status code, so we want to test for this unhappy path as well.
 
@@ -389,7 +414,8 @@ cy.wait('@err').should('have.property', 'error')
 .should('have.property', 'error') verifies that the intercepted request has an error property, confirming the network error occurred as intended.
 
 
-### Timeouts
+<!-- TOC --><a name="timeouts"></a>
+#### Timeouts
 
 On many web and native apps you would have seen a message displayed if the app is deems that its taking too long to retrieve and display some information, e.g. 'Sorry, this is taking longer than expected'. Testing for this type of network latency is pretty hard in standard end-to-end automated tests, but not if we fake it using our interceptor!
 
@@ -622,10 +648,16 @@ describe('Tests for the <Products /> component', () => {
 
 Note, you can find the full code here: https://github.com/speaktosteve/nextjs-cypress-part1-and-part2
 
-## Other features of cy.intercept
+<!-- TOC --><a name="other-features-of-cyintercept"></a>
+### Other features of cy.intercept
 
 With the use of the `cy.intercept` you can also:
 
  - stub outgoing requests, to remove outbound traffic from your target code
  - use middleware to fake add auth headers that your external API is expected to add - https://docs.cypress.io/api/commands/intercept#Passing-a-request-to-the-next-request-handler
  - see official docs for lots more: https://docs.cypress.io/api/commands/intercept
+
+---
+
+<!-- TOC --><a name="references"></a>
+### References

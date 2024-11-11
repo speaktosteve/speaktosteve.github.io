@@ -22,7 +22,9 @@
 		<p class={`${isFeatured ? 'text-2xl' : 'text-lg'} font-semibold`}>
 			{title}
 		</p>
-		<p class="mt-3 {`${isFeatured ? 'line-clamp-3 text-base' : 'line-clamp-2 text-sm'}`}">
+		<p
+			class="mt-3 {`${isFeatured ? 'line-clamp-3 text-base md:line-clamp-none' : 'line-clamp-2 text-sm'}`}"
+		>
 			{description}
 		</p>
 		<p class="mt-6 text-sm font-medium">[{formattedTags}]</p>

@@ -26,19 +26,19 @@ references: [{
 
 ]
 ---
-## Table of Contents
+### Table of Contents
 
 <!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
 
-   * [Overview](#overview)
+- [Overview](#overview)
 - [Setup Next.js app](#setup-nextjs-app)
-      + [Run the Next.js app](#run-the-nextjs-app)
-   * [Set up our test tooling](#set-up-our-test-tooling)
-      + [Install Cypress](#install-cypress)
-      + [Create a basic test specification](#create-a-basic-test-specification)
-      + [Add further test cases to scenario](#add-further-test-cases-to-scenario)
-   * [Summary](#summary)
-   * [References](#references)
+   * [Run the Next.js app](#run-the-nextjs-app)
+- [Set up our test tooling](#set-up-our-test-tooling)
+   * [Install Cypress](#install-cypress)
+   * [Create a basic test specification](#create-a-basic-test-specification)
+   * [Add further test cases to scenario](#add-further-test-cases-to-scenario)
+- [Summary](#summary)
+- [References](#references)
 
 <!-- TOC end -->
 
@@ -74,7 +74,7 @@ You can find the full code here: https://github.com/speaktosteve/nextjs-cypress-
 ---
 
 <!-- TOC --><a name="setup-nextjs-app"></a>
-## Setup Next.js app
+### Setup Next.js app
 
 The usual Next.js setup, with all the defaults: https://nextjs.org/docs/getting-started/installation
 ```bash

@@ -20,8 +20,28 @@ references: [{
   }
 ]
 ---
+### Table of Contents
 
-## Overview
+<!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
+
+- [Overview](#overview)
+- [Runtime Environment Variables](#runtime-environment-variables)
+- [Client-side Environment Variables](#client-side-environment-variables)
+   * [.env files](#env-files)
+- [Approach](#approach)
+- [Experiment](#experiment)
+- [GitHub Workflow](#github-workflow)
+- [Azure DevOps Pipelines:](#azure-devops-pipelines)
+   * [Key Points:](#key-points)
+   * [How to Add Secrets in Azure DevOps:](#how-to-add-secrets-in-azure-devops)
+- [References](#references)
+
+<!-- TOC end -->
+
+---
+
+<!-- TOC --><a name="overview"></a>
+### Overview
 
 I've used Azure SWAs a lot for prototypes and static apps, sacrificing the control and capability of App Services for simplicity of set up and low cost. And now hybrid Next.js websites on Azure Static Web Apps is in preview I can deploy Next.js apps that use server components, SSR and API routes as an SPA. 
 
@@ -34,6 +54,7 @@ See official docs: https://nextjs.org/docs/app/building-your-application/configu
 
 ----
 
+<!-- TOC --><a name="runtime-environment-variables"></a>
 ### Runtime Environment Variables
 
 These are variables that are accessed server-side by the Node.js runtime, on parts of our Next.js app that are processed on the server. We can manage these via the 'Environment variables' blade in the Azure portal:
@@ -42,13 +63,15 @@ These are variables that are accessed server-side by the Node.js runtime, on par
 <img src="/post-assets/2/1.png" alt="managing env vars via the Azure portal" />
 </a>
 
+<!-- TOC --><a name="client-side-environment-variables"></a>
 ### Client-side Environment Variables
 
 It's actually pretty simple once you remember that client-side environment variables need to be baked in to the app at build time in order to be available to code running in the browser. This is unlike standard environment variables that are available to the Node runtime on the server. 
 
 These client-side variables are prefixed with NEXT_PUBLIC_ and accessed in areas of your code that run in the browser. 
 
-### .env files
+<!-- TOC --><a name="env-files"></a>
+#### .env files
 
 The .env.local file is handy for local development, it is ignored by git and not pushed to the repo, therefore the variables contained are not available to the GitHub action at build time. This is good, it means we are not leaking secrets by pushing them to a repository where we might lose control of who can view them.
 
@@ -58,6 +81,7 @@ Simple, and it works, but the implications of the .env file being added to sourc
 
 ----
 
+<!-- TOC --><a name="approach"></a>
 ### Approach
 
 There are lots of approaches to how to solve this - to provide these client-side environment variables to the build process in a secure way. My typical approach is to:
@@ -66,6 +90,7 @@ There are lots of approaches to how to solve this - to provide these client-side
 - alternatively, store a fully formed .env file as a secure file Azure DevOps 'secure files' or similar, although I find this harder to manage than having the variables as separate items
 - in the action/pipeline, prior to `npm run build` being executed, generate a .env file, piping in the environment variables (or grab a full-formed one if preferred)
 
+<!-- TOC --><a name="experiment"></a>
 ### Experiment
 
 To demonstrate this approach I have created a simple Next.js app - code here: https://github.com/speaktosteve/next-env-vars.
@@ -138,7 +163,8 @@ After a minute I refresh my app and, behold, I can see that the variable is avai
 
 But what about the browser variable? I want to create a secure way to bundle this into the app prior deployment.
 
-### GitHub Workflowq
+<!-- TOC --><a name="github-workflow"></a>
+### GitHub Workflow
 
 Firstly, I add the NEXT_PUBLIC_BROWSER_VARIABLE variable as a secret via the 'Actions secrets and variables' section in the repository settings in GitHub.
 
@@ -277,6 +303,7 @@ Success! We can see both the runtime and client-side environment variables:
 <img src="/post-assets/2/8.png" alt="both the runtime and client-side environment variables" />
 </a>
 
+<!-- TOC --><a name="azure-devops-pipelines"></a>
 ### Azure DevOps Pipelines:
 
 The above approach is just as easy when using Azure DevOps pipelines, although the YAML looks slightly different:
@@ -286,13 +313,20 @@ The above approach is just as easy when using Azure DevOps pipelines, although t
     displayName: 'Generate Env File'
 ```
 
+<!-- TOC --><a name="key-points"></a>
 #### Key Points:
 
 - Accessing Secrets: In Azure DevOps, secrets are accessed using $(SECRET_NAME). In this case, $(NEXT_PUBLIC_BROWSER_VARIABLE) refers to the secret added to your Azure DevOps pipeline.
 - Appending to File: The echo command appends the environment variable (NEXT_PUBLIC_BROWSER_VARIABLE) to the .env file, as it would in GitHub Actions.
 
+<!-- TOC --><a name="how-to-add-secrets-in-azure-devops"></a>
 #### How to Add Secrets in Azure DevOps:
 
 - In Azure DevOps, go to your project.
 - Navigate to Pipelines > Library > Variable Groups (or Pipeline Variables if it’s specific to one pipeline).
 - Add NEXT_PUBLIC_BROWSER_VARIABLE as a secret variable.
+
+---
+
+<!-- TOC --><a name="references"></a>
+### References

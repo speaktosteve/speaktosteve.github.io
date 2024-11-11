@@ -26,8 +26,13 @@ references: [{
 
 ]
 ---
+### Table of Contents
 
-## Overview
+[TOC]
+
+---
+
+### Overview
 
 My team often works on component-centric projects, building component libraries and using frameworks such as Storybook to present each component in isolation, in all of its various states.
 
@@ -55,8 +60,13 @@ In this article we are going to:
 - introduce `cy.intercept` to allow us to stub the date entering our component
 ---
 
-## Set up Storybook
+### Set up Storybook
 https://storybook.js.org/docs/get-started/frameworks/nextjs
 
 
 Note, you can find the full code here: https://github.com/speaktosteve/nextjs-cypress-part3
+
+---
+
+<!-- TOC --><a name="references"></a>
+### References

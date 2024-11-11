@@ -101,7 +101,7 @@ And when you run it, it looks like this:
 <!-- TOC --><a name="approach-1-a-true-component-test-using-cystub"></a>
 ### Approach 1 - a true component test using `cy.stub`
 
-**Firstly kudos to [@MuratKeremOzcan](@MuratKeremOzcan), I leaned on the approach outlined in [his video](https://www.youtube.com/watch?v=b9LH2gYubSo).**
+**Firstly kudos to [@MuratKeremOzcan](https://www.youtube.com/@MuratKeremOzcan), I leaned on the approach outlined in [his video](https://www.youtube.com/watch?v=b9LH2gYubSo).**
 
 If we start with a simple cypress test, and try to run it against our new server component we will get a confusing error:
 

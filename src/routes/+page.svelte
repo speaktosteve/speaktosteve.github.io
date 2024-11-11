@@ -29,7 +29,7 @@
 	<h4
 		class="m-12 mb-8 hidden border-b border-slate-800 pb-4 text-center lg:block dark:border-slate-600"
 	>
-		Featured
+		Featured Articles
 	</h4>
 	<ul class="mx-auto grid max-w-lg gap-5 p-4 lg:max-w-none lg:grid-cols-2">
 		{#each featuredPosts as { url, title, description, date, tags, isFeatured }}

@@ -26,8 +26,23 @@ references: [{
   
 ]
 ---
+### Table of Contents
 
-## Overview
+<!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
+
+- [Overview](#overview)
+- [Setup](#setup)
+- [Adding clsx](#adding-clsx)
+- [Setting up the prettier-plugin-tailwindcss](#setting-up-the-prettier-plugin-tailwindcss)
+   * [Configuring the prettier-plugin-tailwindcss to supporting clsx](#configuring-the-prettier-plugin-tailwindcss-to-supporting-clsx)
+- [References](#references)
+
+<!-- TOC end -->
+
+---
+
+<!-- TOC --><a name="overview"></a>
+### Overview
 
 [clsx](https://www.npmjs.com/package/clsx), the lightweight library generally used to simplify the use of conditional CSS class names in libraries such as React, is something I am pretty new to.
 
@@ -43,7 +58,8 @@ This article and corresponding [reference repo](https://github.com/speaktosteve/
 
 ----
 
-## Setup
+<!-- TOC --><a name="setup"></a>
+### Setup
 
 The setup is simple, create a basic Next.js app -> https://nextjs.org/docs/getting-started/installation
 
@@ -163,7 +179,8 @@ Beautiful right?
 <img src="/post-assets/4/5.png" alt="Setting up Next.js app" />
 </a>
 
-## Adding clsx
+<!-- TOC --><a name="adding-clsx"></a>
+### Adding clsx
 
 Now the good bit, as you can see above, we are using a standard ternary expression to apply the desired tailwind class:
 
@@ -201,7 +218,8 @@ Nice, the component still renders as before, but its cleaner and (in my mind) ea
 <img src="/post-assets/4/7.png" alt="Setting up Next.js app" />
 </a>
 
-## Setting up the prettier-plugin-tailwindcss
+<!-- TOC --><a name="setting-up-the-prettier-plugin-tailwindcss"></a>
+### Setting up the prettier-plugin-tailwindcss
 
 If you followed the instructions in this article from the beginning then the `npx create-next-app@latest` command will have set up tailwind for you. If not, then you can add tailwind using the following commands to install and configure:
 
@@ -266,7 +284,8 @@ After saving (or explicitly running the 'format document' command):
 </div>
 ```
 
-## Supporting clsx
+<!-- TOC --><a name="configuring-the-prettier-plugin-tailwindcss-to-supporting-clsx"></a>
+#### Configuring the prettier-plugin-tailwindcss to supporting clsx
 
 In order for prettier to sort classes that are part of a clsx method call (and not in a className attribute) there is a further step.
 
@@ -325,3 +344,8 @@ See [Sorting classes in function calls](https://github.com/tailwindlabs/prettier
 ---
 
 You can find the complete solution here: https://github.com/speaktosteve/tailwind-clsx-prettier
+
+---
+
+<!-- TOC --><a name="references"></a>
+### References

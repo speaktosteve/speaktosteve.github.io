@@ -14,9 +14,10 @@ references: [{
     "title": "Component testing in Next.js using Cypress - Part 1 - Set up",
   },
   {
-    "type": "external", 
-    "link": "https://docs.cypress.io/api/commands/intercept",
-    "title": "Cypress docs - intercept method",
+        "type": "external", 
+    "link": "https://www.cypress.io/blog/cypress-component-testing-for-developers",
+    "title": "Cypress blog - What Cypress Component Testing Means for Developers",
+    
   },
   {
     "type": "external", 
@@ -84,24 +85,85 @@ In this article we are going to:
 <!-- TOC --><a name="create-a-server-component"></a>
 ### Create a server component
 
+I'm going to assume you have a Next.js application with Cypress set up. A full guide to setting this up can be found in [this previous article](/component-testing-in-nextjs-using-cypress-part-1-set-up). 
+
 First step is to introduce a simple server component:
 
-!!!!CODE
+```tsx
+//src/app/components/productsServer/productsServer.tsx
 
+import { getProducts } from '@/app/utils/api'
+import { ProductCard } from '../productCard/productCard'
+import { IProduct } from '@/app/types/product'
+
+export const ProductsServer = async () => {
+    const response = await getProducts()
+
+    if (!response.ok) {
+        return <p>Something went wrong...</p>
+    }
+
+    const products: IProduct[] = await response.json()
+    return (
+        <section>
+            <h2 className="text-xl pb-4">Products</h2>
+            <ul>
+                {products && products.length === 0 && <p>No products found</p>}
+                <ul className="grid md:grid-cols-2">
+                    {products &&
+                        products.map((product) => (
+                            <ProductCard product={product} key={product.id} />
+                        ))}
+                </ul>
+            </ul>
+        </section>
+    )
+}
+
+```
+
+This component displays product data in exactly the same way as our  `<Products />` client component. You will see that:
+ - it is imaginatively named `<ProductsServer />` to differentiate it from the `<Products />` client component
+ - there is no `use client` declaration, so Next.js will assume this code needs to run on the server
+ - its asynchronous
+ - it retrieves the data from the same `getProducts()` function as the client component
+ 
 I have incorporated the new component into the app, along with a way to navigate between it and the original client component. You can access the full code in the [reference repo](https://github.com/speaktosteve/nextjs-cypress-part3).
 
-The app structure is:
+The app structure is now:
 
-!!!!SITE MAP (BEFORE NEW TESTS)
+```md
+src
+└───app
+    └─── components
+      └─── products
+        └─── products.cy.tsx
+        └─── products.tsx
+      └─── productsServer
+        └─── productsServer.tsx
+      └─── hooks
+          └───useProducts.tsx
+      └─── types
+          └─── product.ts
+      └─── utils
+          └─── api.ts
+      └─── page.
+
+```
 
 And when you run it, it looks like this:
 
-!!!!SCREEN SHOT
+<a href="/post-assets/7/1.png" target="_blank">
+<img src="/post-assets/7/1.png" alt="Next.js app" />
+</a>
 
 <!-- TOC --><a name="approach-1-a-true-component-test-using-cystub"></a>
 ### Approach 1 - a true component test using `cy.stub`
 
 **Firstly kudos to [@MuratKeremOzcan](https://www.youtube.com/@MuratKeremOzcan), I leaned on the approach outlined in [his video](https://www.youtube.com/watch?v=b9LH2gYubSo).**
+
+<!-- TOC --><a name="create-tests"></a>
+#### Create tests
 
 If we start with a simple cypress test, and try to run it against our new server component we will get a confusing error:
 
@@ -114,13 +176,11 @@ If we start with a simple cypress test, and try to run it against our new server
 <!-- TOC --><a name="await-the-loading-of-the-component"></a>
 #### Await the loading of the component
 
-In order to resolve this, we need to await the loading of the component 
-
-<!-- TOC --><a name="create-tests"></a>
-#### Create tests
+In order to resolve this, we need to await the loading of the component. 
 
 <!-- TOC --><a name="use-the-cystub-function"></a>
 #### Use the `cy.stub` function
+
 
 metnion alias for json file (or dont use it)
 
@@ -133,8 +193,26 @@ metnion alias for json file (or dont use it)
 <!-- TOC --><a name="approach-2-an-end-to-end-test"></a>
 ### Approach 2 - an end-to-end test
 
+This was my first attempt at solving the problem of running tests against server components, so I thought I would record it here as it might still be useful. However, I do recommend considering the first option above as this second approach feels too much of a compromise for my liking.
+
+When I initially created a component test for the `<ProductServer />` server component I faced the following error:
+
+!!!!! initial error
+
+Having looking at the official [Next.js docs on using Cypress](https://nextjs.org/docs/pages/building-your-application/testing/cypress)...
+
+> Cypress currently doesn't support Component Testing for async Server Components. We recommend using E2E testing.
+
+...I moved my focus onto using E2E tests instead of Component tests. This felt like a compromise as I wanted to test the component in memory, without worrying about spinning them up in a browser.
+
+In my research I settled on the following approach:
+ - To use E2E tests I needed the component to be available to Cypress's `cy.visit()` method, basically it needs to be viewable in a browser.
+ - For this, I decided to use [Storybook](https://storybook.js.org/docs/get-started/frameworks/nextjs), which would allow me 
+
 <!-- TOC --><a name="set-up-storybook"></a>
 #### Set up Storybook
+
+
 https://storybook.js.org/docs/get-started/frameworks/nextjs
 
 css and use of plugin

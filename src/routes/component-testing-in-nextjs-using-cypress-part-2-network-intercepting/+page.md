@@ -23,6 +23,12 @@ references: [{
     "link": "https://docs.cypress.io/api/commands/intercept",
     "title": "Cypress docs - intercept method",
   },
+    {
+        "type": "external", 
+    "link": "https://www.cypress.io/blog/cypress-component-testing-for-developers",
+    "title": "Cypress blog - What Cypress Component Testing Means for Developers",
+    
+  },
 
 ]
 ---
@@ -104,7 +110,6 @@ src
         └─── product.ts
     └─── utils
         └─── api.ts
-    └─── page.tsx
 
 ```
 With the `products.cy.tsx` file looking like:

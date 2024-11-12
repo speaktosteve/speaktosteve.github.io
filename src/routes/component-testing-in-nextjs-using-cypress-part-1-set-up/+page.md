@@ -77,6 +77,13 @@ In subsequent articles we are going to build on this to:
 
 You can find the full code here: https://github.com/speaktosteve/nextjs-cypress-part1-and-part2
 
+<div class="border p-4 not-italic">
+Refer to other articles in this series:
+<ul>
+<li><a href="/component-testing-in-nextjs-using-cypress-part-2-network-intercepting">Component testing in Next.js using Cypress - Part 2 - Intercepting network requests</a></li>
+<li><a href="/component-testing-in-nextjs-using-cypress-part-3-server-components">Component testing in Next.js using Cypress - Part 3 - Server components</a></li>
+</div>
+
 ---
 
 <!-- TOC --><a name="setup-nextjs-app"></a>

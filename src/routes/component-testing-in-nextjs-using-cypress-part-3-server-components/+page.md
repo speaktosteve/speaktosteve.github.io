@@ -52,12 +52,17 @@ references: [{
    * [Run Storybook](#run-storybook)
    * [Add custom CSS](#add-custom-css)
    * [Open the component in isolation](#open-the-component-in-isolation)
+   * [Add an E2E test](#add-an-e2e-test)
+   * [Build out E2E test and add response stubbing](#build-out-e2e-test-and-add-response-stubbing)
    * [Summary](#summary)
-- [Approach 2 - a true component test using `cy.stub`](#approach-2-a-true-component-test-using-cystub)
+- [Approach 2 - a true component test using `cy.stub` and `async`/`await`](#approach-2-a-true-component-test-using-cystub-and-asyncawait)
    * [Await the loading of the component](#await-the-loading-of-the-component)
    * [Use the `cy.stub` function](#use-the-cystub-function)
-   * [Summary](#summary-1)
-- [Other possible solutions:](#other-possible-solutions)
+   * [Where it goes wrong for me](#where-it-goes-wrong-for-me)
+   * [Try using Promises instead of `async`/`await`](#try-using-promises-instead-of-asyncawait)
+- [Other possible solutions](#other-possible-solutions)
+   * [Move asynchronous data fetches out of the server component](#move-asynchronous-data-fetches-out-of-the-server-component)
+   * [Use timouts](#use-timouts)
 - [References](#references)
 
 <!-- TOC end -->
@@ -85,9 +90,8 @@ In this article we are going to:
 
 - expand on the application that we created in [part 1](/component-testing-in-nextjs-using-cypress-part-1-set-up) and [part 2](/component-testing-in-nextjs-using-cypress-part-2-network-intercepting) of this series. The complete code for those two articles can be found here: https://github.com/speaktosteve/nextjs-cypress-part1-and-part2
 - add a simple server component to the application
-- explore **two options** for adding tests for the server component:
-  - `await` the call to the component and use `cy.stub` to stub the API response
-  - run our component in a standalone view using Storybook and write an end-to-end test
+- explore how to add tests for the server component using Storybook and an end-to-end test
+- look at other possible approaches
 ---
 
 <!-- TOC --><a name="create-a-server-component"></a>
@@ -127,7 +131,6 @@ export const ProductsServer = async () => {
         </section>
     )
 }
-
 ```
 
 This component displays product data in exactly the same way as our  `<Products />` client component. You will see that:
@@ -370,6 +373,7 @@ We now have a URL that we can point our Cypress E2E test at for testing our comp
 
 http://localhost:6006/iframe.html?globals=&args=&id=products-server-rendered--default&viewMode=story
 
+<!-- TOC --><a name="add-an-e2e-test"></a>
 #### Add an E2E test
 
 I have chosen to add the E2E test in the same folder as the component. This makes sense to me, unlike traditional E2E tests this is specifically targetting the component. 
@@ -430,6 +434,7 @@ You should then see the E2E test passing:
 <img src="/post-assets/7/11.png" alt="Storybook UI" />
 </a>
 
+<!-- TOC --><a name="build-out-e2e-test-and-add-response-stubbing"></a>
 #### Build out E2E test and add response stubbing
 
 Now lets add some further tests and leverage the same `cy.intercept` function that we use in our client component tests in [part2](/component-testing-in-nextjs-using-cypress-part-2-network-intercepting) of this series.
@@ -506,16 +511,23 @@ The main thing is that it works, but I can't help feeling its a bit of a hack.
 - its involved some tricky setup and adding Storybook (which might not be desirable)
 - on the plus side the test itself is very similar to the client component equivalent, same use of `cy.intercept`, so little knowledge to gain if you are already comfortable with that function.
 
-<!-- TOC --><a name="approach-2-a-true-component-test-using-cystub"></a>
-### Approach 2 - a true component test using `cy.stub`
+<!-- TOC --><a name="approach-2-a-true-component-test-using-cystub-and-asyncawait"></a>
+### Approach 2 - a true component test using `cy.stub` and `async`/`await`
 
 **Firstly kudos to [@MuratKeremOzcan](https://www.youtube.com/@MuratKeremOzcan), I leaned on the approach outlined in [his video](https://www.youtube.com/watch?v=b9LH2gYubSo).**
+
+Remember our initial error?
+
+>> "Error: Objects are not valid as a React child (found: [object Promise]). If you meant to render a collection of children, use an array instead."
+
+In the video above by [@MuratKeremOzcan](https://www.youtube.com/@MuratKeremOzcan) he suggests solving this by using `cy.stub` and `async`/`await`
+
 
 
 <!-- TOC --><a name="await-the-loading-of-the-component"></a>
 #### Await the loading of the component
 
-In order to resolve this, we need to await the loading of the component. Lets make the test `async` and reference the `<ProductsServer />` with an `await`
+Await the loading of the component, making the test `async` and reference the `<ProductsServer />` with an `await`:
 
 ```tsx
 //src/app/components/productsServer/productsServer.cy.tsx
@@ -539,32 +551,254 @@ Success! The test is now passing. We are loading the component in using `await P
 
 Now for the network calls. As with our client component tests, its important for us to be able to control the data coming into our component, so we can test how the component reacts to different responses.
 
-So lets try our initial approach of using `cy.intercept`:
+Lets introduce the `cy.stub` function:
 
 ```tsx
 //src/app/components/productsServer/productsServer.cy.tsx
 import { ProductsServer } from './productsServer'
 
+import fakeProducts from '@fixtures/fakeProducts.json'
+import { ProductsServer } from './productsServer'
+
 describe('Tests for the <ProductsServer /> component', () => {
+    let stub: ReturnType<typeof cy.stub>
+
+    beforeEach(() => {
+        cy.log('Adding stub to return stubbed response')
+        // stub window.fetch
+        stub = cy.stub(window, 'fetch')
+
+        stub.resolves({
+            json: cy.stub().resolves(fakeProducts),
+            ok: true,
+        })
+    })
+
     it('renders component', async () => {
         cy.mount(await ProductsServer())
     })
 })
 ```
 
+And view the test in Cypress:
 
-metnion alias for json file (or dont use it)
+<a href="/post-assets/7/13.png" target="_blank">
+<img src="/post-assets/7/13.png" alt="Cypress app" />
+</a>
 
-<!-- TOC --><a name="summary-1"></a>
-#### Summary
-- fast
-- easy to set up
+Great, you can see the stubbed data is being used by the component instead of the real API response.
+
+<!-- TOC --><a name="where-it-goes-wrong-for-me"></a>
+#### Where it goes wrong for me
+
+Next lets add a further test, to check the text of the page header:
+
+```tsx
+//src/app/components/productsServer/productsServer.cy.tsx
+import { ProductsServer } from './productsServer'
+
+import fakeProducts from '@fixtures/fakeProducts.json'
+import { ProductsServer } from './productsServer'
+
+describe('Tests for the <ProductsServer /> component', () => {
+    let stub: ReturnType<typeof cy.stub>
+
+    beforeEach(() => {
+        cy.log('Adding stub to return stubbed response')
+        // stub window.fetch
+        stub = cy.stub(window, 'fetch')
+
+        stub.resolves({
+            json: cy.stub().resolves(fakeProducts),
+            ok: true,
+        })
+    })
+
+    it('renders component', async () => {
+        cy.mount(await ProductsServer())
+    })
+
+        // test that the component shows the correct header
+    it('renders header', () => {
+        ProductsServer().then((component) => {
+            cy.mount(component)
+            cy.get('h2').should('have.text', 'Products (Server-Rendered)')
+        })
+    })
+})
+```
+
+The new 'renders header' simply does a string match on the page heading, and it seems to pass as you would expect:
+
+<a href="/post-assets/7/14.png" target="_blank">
+<img src="/post-assets/7/14.png" alt="Cypress app" />
+</a>
+
+However, if I change the test to intentionally fail - checking for an incorrect heading:
+
+```tsx
+//src/app/components/productsServer/productsServer.cy.tsx
+import { ProductsServer } from './productsServer'
+
+import fakeProducts from '@fixtures/fakeProducts.json'
+import { ProductsServer } from './productsServer'
+
+describe('Tests for the <ProductsServer /> component', () => {
+    let stub: ReturnType<typeof cy.stub>
+
+    beforeEach(() => {
+        cy.log('Adding stub to return stubbed response')
+        // stub window.fetch
+        stub = cy.stub(window, 'fetch')
+
+        stub.resolves({
+            json: cy.stub().resolves(fakeProducts),
+            ok: true,
+        })
+    })
+
+    it('renders component', async () => {
+        cy.mount(await ProductsServer())
+    })
+
+        // test that the component shows the correct header
+    it('renders header', () => {
+        ProductsServer().then((component) => {
+            cy.mount(component)
+            cy.get('h2').should('have.text', 'A totally different heading')
+        })
+    })
+})
+```
+
+Take a look at the result:
+
+<a href="/post-assets/7/15.png" target="_blank">
+<img src="/post-assets/7/15.png" alt="Cypress app" />
+</a>
+
+
+The `renders header` seems to pass (which is unexpected), however the assertion from the `.should()` is failing (which is expected).
+
+This is annoying, and I haven't solved how to get past this, hence why I have settled for the E2E test approach. Cypress documentation doesn't give me much hope, explaining that its [commands run asynchronously](https://docs.cypress.io/app/core-concepts/introduction-to-cypress#Commands-Are-Asynchronous) and that "Cypress currently doesn't support Component Testing for async Server Components. We recommend using E2E testing.".
+
+<!-- TOC --><a name="try-using-promises-instead-of-asyncawait"></a>
+#### Try using Promises instead of `async`/`await`
+
+I tried the following to see if removing the `async`/`await` helps, but no cigar:
+
+```tsx
+//src/app/components/productsServer/productsServer.tsx
+
+import { ProductCard } from '../productCard/productCard'
+import { IProduct } from '@/app/types/product'
+
+export const ProductsServer = ({ products }: { products: IProduct[] }) => {
+    return (
+        <section>
+            <h2 className="text-xl pb-4">Products (Server-Rendered)</h2>
+            <ul>
+                {products && products.length === 0 && <p>No products found</p>}
+                <ul className="grid md:grid-cols-2">
+                    {products &&
+                        products.map((product) => (
+                            <ProductCard product={product} key={product.id} />
+                        ))}
+                </ul>
+            </ul>
+        </section>
+    )
+}
+```
 
 <!-- TOC --><a name="other-possible-solutions"></a>
-### Other possible solutions:
+### Other possible solutions
 
- - move asynchronous data fetches out of the server component that you want to test
+<!-- TOC --><a name="move-asynchronous-data-fetches-out-of-the-server-component"></a>
+####  Move asynchronous data fetches out of the server component
 
+This allows you to make your server component synchronous:
+
+```tsx
+import { ProductCard } from '../productCard/productCard'
+import { IProduct } from '@/app/types/product'
+
+export const ProductsServer = ({ products }: { products: IProduct[] }) => {
+    return (
+        <section>
+            <h2 className="text-xl pb-4">Products (Server-Rendered)</h2>
+            <ul>
+                {products && products.length === 0 && <p>No products found</p>}
+                <ul className="grid md:grid-cols-2">
+                    {products &&
+                        products.map((product) => (
+                            <ProductCard product={product} key={product.id} />
+                        ))}
+                </ul>
+            </ul>
+        </section>
+    )
+}
+ ```
+And does mean you can run true component tests against the component:
+```tsx
+import { ProductsServer } from './productsServer'
+
+describe('Tests for the <ProductsServer /> component', () => {
+    const fakeProducts = [
+        {
+            id: 1,
+            title: 'Fake product',
+            price: '22.3',
+            category: "men's clothing",
+            description:
+                'Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.',
+            image: 'https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg',
+        },
+    ]
+
+    it('renders component', async () => {
+        cy.mount(ProductsServer({ products: fakeProducts }))
+    })
+    // test that the component shows the correct header
+    it('renders header', () => {
+        cy.mount(ProductsServer({ products: fakeProducts }))
+
+        cy.get('h2').should('have.text', 'Products (Server-Rendered)')
+    })
+})
+```
+The compromise is that you are changing your architecture, moving your data fetching out to a different file - which might not be desirable
+
+<!-- TOC --><a name="use-timouts"></a>
+#### Use timouts
+
+Litter your tests with `cy.wait` calls to try to get around the async issue. I dont recommend this - its extremely flaky as the timings of these tests are volatile.
+
+```tsx
+import { ProductsServer } from './productsServer';
+
+describe('Tests for the <ProductsServer /> component', () => {
+  it('renders component', () => {
+    ProductsServer().then((component) => {
+      cy.mount(component);
+    });
+  });
+
+  // Test that the component shows the correct header
+  it('renders header', () => {
+    ProductsServer().then((component) => {
+      cy.mount(component);
+
+      // Wait for the component to render before asserting
+      cy.get('h2', { timeout: 10000 }) // Increase timeout if necessary
+        .should('exist') // Ensure the element is present
+        .and('have.text', 'Products (Server-Rendered)');
+    });
+  });
+});
+
+```
 
 Note, you can find the full code here: https://github.com/speaktosteve/nextjs-cypress-part3
 

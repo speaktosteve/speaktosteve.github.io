@@ -72,7 +72,7 @@ export const POSTS_LIST = [
 		isFeatured: true,
 		topic: 'front-end',
 		tags: ['next.js', 'component testing', 'cypress', 'automated testing'],
-		isDisabled: true
+		isDisabled: false
 	},
 	
 

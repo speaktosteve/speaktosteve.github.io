@@ -13,6 +13,11 @@ references: [{
     "link": "/component-testing-in-nextjs-using-cypress-part-1-set-up",
     "title": "Component testing in Next.js using Cypress - Part 1 - Set up",
   },
+    {
+    "type": "internal", 
+    "link": "/component-testing-in-nextjs-using-cypress-part-2-network-intercepting",
+    "title": "Component testing in Next.js using Cypress - Part 2 - Intercepting network requests",
+  },
   {
         "type": "external", 
     "link": "https://www.cypress.io/blog/cypress-component-testing-for-developers",
@@ -42,14 +47,17 @@ references: [{
 - [Create a server component](#create-a-server-component)
 - [Create tests](#create-tests)
 - [Approach 1 - an end-to-end test pretending to be a component test](#approach-1-an-end-to-end-test-pretending-to-be-a-component-test)
-   * [Set up Storybook](#set-up-storybook)
-   * [Tweak the cypress configuration](#tweak-the-cypress-configuration)
-   * [Create tests](#create-tests-1)
+   * [Install Storybook](#install-storybook)
+   * [Create a Storybook story](#create-a-storybook-story)
+   * [Run Storybook](#run-storybook)
+   * [Add custom CSS](#add-custom-css)
+   * [Open the component in isolation](#open-the-component-in-isolation)
    * [Summary](#summary)
 - [Approach 2 - a true component test using `cy.stub`](#approach-2-a-true-component-test-using-cystub)
    * [Await the loading of the component](#await-the-loading-of-the-component)
    * [Use the `cy.stub` function](#use-the-cystub-function)
    * [Summary](#summary-1)
+- [Other possible solutions:](#other-possible-solutions)
 - [References](#references)
 
 <!-- TOC end -->
@@ -206,8 +214,8 @@ In my research I settled on the following approach:
  - To use E2E tests I needed the component to be available to Cypress's `cy.visit()` method, basically it needs to be viewable in a browser.
  - For this, I decided to use [Storybook](https://storybook.js.org/docs/get-started/frameworks/nextjs), which would allow me to access a component in isolation at a specific URL
 
-<!-- TOC --><a name="set-up-storybook"></a>
-#### Set up Storybook
+<!-- TOC --><a name="install-storybook"></a>
+#### Install Storybook
 
 Please checkout the [Storybook docs](https://storybook.js.org/docs/) if you aren't familiar with the tool. Also, the full installation guide for adding Storybook to a Next.js app can be found [here](https://storybook.js.org/docs/get-started/frameworks/nextjs).
 
@@ -219,9 +227,14 @@ Firstly, install Storybook:
 npx storybook@latest init
 ```
 
+This will add all of the required scaffolding for Storybook, including some sample stories.
+
+<!-- TOC --><a name="create-a-storybook-story"></a>
+#### Create a Storybook story
+
 We will now add our first story for the `<ProductsServer />` component. This will allow us access to the isolated component in a browser using Storybook.
 
-I'm adding the story file to the same `productsServer` folder as the component itself.
+I'm adding the story file to the same `src/app/components/productsServer` folder as the component itself.
 
 ```ts
 //src/app/components/productsServer/productsServer.stories.ts
@@ -253,8 +266,30 @@ export const Default: Story = {}
 
 ```
 
+<!-- TOC --><a name="run-storybook"></a>
+#### Run Storybook
 
-Then, enable the `experimentalRSC` feature
+Then, run Storybook:
+
+```bash
+npm run storybook
+```
+
+Navigate to the Storybook UI at http://localhost:6006/ and you should see something like this:
+
+<a href="/post-assets/7/4.png" target="_blank">
+<img src="/post-assets/7/4.png" alt="Storybook UI" />
+</a>
+
+If you navigate to the `Products (Server Rendered)` component (and click on 'Default') you will see an error:
+
+>> async/await is not yet supported in Client Components, only Server Components. This error is often caused by accidentally adding `'use client'` to a module that was originally written for the server.
+
+<a href="/post-assets/7/5.png" target="_blank">
+<img src="/post-assets/7/5.png" alt="Storybook UI" />
+</a>
+
+But don't worry! This is simple to fix via the experimental RSC support flag. Enable the `experimentalRSC` feature in your `.storybook/main.ts` file. This provides support for React Server Components:
 
 ```ts
 import type { StorybookConfig } from '@storybook/nextjs'
@@ -280,27 +315,196 @@ export default config
 
 ```
 
-css and use of plugin
+If you restart Storybook you should now be able to see the `<ProductsServer />` component:
 
+<a href="/post-assets/7/6.png" target="_blank">
+<img src="/post-assets/7/6.png" alt="Storybook UI" />
+</a>
 
+<!-- TOC --><a name="add-custom-css"></a>
+#### Add custom CSS
 
+Good, but it looks ugly. Lets make sure Storybook loads our CSS in when previewing our components. In `.storybook/preview.ts` simply add a reference to the main .css file:
+
+```ts
+// .storybook/preview.ts
+import type { Preview } from '@storybook/react'
+import './../src/app/globals.css'
+
+const preview: Preview = {
+    parameters: {
+        controls: {
+            matchers: {
+                color: /(background|color)$/i,
+                date: /Date$/i,
+            },
+        },
+    },
+}
+
+export default preview
+```
+
+Now, the CSS will kick in and you can see the component in all of its beautiful glory:
+
+<a href="/post-assets/7/7.png" target="_blank">
+<img src="/post-assets/7/7.png" alt="Storybook UI" />
+</a>
+
+<!-- TOC --><a name="open-the-component-in-isolation"></a>
+#### Open the component in isolation
+
+If you click on the 'Open canvas in new tab' button in the top right...
+
+<a href="/post-assets/7/8.png" target="_blank">
+<img src="/post-assets/7/8.png" alt="Storybook UI" />
+</a>
+
+...the component will load in its own tab, with no frame or other elements.
+
+<a href="/post-assets/7/9.png" target="_blank">
+<img src="/post-assets/7/9.png" alt="Storybook UI" />
+</a>
+
+We now have a URL that we can point our Cypress E2E test at for testing our component. It should look a little something like this:
 
 http://localhost:6006/iframe.html?globals=&args=&id=products-server-rendered--default&viewMode=story
 
-<!-- TOC --><a name="tweak-the-cypress-configuration"></a>
-#### Tweak the cypress configuration
+#### Add an E2E test
 
-<!-- TOC --><a name="create-tests-1"></a>
-#### Create tests
+I have chosen to add the E2E test in the same folder as the component. This makes sense to me, unlike traditional E2E tests this is specifically targetting the component. 
 
+To ensure Cypress knows where to look for your E2E component test you will need to tweak the `specPattern` in the `cypress.config.ts` file. The following tells Cypress that specification files can be found within our `src/app/components` folder as well as the usual `cypress/e2e` folder.
 
+```ts
+import { defineConfig } from 'cypress'
+
+export default defineConfig({
+    component: {
+        devServer: {
+            framework: 'next',
+            bundler: 'webpack',
+        },
+    },
+
+    watchForFileChanges: true,
+
+    e2e: {
+        setupNodeEvents(on, config) {
+            // implement node event listeners here
+        },
+        specPattern: [
+            'cypress/e2e/*.{js,ts,jsx,tsx}',
+            'src/app/components/**/*.e2e.cy.{js,ts,jsx,tsx}',
+        ], // Change this to your preferred folder
+    },
+})
+
+```
+
+Here is the initial E2E test:
+
+```ts
+//src/app/component/productsServer/productsServer.e2e.cy.ts
+
+describe('Tests for the <ProductsServer /> component', () => {
+    it('is available', () => {
+        cy.visit(
+            'http://localhost:6006/iframe.html?globals=&args=&id=products-server-rendered--default&viewMode=story'
+        )
+    })
+})
+```
+
+It's a simple check to ensure there is something at the corresponding URL.
+
+If you launch Cypress and navigate to 'E2E Testing':
+
+<a href="/post-assets/7/10.png" target="_blank">
+<img src="/post-assets/7/10.png" alt="Storybook UI" />
+</a>
+
+You should then see the E2E test passing:
+
+<a href="/post-assets/7/11.png" target="_blank">
+<img src="/post-assets/7/11.png" alt="Storybook UI" />
+</a>
+
+#### Build out E2E test and add response stubbing
+
+Now lets add some further tests and leverage the same `cy.intercept` function that we use in our client component tests in [part2](/component-testing-in-nextjs-using-cypress-part-2-network-intercepting) of this series.
+
+```ts
+//src/app/component/productsServer/productsServer.e2e.cy.ts
+
+const apiURL = 'https://fakestoreapi.com/products'
+const componentURL =
+    'http://localhost:6006/iframe.html?globals=&args=&id=products-server-rendered--default&viewMode=story'
+
+describe('Tests for the <ProductsServer /> component', () => {
+    beforeEach(() => {
+        cy.log('Adding interceptor to return stubbed data')
+        cy.intercept('GET', apiURL, { fixture: 'fakeProducts.json' })
+        cy.visit(componentURL)
+    })
+    // test that the component shows the correct header
+    it('renders header', () => {
+        cy.get('h2').should('have.text', 'Products (Server-Rendered)')
+    })
+    // test that the component renders the products
+    it('renders at least one item', () => {
+        cy.get('li').should('have.length.gt', 0)
+    })
+    // test that the component renders the product title
+    it('renders product title', () => {
+        cy.get('li')
+            .first()
+            .get('h3')
+            .should('exist')
+            .invoke('text')
+            .should('not.be.empty')
+    })
+    // test that the component renders the product details
+    it('renders product details', () => {
+        cy.get('li')
+            .find('p')
+            .should('exist')
+            .invoke('text')
+            .should('not.be.empty')
+    })
+    // test that the component shows an error message if the API call fails
+    it('shows error message if the API returns a 500 status code', () => {
+        // set up the API call to return a 500 status code
+        cy.intercept('GET', apiURL, {
+            statusCode: 500,
+        })
+
+        cy.visit(componentURL)
+
+        cy.contains('Something went wrong...').should('be.visible')
+    })
+})
+
+```
+
+In the above you can see that we set up the `cy.intercept` and also the `cy.visit` calls in our `beforeEach` step.
+
+Running the test, we can see it is succeeding:
+
+<a href="/post-assets/7/12.png" target="_blank">
+<img src="/post-assets/7/12.png" alt="Storybook UI" />
+</a>
+
+There we go a 'sort of' component test for our server-rendered component.
 
 <!-- TOC --><a name="summary"></a>
 #### Summary
-- slower
-- more setup
-- effort saved if you are already using storybook
-- still use `cy.intercept`
+
+The main thing is that it works, but I can't help feeling its a bit of a hack.
+
+- its a lot slower than a true Cypress component test
+- its involved some tricky setup and adding Storybook (which might not be desirable)
+- on the plus side the test itself is very similar to the client component equivalent, same use of `cy.intercept`, so little knowledge to gain if you are already comfortable with that function.
 
 <!-- TOC --><a name="approach-2-a-true-component-test-using-cystub"></a>
 ### Approach 2 - a true component test using `cy.stub`
@@ -355,6 +559,11 @@ metnion alias for json file (or dont use it)
 #### Summary
 - fast
 - easy to set up
+
+<!-- TOC --><a name="other-possible-solutions"></a>
+### Other possible solutions:
+
+ - move asynchronous data fetches out of the server component that you want to test
 
 
 Note, you can find the full code here: https://github.com/speaktosteve/nextjs-cypress-part3

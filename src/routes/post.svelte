@@ -19,7 +19,7 @@
 
 <article class="bg-white px-0 py-8 dark:bg-slate-900">
 	<section
-		class="prose mx-auto p-4 dark:prose-invert prose-code:before:hidden prose-code:after:hidden prose-pre:relative prose-pre:after:absolute prose-pre:after:right-0 prose-pre:after:top-0 prose-pre:after:content-['<button>test</button>']"
+		class="prose mx-auto p-4 dark:prose-invert prose-code:before:hidden prose-code:after:hidden"
 	>
 		<slot />
 	</section>

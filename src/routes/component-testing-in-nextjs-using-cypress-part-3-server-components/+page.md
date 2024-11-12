@@ -40,15 +40,15 @@ references: [{
 
 - [Overview](#overview)
 - [Create a server component](#create-a-server-component)
-- [Approach 1 - a true component test using `cy.stub`](#approach-1-a-true-component-test-using-cystub)
-   * [Await the loading of the component](#await-the-loading-of-the-component)
-   * [Create tests](#create-tests)
-   * [Use the `cy.stub` function](#use-the-cystub-function)
-   * [Summary](#summary)
-- [Approach 2 - an end-to-end test](#approach-2-an-end-to-end-test)
+- [Create tests](#create-tests)
+- [Approach 1 - an end-to-end test pretending to be a component test](#approach-1-an-end-to-end-test-pretending-to-be-a-component-test)
    * [Set up Storybook](#set-up-storybook)
    * [Tweak the cypress configuration](#tweak-the-cypress-configuration)
    * [Create tests](#create-tests-1)
+   * [Summary](#summary)
+- [Approach 2 - a true component test using `cy.stub`](#approach-2-a-true-component-test-using-cystub)
+   * [Await the loading of the component](#await-the-loading-of-the-component)
+   * [Use the `cy.stub` function](#use-the-cystub-function)
    * [Summary](#summary-1)
 - [References](#references)
 
@@ -157,66 +157,135 @@ And when you run it, it looks like this:
 <img src="/post-assets/7/1.png" alt="Next.js app" />
 </a>
 
-<!-- TOC --><a name="approach-1-a-true-component-test-using-cystub"></a>
-### Approach 1 - a true component test using `cy.stub`
+Next step, get some test coverage over our server component...
 
-**Firstly kudos to [@MuratKeremOzcan](https://www.youtube.com/@MuratKeremOzcan), I leaned on the approach outlined in [his video](https://www.youtube.com/watch?v=b9LH2gYubSo).**
 
 <!-- TOC --><a name="create-tests"></a>
-#### Create tests
+### Create tests
 
-If we start with a simple cypress test, and try to run it against our new server component we will get a confusing error:
+Starting with a simple Cypress test, I want to ensure the component has loaded correctly...
 
-!!!!! error
+```tsx
+//src/app/components/productsServer/productsServer.cy.tsx
+import { ProductsServer } from './productsServer'
 
-!!!!! screen shot of error
+describe('Tests for the <ProductsServer /> component', () => {
+    it('renders component', () => {
+        cy.mount(<ProductsServer />)
+    })
+})
+```
+And run the test:
 
-!!! explain why I am seeing this error - its async
+```bash
+yarn cypress
+```
 
-<!-- TOC --><a name="await-the-loading-of-the-component"></a>
-#### Await the loading of the component
+NB: the above is my alias for `cypress open`
 
-In order to resolve this, we need to await the loading of the component. 
+Running this new test in Cypress we see a confusing error:
 
-<!-- TOC --><a name="use-the-cystub-function"></a>
-#### Use the `cy.stub` function
+> Error: Objects are not valid as a React child (found: [object Promise]). If you meant to render a collection of children, use an array instead.
 
+<a href="/post-assets/7/2.png" target="_blank">
+<img src="/post-assets/7/2.png" alt="Cypress app showing error" />
+</a>
 
-metnion alias for json file (or dont use it)
+The underlying issue here is that the server component is executing its data fetch asynchronously before returning any content, but the Cypress test is not set up to handle this asynchronous behaviour.
 
-<!-- TOC --><a name="summary"></a>
-#### Summary
-- fast
-- easy to set up
-
-
-<!-- TOC --><a name="approach-2-an-end-to-end-test"></a>
-### Approach 2 - an end-to-end test
-
-This was my first attempt at solving the problem of running tests against server components, so I thought I would record it here as it might still be useful. However, I do recommend considering the first option above as this second approach feels too much of a compromise for my liking.
-
-When I initially created a component test for the `<ProductServer />` server component I faced the following error:
-
-!!!!! initial error
+<!-- TOC --><a name="approach-1-an-end-to-end-test-pretending-to-be-a-component-test"></a>
+### Approach 1 - an end-to-end test pretending to be a component test
 
 Having looking at the official [Next.js docs on using Cypress](https://nextjs.org/docs/pages/building-your-application/testing/cypress)...
 
 > Cypress currently doesn't support Component Testing for async Server Components. We recommend using E2E testing.
 
-...I moved my focus onto using E2E tests instead of Component tests. This felt like a compromise as I wanted to test the component in memory, without worrying about spinning them up in a browser.
+...I moved my focus onto using E2E tests instead of Component tests. This felt like a compromise as I wanted to test the component in memory, without worrying about spinning them up in a browser. This approach does work, but technically its not a component test.
 
 In my research I settled on the following approach:
  - To use E2E tests I needed the component to be available to Cypress's `cy.visit()` method, basically it needs to be viewable in a browser.
- - For this, I decided to use [Storybook](https://storybook.js.org/docs/get-started/frameworks/nextjs), which would allow me 
+ - For this, I decided to use [Storybook](https://storybook.js.org/docs/get-started/frameworks/nextjs), which would allow me to access a component in isolation at a specific URL
 
 <!-- TOC --><a name="set-up-storybook"></a>
 #### Set up Storybook
 
+Please checkout the [Storybook docs](https://storybook.js.org/docs/) if you aren't familiar with the tool. Also, the full installation guide for adding Storybook to a Next.js app can be found [here](https://storybook.js.org/docs/get-started/frameworks/nextjs).
 
-https://storybook.js.org/docs/get-started/frameworks/nextjs
+I'm going to assume you don't have Storybook installed and are starting from scratch.
+
+Firstly, install Storybook:
+
+```bash
+npx storybook@latest init
+```
+
+We will now add our first story for the `<ProductsServer />` component. This will allow us access to the isolated component in a browser using Storybook.
+
+I'm adding the story file to the same `productsServer` folder as the component itself.
+
+```ts
+//src/app/components/productsServer/productsServer.stories.ts
+
+import type { Meta, StoryObj } from '@storybook/react'
+import { fn } from '@storybook/test'
+import { ProductsServer } from './productsServer'
+
+const meta = {
+    title: 'Products (Server Rendered)',
+    component: ProductsServer,
+    // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
+    tags: ['autodocs'],
+    parameters: {
+        // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout
+        layout: 'fullscreen',
+    },
+    args: {
+        onLogin: fn(),
+        onLogout: fn(),
+        onCreateAccount: fn(),
+    },
+} satisfies Meta<typeof ProductsServer>
+
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const Default: Story = {}
+
+```
+
+
+Then, enable the `experimentalRSC` feature
+
+```ts
+import type { StorybookConfig } from '@storybook/nextjs'
+
+const config: StorybookConfig = {
+    stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+    addons: [
+        '@storybook/addon-onboarding',
+        '@storybook/addon-essentials',
+        '@chromatic-com/storybook',
+        '@storybook/addon-interactions',
+    ],
+    framework: {
+        name: '@storybook/nextjs',
+        options: {},
+    },
+    features: {
+        experimentalRSC: true,
+    },
+    staticDirs: ['../public'],
+}
+export default config
+
+```
 
 css and use of plugin
 
+
+
+
+http://localhost:6006/iframe.html?globals=&args=&id=products-server-rendered--default&viewMode=story
 
 <!-- TOC --><a name="tweak-the-cypress-configuration"></a>
 #### Tweak the cypress configuration
@@ -226,12 +295,66 @@ css and use of plugin
 
 
 
-<!-- TOC --><a name="summary-1"></a>
+<!-- TOC --><a name="summary"></a>
 #### Summary
 - slower
 - more setup
 - effort saved if you are already using storybook
 - still use `cy.intercept`
+
+<!-- TOC --><a name="approach-2-a-true-component-test-using-cystub"></a>
+### Approach 2 - a true component test using `cy.stub`
+
+**Firstly kudos to [@MuratKeremOzcan](https://www.youtube.com/@MuratKeremOzcan), I leaned on the approach outlined in [his video](https://www.youtube.com/watch?v=b9LH2gYubSo).**
+
+
+<!-- TOC --><a name="await-the-loading-of-the-component"></a>
+#### Await the loading of the component
+
+In order to resolve this, we need to await the loading of the component. Lets make the test `async` and reference the `<ProductsServer />` with an `await`
+
+```tsx
+//src/app/components/productsServer/productsServer.cy.tsx
+import { ProductsServer } from './productsServer'
+
+describe('Tests for the <ProductsServer /> component', () => {
+    it('renders component', async () => {
+        cy.mount(await ProductsServer())
+    })
+})
+```
+
+Success! The test is now passing. We are loading the component in using `await ProductServer()` - this works as React components are plain old functions after all.
+
+<a href="/post-assets/7/3.png" target="_blank">
+<img src="/post-assets/7/3.png" alt="Cypress app" />
+</a>
+
+<!-- TOC --><a name="use-the-cystub-function"></a>
+#### Use the `cy.stub` function
+
+Now for the network calls. As with our client component tests, its important for us to be able to control the data coming into our component, so we can test how the component reacts to different responses.
+
+So lets try our initial approach of using `cy.intercept`:
+
+```tsx
+//src/app/components/productsServer/productsServer.cy.tsx
+import { ProductsServer } from './productsServer'
+
+describe('Tests for the <ProductsServer /> component', () => {
+    it('renders component', async () => {
+        cy.mount(await ProductsServer())
+    })
+})
+```
+
+
+metnion alias for json file (or dont use it)
+
+<!-- TOC --><a name="summary-1"></a>
+#### Summary
+- fast
+- easy to set up
 
 
 Note, you can find the full code here: https://github.com/speaktosteve/nextjs-cypress-part3

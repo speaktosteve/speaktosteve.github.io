@@ -60,7 +60,12 @@ Using component tests on these types of projects is vital, we need fast, repeata
 
 
 <div class="border p-4 not-italic">
+<p>
 Refer to the previous article this series, which details how to set up an example Next.js application with Cypress and how to get started with running and viewing component tests: <a href="/component-testing-in-nextjs-using-cypress-part-1-set-up">Component testing in Next.js using Cypress - Part 1 - Set up</a>.
+</p>
+<p>
+Also see <a href="/component-testing-in-nextjs-using-cypress-part-3-server-components">Component testing in Next.js using Cypress - Part 3 - Server components</a> for a guide on server component testing.
+</p>
 </div>
 
 Component tests, like standard unit tests, should be rapid and only test the target code, i.e. not any external dependencies. Like unit tests, they should avoid instigating network calls, database writes, etc. 

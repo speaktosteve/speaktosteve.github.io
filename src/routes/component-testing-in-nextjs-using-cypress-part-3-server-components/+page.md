@@ -682,6 +682,10 @@ The `renders header` seems to pass (which is unexpected), however the assertion 
 
 This is annoying, and I haven't solved how to get past this, hence why I have settled for the E2E test approach. Cypress documentation doesn't give me much hope, explaining that its [commands run asynchronously](https://docs.cypress.io/app/core-concepts/introduction-to-cypress#Commands-Are-Asynchronous) and that "Cypress currently doesn't support Component Testing for async Server Components. We recommend using E2E testing.".
 
+<div class="border p-4 not-italic">
+The best work around I have is to move the async data fetch out of the server component and remove the async keyword from the component - <a href="#move-asynchronous-data-fetches-out-of-the-server-component">see later in this article for more detail</a>
+</div>
+
 <!-- TOC --><a name="try-using-promises-instead-of-asyncawait"></a>
 #### Try using Promises instead of `async`/`await`
 

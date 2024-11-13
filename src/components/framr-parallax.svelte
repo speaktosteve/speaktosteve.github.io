@@ -2,14 +2,10 @@
 	import { onMount } from 'svelte';
 	import { motion } from 'framer-motion';
 
-	let scrollY = 0;
-	let parallaxRef;
+	$: scrollY = 0;
 
 	const handleScroll = () => {
 		scrollY = window.scrollY;
-		if (parallaxRef) {
-			parallaxRef.style.transform = `translateY(${scrollY * -0.5}px)`;
-		}
 	};
 
 	onMount(() => {
@@ -26,7 +22,11 @@
 	<p class="bg-blue-500 p-5">This is a fixed panel with no parallax effect.</p>
 
 	<!-- Parallax Panel using Framer Motion -->
-	<motion.p bind:this={parallaxRef} class="mt-24 block bg-blue-500 p-5">
+	<motion.p
+		class="mt-24 block bg-blue-500 p-5"
+		animate={{ y: scrollY * -0.5 }}
+		transition={{ type: 'spring', stiffness: 100 }}
+	>
 		This is a parallax panel with a smooth transform effect.
 	</motion.p>
 </div>

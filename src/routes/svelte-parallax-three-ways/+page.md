@@ -17,6 +17,7 @@ references: [
 - [Framr](#framr)
    * [Error when using Framr with Next.js App Router or Svelte](#error-when-using-framr-with-nextjs-app-router-or-svelte)
 - [References](#references)
+https://animation-svelte.vercel.app/learnings
 
 <!-- TOC end -->
 
@@ -25,6 +26,13 @@ references: [
 <!-- TOC --><a name="overview"></a>
 ### Overview
 
+Ok, so parallax might have been massively over-used on every digital campaign site since 2010, but they are still a guilty pleasure of mine - I think they still have a place when used sparingly/subtely.
+
+These types of effects are extremely simple to implement, very little code needs to be added and you don't need to use heavy libraries unless you are doing something more elaborate. 
+
+Below I have provided some common approaches for adding parallax. You will see they are built as Svelte components, but should be very easy to port (apart from the Svelte Animation one). Also, I am using Tailwind, but only for some basic styling.
+
+Framr is brilliant, obviously, but I wouldn't necessarily recommend adding it just to leverage the simple p.motion
 
 
 ----
@@ -32,7 +40,7 @@ references: [
 <!-- TOC --><a name="vanilla-js"></a>
 ### Vanilla JS
 
-[demo](./svelte-parallax-three-ways/demo-vanilla/)
+[View demo here](./svelte-parallax-three-ways/demo-vanilla/)
 
 ```svelte
 <script>
@@ -61,10 +69,12 @@ references: [
 </div>
 ```
 
+---
+
 <!-- TOC --><a name="svelte-animations"></a>
 ### Svelte Animations
 
-[demo](./svelte-parallax-three-ways/demo-svelte-animations/)
+[View demo here](./svelte-parallax-three-ways/demo-svelte-animations/)
 
 ```svelte
 <script>
@@ -99,10 +109,12 @@ references: [
 </div>
 ```
 
+---
+
 <!-- TOC --><a name="framr"></a>
 ### Framr
 
-[demo](./svelte-parallax-three-ways/demo-framr/)
+[View demo here](./svelte-parallax-three-ways/demo-framr/)
 
 You'll need the Framr package:
 

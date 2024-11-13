@@ -76,30 +76,21 @@ export const POSTS_LIST = [
 	},
 	
 
-	// https://docs.cypress.io/app/guides/network-requests
-	
-	// https://docs.cypress.io/api/commands/intercept
-	
 	
 	// ### TODO
 	
-	// intercepts
-	
-	// screen shots
-	
-	// server component testing
-	
 	// CI/CD  and reporting
+
+	// Visual capturing
 	
 
-	
-
-// component tests and stuff with cypress and next.js and msw
 
 // offline mode testing - https://www.cypress.io/blog/testing-application-in-offline-network-mode
 
 // msal
 
+
+// state of js stuff
 
 // this blog 
 //- deploying to the root

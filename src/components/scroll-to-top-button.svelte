@@ -1,0 +1,28 @@
+<div
+	class="fixed bottom-0 flex w-full justify-center sm:w-11/12 lg:justify-end xl:w-2/3 2xl:w-3/4 2xl:max-w-[70rem]"
+>
+	<a href="#" aria-label="Go to top of article" title="Go to top of article" class="mb-2 mr-2"
+		><svg
+			class="dark:fill-white"
+			version="1.1"
+			id="Capa_1"
+			width="30px"
+			height="30px"
+			xmlns="http://www.w3.org/2000/svg"
+			xmlns:xlink="http://www.w3.org/1999/xlink"
+			viewBox="0 0 416.979 416.979"
+			xml:space="preserve"
+			><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g
+				id="SVGRepo_tracerCarrier"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+			></g><g id="SVGRepo_iconCarrier">
+				<g>
+					<path
+						d="M208.489,416.979c115.146,0,208.49-93.344,208.49-208.489C416.979,93.344,323.635,0,208.489,0S0,93.343,0,208.489 C0,323.635,93.343,416.979,208.489,416.979z M127.24,219.452l68.259-118.21c2.68-4.641,7.632-7.499,12.99-7.499 s10.31,2.858,12.99,7.499l68.258,118.21c2.682,4.642,2.682,10.359,0.002,15c-2.68,4.642-7.631,7.501-12.99,7.501h-33.26v66.282 c0,8.284-6.715,15-15,15h-40c-8.284,0-15-6.716-15-15v-66.282H140.23c-5.359,0-10.312-2.859-12.991-7.501 C124.56,229.812,124.56,224.094,127.24,219.452z"
+					></path>
+				</g>
+			</g></svg
+		></a
+	>
+</div>

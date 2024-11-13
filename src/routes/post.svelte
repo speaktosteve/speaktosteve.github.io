@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { getIcon } from '$lib/shared/utils';
 	import Banner from '../components/banner.svelte';
+	import ScrollToTopButton from '../components/scroll-to-top-button.svelte';
 
 	export let heading = '';
 	export let description = '';
@@ -17,7 +18,7 @@
 
 <Banner {heading} {description} {date} {tags} />
 
-<article class="bg-white px-0 py-8 dark:bg-slate-900">
+<article class="relative bg-white px-0 py-8 dark:bg-slate-900">
 	<section
 		class="prose mx-auto p-4 dark:prose-invert prose-code:before:hidden prose-code:after:hidden"
 	>
@@ -41,4 +42,5 @@
 			</ul>
 		</aside>
 	{/if}
+	<ScrollToTopButton />
 </article>

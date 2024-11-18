@@ -1,10 +1,25 @@
 ---
-heading: 'Parallax Three Ways'
-description: 'Parallax Three Ways'
+heading: 'Simple parallax effect in Svelte - Three approaches'
+description: 'Three examples of implementing a parallax effect in Svelte. Using vanilla JS, with Svelte Animations and using the Motion library.'
 date: '2024-11-13'
-tags: ['']
+tags: ['css', 'animations', 'svelte']
 references: [
-    
+	{
+		"type": "external", 
+		"link": "https://www.w3schools.com/css/css3_2dtransforms.asp",
+		"title": "W3 Schools - CSS 2D Transforms"
+	},
+	{
+		"type": "external", 
+		"link": "https://svelte.dev/docs/svelte/svelte-animate",
+		"title": "Svelte Animate"
+	},
+	{
+		"type": "external", 
+		"link": "https://motion.dev/",
+		"title": "Motion"
+	},    
+	
 ]
 ---
 ### Table of Contents
@@ -24,7 +39,7 @@ references: [
 <!-- TOC --><a name="overview"></a>
 ### Overview
 
-Ok, so parallax might have been massively over-used on every digital campaign and product site since 2010, but they are still a guilty pleasure of mine - I think they still have a place when used sparingly/subtely.
+Ok, so parallax might have been massively over-used on every digital campaign and product site since 2010, but it is still a guilty pleasure of mine - I think parallax has a place when used correctly, when it is used to tell a story or create an atmosphere.
 
 These types of effects are extremely simple to implement, very little code needs to be added and you don't need to use heavy libraries unless you are doing something more elaborate. 
 
@@ -86,7 +101,7 @@ For example:
 
 You could improve on the implementation by adding debouncing if the performance is impacted by the frequency of the `handleScroll` function being called. Also, for smoother animations, especially on older devices, you might wrap the `handleScroll` logic within `requestAnimationFrame()`.
 
-[View demo here](./svelte-parallax-three-ways/demo-vanilla/)
+[View demo here](./simple-parallax-effect-in-svelte/demo-vanilla/)
 
 ---
 
@@ -128,7 +143,7 @@ This is very similar to the above approach, but leverages some of the `svelte/an
 </div>
 ```
 
-[View demo here](./svelte-parallax-three-ways/demo-svelte-animations/)
+[View demo here](./simple-parallax-effect-in-svelte/demo-svelte-animations/)
 
 See [Svelte Animate Tutorials](https://svelte.dev/tutorial/svelte/animations) for official docs and tutorials.
 
@@ -193,7 +208,7 @@ What this does:
    - This option ensures that the scroll animation is linked to the parallax element itself.
 
 
-[View demo here](./svelte-parallax-three-ways/demo-motion/)
+[View demo here](./simple-parallax-effect-in-svelte/demo-motion/)
 
 See [Motion docs](https://motion.dev/docs)
 

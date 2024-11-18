@@ -74,7 +74,16 @@ export const POSTS_LIST = [
 		tags: ['next.js', 'component testing', 'cypress', 'automated testing'],
 		isDisabled: false
 	},
-	
+	{
+		title: 'Simple parallax effect in Svelte - Three approaches',
+		url: '/simple-parallax-effect-in-svelte',
+		description: 'Three examples of implementing a parallax effect in Svelte. Using vanilla JS, with Svelte Animations and using the Motion library.',
+		date: '11/18/2024',
+		isFeatured: true,
+		topic: 'front-end',
+		tags: ['css', 'animations', 'svelte'],
+		isDisabled: false
+	},
 
 	
 	// ### TODO
@@ -86,6 +95,9 @@ export const POSTS_LIST = [
 
 
 // offline mode testing - https://www.cypress.io/blog/testing-application-in-offline-network-mode
+
+// pass keys
+
 
 // msal
 

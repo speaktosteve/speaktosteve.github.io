@@ -59,5 +59,10 @@
     <lastmod>2024-11-05T16:32:45+00:00</lastmod>
     <priority>0.80</priority>
   </url>
-
+  <url>
+    <loc>
+      https://speaktosteve.github.io/simple-parallax-effect-in-svelte</loc>
+    <lastmod>2024-11-18T16:32:45+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
 </urlset>

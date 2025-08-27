@@ -90,7 +90,7 @@
 				</li>
 			</ul>
 
-			<h4 class="mb-8 uppercase">Recent Experience</h4>
+			<h4 class="mb-8 uppercase block border-b pb-3 border-slate-200">Recent Experience</h4>
 			<ul class="list-none px-0 mb-8">
 				<li class="px-0">
 					<h4 class="uppercase text-sm flex justify-between">
@@ -144,9 +144,6 @@
 						</JobExperienceItem>
 						<JobExperienceItem
 							title="Lead Developer – Accenture The Dock"
-							description="Front-end lead on a number of assets created at The Dock to showcase the application
-								of emerging tech such as Gen AI. I led small teams to deliver complex interfaces
-								using Next.js and React in an agile environment."
 							technologies={[
 								'Azure',
 								'ADO',
@@ -157,13 +154,15 @@
 								'Tech Architecture',
 								'Engineering Management'
 							]}
-						/>
+						>
+							<p>
+								Front-end lead on a number of assets created at The Dock to showcase the application
+								of emerging tech such as Gen AI. I led small teams to deliver complex interfaces
+								using Next.js and React in an agile environment.
+							</p>
+						</JobExperienceItem>
 						<JobExperienceItem
 							title="Delivery and Dev Lead"
-							description="Led a combined onshore/offshore team of designers, developers, testers and BAs to
-								deliver a responsive React and .NET Core web app for a UK-based service provider.
-								Responsibilities included client management, agile coaching, development lead and
-								hands-on front-end development."
 							technologies={[
 								'Azure',
 								'ADO',
@@ -174,14 +173,17 @@
 								'Tech Architecture',
 								'Engineering Management'
 							]}
-						/>
+						>
+							<p>
+								Led a combined onshore/offshore team of designers, developers, testers and BAs to
+								deliver a responsive React and .NET Core web app for a UK-based service provider.
+								Responsibilities included client management, agile coaching, development lead and
+								hands-on front-end development.
+							</p>
+						</JobExperienceItem>
 
 						<JobExperienceItem
 							title="Agile Coach - Banking"
-							description="Guided a multinational banking client in a major portfolio of work that focused on
-								providing a digital portal for commercial banking clients. Responsibilities included
-								coaching business and technical stakeholders towards a successful programme of
-								sprint delivery."
 							technologies={[
 								'Azure',
 								'ADO',
@@ -192,14 +194,17 @@
 								'Tech Architecture',
 								'Engineering Management'
 							]}
-						/>
+						>
+							<p>
+								Guided a multinational banking client in a major portfolio of work that focused on
+								providing a digital portal for commercial banking clients. Responsibilities included
+								coaching business and technical stakeholders towards a successful programme of
+								sprint delivery.
+							</p>
+						</JobExperienceItem>
 
 						<JobExperienceItem
 							title="Lead Dev/Architect – BP Design Lab"
-							description="Led the development of the BP Design System, working as part of the Scrum Team. This
-								role required leadership and coaching of the development team as well as technical
-								architecture, DevOps implementation, automated testing, vendor analysis and
-								accessibility conformance."
 							technologies={[
 								'Azure',
 								'ADO',
@@ -210,41 +215,48 @@
 								'Tech Architecture',
 								'Engineering Management'
 							]}
-						/>
+						>
+							<p>
+								Led the development of the BP Design System, working as part of the Scrum Team. This
+								role required leadership and coaching of the development team as well as technical
+								architecture, DevOps implementation, automated testing, vendor analysis and
+								accessibility conformance.
+							</p>
+						</JobExperienceItem>
 						<JobExperienceItem
 							title="Delivery Lead/UI Dev/Scrum Master - FMCG"
-							description="Delivery Lead role on an ambitious project to define the new digital workplace using
+							technologies={[
+								'Azure',
+								'ADO',
+								'TypeScript',
+								'Svelte',
+								'tailwindcss',
+								'Terraform',
+								'Tech Architecture',
+								'Engineering Management'
+							]}
+						>
+							<p>
+								Delivery Lead role on an ambitious project to define the new digital workplace using
 								SharePoint for a multi-national FMCG client. As definition moved into execution
 								Steve assumed a Scrum Master role, working closely with the Product Owner and
 								distributed development team to ensure the Scrum processes were understood and
 								leveraged and to help the Product Owner define and prioritise requirements. Used
 								DevOps experience to create build and deployment pipelines to streamline development
-								processes."
-							technologies={[
-								'Azure',
-								'ADO',
-								'TypeScript',
-								'Svelte',
-								'tailwindcss',
-								'Terraform',
-								'Tech Architecture',
-								'Engineering Management'
-							]}
-						/>
+								processes.
+							</p>
+						</JobExperienceItem>
 					</ul>
 				</li>
 			</ul>
 			<ul class="list-none px-0">
 				<li>
-					<h4 class="font-bold">AKQA - 2004 to 2018</h4>
+					<h4 class="font-bold flex justify-between">
+						<span>AKQA</span> <span>2004 to 2018</span>
+					</h4>
 					<ul class="list-none pl-0 py-1 text-sm leading-relaxed">
 						<JobExperienceItem
 							title="Technical Delivery Manager/Scrum Master – Consumer Tech"
-							description="Led team to build a platform and native mobile applications to support a major
-								consumer technology client’s new robotic vacuum cleaner. The platform supported one
-								million robotic devices at launch. Responsibilities include designing and
-								implementing a DevOps and Cloud Architecture strategy, managing onshore/offshore
-								development team and Agile Coaching of the team and client-side Product Owner."
 							technologies={[
 								'Azure',
 								'ADO',
@@ -255,11 +267,29 @@
 								'Tech Architecture',
 								'Engineering Management'
 							]}
-						/>
+						>
+							<p>
+								Led team to build a platform and native mobile applications to support a major
+								consumer technology client’s new robotic vacuum cleaner. The platform supported one
+								million robotic devices at launch. Responsibilities include designing and
+								implementing a DevOps and Cloud Architecture strategy, managing onshore/offshore
+								development team and Agile Coaching of the team and client-side Product Owner.
+							</p>
+						</JobExperienceItem>
 
 						<JobExperienceItem
 							title="Technical Delivery Manager - Various Brands"
-							description="<p>
+							technologies={[
+								'Azure',
+								'ADO',
+								'TypeScript',
+								'Svelte',
+								'tailwindcss',
+								'Terraform',
+								'Tech Architecture',
+								'Engineering Management'
+							]}
+							><p>
 								Leading teams of developers to produce enterprise-level solutions for world-famous
 								clients such as Dyson, Nivea, Nissan, Nike, the British Army and Heineken.
 							</p>
@@ -280,22 +310,23 @@
 							<p>
 								The role involves project scoping and planning, high-level technical design, leading
 								client meetings, day-to-day running of the development team and line management.
-							</p>"
-							technologies={[
-								'Azure',
-								'ADO',
-								'TypeScript',
-								'Svelte',
-								'tailwindcss',
-								'Terraform',
-								'Tech Architecture',
-								'Engineering Management'
-							]}
-						/>
+							</p></JobExperienceItem
+						>
 
 						<JobExperienceItem
 							title="Senior Software Engineer"
-							description="<p>
+							technologies={[
+								'Azure',
+								'ADO',
+								'TypeScript',
+								'Svelte',
+								'tailwindcss',
+								'Terraform',
+								'Tech Architecture',
+								'Engineering Management'
+							]}
+						>
+							<p>
 								Moved from being a Senior Web Developer to a Software Engineer and then a Senior
 								Software Engineer. Steve developed web applications and web services using .NET MVC
 								for clients such as Fiat and the British Army.
@@ -308,21 +339,21 @@
 									MSpec and Specflow - Ensuring coding standards are complied with using tools such
 									as ReSharper, FxCop and StyleCop - Performing peer reviews and peer programming
 								</li>
-							</ul>"
-							technologies={[
-								'Azure',
-								'ADO',
-								'TypeScript',
-								'Svelte',
-								'tailwindcss',
-								'Terraform',
-								'Tech Architecture',
-								'Engineering Management'
-							]}
-						/>
+							</ul>
+						</JobExperienceItem>
 						<JobExperienceItem
 							title="Senior Software Engineer"
-							description="<p>
+							technologies={[
+								'Azure',
+								'ADO',
+								'TypeScript',
+								'Svelte',
+								'tailwindcss',
+								'Terraform',
+								'Tech Architecture',
+								'Engineering Management'
+							]}
+							><p>
 								Moved from being a Senior Web Developer to a Software Engineer and then a Senior
 								Software Engineer. Steve developed web applications and web services using .NET MVC
 								for clients such as Fiat and the British Army.
@@ -335,26 +366,14 @@
 									MSpec and Specflow - Ensuring coding standards are complied with using tools such
 									as ReSharper, FxCop and StyleCop - Performing peer reviews and peer programming
 								</li>
-							</ul>"
-							technologies={[
-								'Azure',
-								'ADO',
-								'TypeScript',
-								'Svelte',
-								'tailwindcss',
-								'Terraform',
-								'Tech Architecture',
-								'Engineering Management'
-							]}
-						/>
+							</ul></JobExperienceItem
+						>
 					</ul>
 				</li>
 			</ul>
 
-			<h4 class="mb-8 hidden border-b border-slate-800 pb-4 lg:block dark:border-slate-600">
-				Skills
-			</h4>
-			<ul class="mb-12">
+			<h4 class="mb-8 uppercase block border-b pb-3 border-slate-200">Skills</h4>
+			<ul class="mb-12 text-sm">
 				<li>Full-stack development (.NET Core, Node, TypeScript, Remix)</li>
 				<li>Front-end development with JavaScript libraries (React, Svelte, Next.js, Angular)</li>
 				<li>UI development (HTML, CSS, SASS, JavaScript)</li>
@@ -365,10 +384,8 @@
 				<li>Agile coaching</li>
 			</ul>
 
-			<h4 class="mb-8 hidden border-b border-slate-800 pb-4 lg:block dark:border-slate-600">
-				Certifications
-			</h4>
-			<ul class="mb-8">
+			<h4 class="mb-8 uppercase block border-b pb-3 border-slate-200">Certifications</h4>
+			<ul class="mb-8 text-sm">
 				<li>Microsoft Certified: Azure Solutions Architect Expert</li>
 				<li>Microsoft Certified: Azure Developer Associate</li>
 				<li>Microsoft Certified: DevOps Engineer Expert</li>

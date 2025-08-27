@@ -1,6 +1,7 @@
 <script lang="ts">
 	import banner from '$lib/assets/banner.webp';
 	import logo from '$lib/assets/logo.webp';
+
 	export let heading = '';
 	export let siteDescription = '';
 	export let description = '';
@@ -16,13 +17,13 @@
 	$: formattedTags = tags.join(', ');
 </script>
 
-<div class="bg-banner bg-cover py-4 pb-8 text-slate-200">
-	<div class="m-4 mx-auto bg-black/30 p-6 backdrop-blur-lg lg:max-w-[50rem]">
+<div class="bg-banner bg-cover py-4 pb-8 text-slate-200 print:text-black">
+	<div class="m-4 mx-auto bg-black/30 p-6 backdrop-blur-lg lg:max-w-[50rem] print:my-0 print:py-0">
 		{#if date}
 			<span class="block pb-4 text-sm">{publishedAt}</span>
 		{/if}
 		{#if siteDescription}
-			<h2 class="text-center text-lg">{siteDescription}</h2>
+			<h2 class="text-center">{siteDescription}</h2>
 		{/if}
 		{#if heading}
 			<h2 class="pb-6 text-3xl">{heading}</h2>

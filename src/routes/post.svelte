@@ -20,12 +20,12 @@
 
 <article class="relative bg-white px-0 py-8 dark:bg-slate-900">
 	<section
-		class="prose mx-auto p-4 dark:prose-invert prose-code:before:hidden prose-code:after:hidden"
+		class="prose mx-auto p-4 dark:prose-invert prose-code:before:hidden prose-code:after:hidden text-sm leading-relaxed"
 	>
 		<slot />
 	</section>
 	{#if references.length > 0}
-		<aside class="prose mx-auto px-4 dark:prose-invert">
+		<aside class="prose mx-auto px-4 dark:prose-invert text-sm">
 			<ul>
 				{#each references as reference}
 					<li>

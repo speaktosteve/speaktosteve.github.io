@@ -21,9 +21,15 @@
 	Steve Smith - Engineering/Dev Lead
 </h1>
 
-<Banner
-	siteDescription="Steve manages technical teams to deliver complex projects for international clients. He calls on his experience in software development, particularly in front-end web development, to ensure the team are working efficiently, engineering best practices are adhered to and the resulting work engages the user."
-/>
+<div class="bg-banner bg-cover py-4 pb-8 text-slate-200 print:text-black">
+	<div class="m-4 mx-auto bg-black/30 p-6 backdrop-blur-lg lg:max-w-[50rem] print:my-0 print:py-0">
+		<h2 class="pb-6 text-3xl text-center uppercase">Steve Smith</h2>
+		<h3 class="pb-6 text-xl text-center uppercase">
+			Engineering Lead | Architect | Full-Stack Developer
+		</h3>
+	</div>
+</div>
+
 <ContentWrapper>
 	<article class="relative bg-white px-0 py-2 dark:bg-slate-900 print:py-2">
 		<section
@@ -90,15 +96,55 @@
 				</li>
 			</ul>
 
+			<p class="py-12">
+				Steve manages cross-discipline teams to deliver projects for international brands. He calls
+				on his experience in software development, particularly in front-end web development and
+				cloud engineering, to ensure the team are working efficiently, using modern engineering best
+				practices to rapidly and safely deliver software that is robust, scalable, and engages the
+				user.
+			</p>
+
+			<div class="gap-16 md:flex">
+				<section class="md:w-1/2">
+					<h4 class="mb-8 uppercase block border-b pb-3 border-slate-200">Skills</h4>
+					<ul class="mb-16 text-sm pl-4">
+						<li>
+							Full-stack development (.NET Core, Node, TypeScript, Svelte, Next.js, React, Angular)
+						</li>
+						<li>UI development (HTML, CSS, SASS, JavaScript)</li>
+						<li>Azure and AWS cloud engineering</li>
+						<li>Technical architecture/design</li>
+						<li>DevOps (Azure, ADO, GitHub, Terraform)</li>
+						<li>MS Fabric engineering</li>
+						<li>AI chatbot development</li>
+						<li>Team leadership, planning and Agile coaching</li>
+					</ul>
+				</section>
+				<section class="md:w-1/2">
+					<h4 class="mb-8 uppercase block border-b pb-3 border-slate-200">Certifications</h4>
+					<ul class="mb-16 text-sm pl-4">
+						<li>Microsoft Certified: Azure Solutions Architect Expert</li>
+						<li>Microsoft Certified: Azure Developer Associate</li>
+						<li>Microsoft Certified: DevOps Engineer Expert</li>
+						<li>GitHub Actions</li>
+						<li>AWS Certified Solutions Architect - Associate</li>
+						<li>Professional Scrum Master (Scrum.org)</li>
+						<li>Certified ScrumMaster (Scrum Alliance)</li>
+						<li>Azure Power Platform Fundamentals</li>
+						<li>Azure Data Fundamentals</li>
+					</ul>
+				</section>
+			</div>
+
 			<h4 class="mb-8 uppercase block border-b pb-3 border-slate-200">Recent Experience</h4>
 			<ul class="list-none px-0 mb-8">
 				<li class="px-0">
 					<h4 class="uppercase text-sm flex justify-between">
 						<span>Group Manager - Avanade UK</span> <span>2018 to current</span>
 					</h4>
-					<ul class="list-none pl-0 py-1 text-sm leading-relaxed">
+					<ul class="list-none pl-6 ml-4 my-8 text-sm leading-relaxed border-l border-slate-200">
 						<JobExperienceItem
-							title="Tech Lead/Architect – Avanade Intelligent Garden"
+							title="Tech Lead/Architect/Fabric and AI Engineer – Forthcoming Product"
 							technologies={[
 								'Azure',
 								'ADO',
@@ -106,8 +152,29 @@
 								'Svelte',
 								'tailwindcss',
 								'Terraform',
-								'Tech Architecture',
-								'Engineering Management'
+								'CI/CD',
+								'Tech architecture',
+								'Engineering management',
+								'OpenAI',
+								'Server-Side Events (SSE)'
+							]}
+						>
+							<p>Fabric, AI, ML, Svelte, Azure</p>
+						</JobExperienceItem>
+						<JobExperienceItem
+							title="Tech Lead/Architect – Avanade Intelligent Garden"
+							technologies={[
+								'ADO',
+								'Azure',
+								'CI/CD',
+								'Engineering management',
+								'OpenAI',
+								'Server-Side Events (SSE)',
+								'Svelte',
+								'tailwindcss',
+								'Tech architecture',
+								'Terraform',
+								'TypeScript'
 							]}
 						>
 							<p>
@@ -115,23 +182,27 @@
 								winning Avanade Intelligent Garden, showcased at the RHS Chelsea Flower Show. I set
 								the overall technical direction while staying hands-on with the code across the
 								stack, from the Svelte 5 front-end to the Node.js microservices and Cosmos database.
-								Designed
+								Designed the architecture to make sure it’s scalable and maintainable, helped
+								troubleshoot complex issues and guided the team to ensure best practices were being
+								met.
 							</p>
-							the architecture to make sure it’s scalable and maintainable, helped troubleshoot complex
-							issues and guided the team to ensure best practices were being met.
+							<p>
+								Built the Tree Talk component using Azure OpenAI, Node.js, Server-Side Events (SSE)
+								and Svelte. This feature leveraged a RAG AI chat bot allowing users to engage with
+								each tree in the garden and understand about it's care needs and background.
+							</p>
 						</JobExperienceItem>
 
 						<JobExperienceItem
 							title="Infrastructure, Dev-Ops and Dev Lead"
 							technologies={[
-								'Azure',
+								'.NET Core',
 								'ADO',
-								'TypeScript',
-								'Svelte',
-								'tailwindcss',
-								'Terraform',
-								'Tech Architecture',
-								'Engineering Management'
+								'Azure',
+								'CI/CD',
+								'Engineering management',
+								'Tech architecture',
+								'Terraform'
 							]}
 						>
 							<p>
@@ -145,14 +216,15 @@
 						<JobExperienceItem
 							title="Lead Developer – Accenture The Dock"
 							technologies={[
-								'Azure',
-								'ADO',
-								'TypeScript',
-								'Svelte',
+								'AWS',
+								'Bootstrap',
+								'CI/CD',
+								'Engineering management',
+								'Next.js',
+								'React',
+								'Storybook',
 								'tailwindcss',
-								'Terraform',
-								'Tech Architecture',
-								'Engineering Management'
+								'TypeScript'
 							]}
 						>
 							<p>
@@ -160,18 +232,23 @@
 								of emerging tech such as Gen AI. I led small teams to deliver complex interfaces
 								using Next.js and React in an agile environment.
 							</p>
+							<p>
+								Introduced engineering best-practices such as automated testing, Storybook, CI/CD
+								and serverless cloud hosting.
+							</p>
 						</JobExperienceItem>
 						<JobExperienceItem
 							title="Delivery and Dev Lead"
 							technologies={[
-								'Azure',
-								'ADO',
-								'TypeScript',
-								'Svelte',
-								'tailwindcss',
-								'Terraform',
-								'Tech Architecture',
-								'Engineering Management'
+								'Agile coaching',
+								'Bootstrap',
+								'CI/CD',
+								'Delivery lead/client management',
+								'Engineering management',
+								'React',
+								'Storybook',
+								'Tech architecture',
+								'TypeScript'
 							]}
 						>
 							<p>
@@ -184,16 +261,7 @@
 
 						<JobExperienceItem
 							title="Agile Coach - Banking"
-							technologies={[
-								'Azure',
-								'ADO',
-								'TypeScript',
-								'Svelte',
-								'tailwindcss',
-								'Terraform',
-								'Tech Architecture',
-								'Engineering Management'
-							]}
+							technologies={['Agile coaching', 'Engineering management']}
 						>
 							<p>
 								Guided a multinational banking client in a major portfolio of work that focused on
@@ -205,16 +273,7 @@
 
 						<JobExperienceItem
 							title="Lead Dev/Architect – BP Design Lab"
-							technologies={[
-								'Azure',
-								'ADO',
-								'TypeScript',
-								'Svelte',
-								'tailwindcss',
-								'Terraform',
-								'Tech Architecture',
-								'Engineering Management'
-							]}
+							technologies={['CI/CD', 'React', 'SASS', 'Storybook']}
 						>
 							<p>
 								Led the development of the BP Design System, working as part of the Scrum Team. This
@@ -226,14 +285,11 @@
 						<JobExperienceItem
 							title="Delivery Lead/UI Dev/Scrum Master - FMCG"
 							technologies={[
-								'Azure',
-								'ADO',
-								'TypeScript',
-								'Svelte',
-								'tailwindcss',
-								'Terraform',
-								'Tech Architecture',
-								'Engineering Management'
+								'Agile coaching',
+								'Delivery lead/client management',
+								'Engineering management',
+								'React',
+								'Sharepoint'
 							]}
 						>
 							<p>
@@ -249,23 +305,23 @@
 					</ul>
 				</li>
 			</ul>
-			<ul class="list-none px-0">
+			<ul class="list-none px-0 mb-8">
 				<li>
-					<h4 class="font-bold flex justify-between">
-						<span>AKQA</span> <span>2004 to 2018</span>
+					<h4 class="uppercase text-sm flex justify-between">
+						<span>AKQA - various roles</span> <span>2004 to 2018</span>
 					</h4>
-					<ul class="list-none pl-0 py-1 text-sm leading-relaxed">
+					<ul class="list-none pl-6 ml-4 my-8 text-sm leading-relaxed border-l border-slate-200">
 						<JobExperienceItem
 							title="Technical Delivery Manager/Scrum Master – Consumer Tech"
 							technologies={[
-								'Azure',
+								'.NET C#',
 								'ADO',
-								'TypeScript',
-								'Svelte',
-								'tailwindcss',
-								'Terraform',
-								'Tech Architecture',
-								'Engineering Management'
+								'AWS',
+								'CI/CD',
+								'Cloud engineering',
+								'DevOps',
+								'Engineering management',
+								'Technical architecture'
 							]}
 						>
 							<p>
@@ -280,14 +336,13 @@
 						<JobExperienceItem
 							title="Technical Delivery Manager - Various Brands"
 							technologies={[
-								'Azure',
+								'.NET C#',
 								'ADO',
-								'TypeScript',
-								'Svelte',
-								'tailwindcss',
-								'Terraform',
-								'Tech Architecture',
-								'Engineering Management'
+								'CI/CD',
+								'DevOps',
+								'Technical architecture',
+								'Cloud engineering',
+								'Engineering management'
 							]}
 							><p>
 								Leading teams of developers to produce enterprise-level solutions for world-famous
@@ -310,20 +365,18 @@
 							<p>
 								The role involves project scoping and planning, high-level technical design, leading
 								client meetings, day-to-day running of the development team and line management.
-							</p></JobExperienceItem
-						>
+							</p>
+						</JobExperienceItem>
 
 						<JobExperienceItem
 							title="Senior Software Engineer"
 							technologies={[
-								'Azure',
+								'.NET C#',
 								'ADO',
-								'TypeScript',
-								'Svelte',
-								'tailwindcss',
-								'Terraform',
-								'Tech Architecture',
-								'Engineering Management'
+								'CI/CD',
+								'Cloud engineering',
+								'DevOps',
+								'Technical architecture'
 							]}
 						>
 							<p>
@@ -342,59 +395,16 @@
 							</ul>
 						</JobExperienceItem>
 						<JobExperienceItem
-							title="Senior Software Engineer"
-							technologies={[
-								'Azure',
-								'ADO',
-								'TypeScript',
-								'Svelte',
-								'tailwindcss',
-								'Terraform',
-								'Tech Architecture',
-								'Engineering Management'
-							]}
+							title="Senior Web Developer"
+							technologies={['CSS', 'HTML', 'JavaScript', 'React', 'Responsive design']}
 							><p>
-								Moved from being a Senior Web Developer to a Software Engineer and then a Senior
-								Software Engineer. Steve developed web applications and web services using .NET MVC
-								for clients such as Fiat and the British Army.
+								Promoted from an HTML Producer (building HTML emails and editing XML templates) to a
+								Senior Web Developer and leading the front-end development of complex solutions
+								using HTML, CSS and JavaScript for clients such as Fiat, Nike and Microsoft.
 							</p>
-							<ul>
-								<li>Technical design and implementation using the latest .NET technologies</li>
-								<li>Configuring web servers and hosting environments</li>
-								<li>
-									Practicing test-driven and business-driven development using tools such as NUnit,
-									MSpec and Specflow - Ensuring coding standards are complied with using tools such
-									as ReSharper, FxCop and StyleCop - Performing peer reviews and peer programming
-								</li>
-							</ul></JobExperienceItem
-						>
+						</JobExperienceItem>
 					</ul>
 				</li>
-			</ul>
-
-			<h4 class="mb-8 uppercase block border-b pb-3 border-slate-200">Skills</h4>
-			<ul class="mb-12 text-sm">
-				<li>Full-stack development (.NET Core, Node, TypeScript, Remix)</li>
-				<li>Front-end development with JavaScript libraries (React, Svelte, Next.js, Angular)</li>
-				<li>UI development (HTML, CSS, SASS, JavaScript)</li>
-				<li>Azure and AWS cloud engineering</li>
-				<li>Technical architecture/design</li>
-				<li>DevOps (Azure, ADO, GitHub, Octopus, Terraform, ARM)</li>
-				<li>Team leadership, planning, coordination</li>
-				<li>Agile coaching</li>
-			</ul>
-
-			<h4 class="mb-8 uppercase block border-b pb-3 border-slate-200">Certifications</h4>
-			<ul class="mb-8 text-sm">
-				<li>Microsoft Certified: Azure Solutions Architect Expert</li>
-				<li>Microsoft Certified: Azure Developer Associate</li>
-				<li>Microsoft Certified: DevOps Engineer Expert</li>
-				<li>GitHub Actions</li>
-				<li>AWS Certified Solutions Architect - Associate</li>
-				<li>Professional Scrum Master (Scrum.org)</li>
-				<li>Certified ScrumMaster (Scrum Alliance)</li>
-				<li>Azure Power Platform Fundamentals</li>
-				<li>Azure Data Fundamentals</li>
 			</ul>
 		</section>
 	</article>

@@ -35,7 +35,7 @@
 		<section
 			class="prose mx-auto dark:prose-invert prose-code:before:hidden prose-code:after:hidden print:py-0"
 		>
-			<ul class="py-0 flex text-xs px-0 gap-2 justify-between mb-8">
+			<ul class="pt-0 pb-8 flex text-xs px-0 gap-2 justify-between mb-8">
 				<li class="flex items-center gap-2">
 					<svg
 						viewBox="0 0 24 24"
@@ -96,36 +96,42 @@
 				</li>
 			</ul>
 
-			<p class="py-12">
-				Steve manages cross-discipline teams to deliver projects for international brands. He calls
-				on his experience in software development, particularly in front-end web development and
-				cloud engineering, to ensure the team are working efficiently, using modern engineering best
-				practices to rapidly and safely deliver software that is robust, scalable, and engages the
-				user.
+			<p>
+				Steve leads cross-discipline teams to deliver technical projects for international
+				organisations. He calls on his experience in technology and delivery, particularly in
+				front-end web development and cloud engineering, to drive projects and ensure the team are
+				working efficiently, using modern engineering best practices to rapidly and safely deliver
+				software that is robust, scalable, and engages the user.
+			</p>
+			<p class="pb-8">
+				Steve loves mentoring and coaching others, helping them to grow their skills and advance
+				their careers. He believes in fostering a culture of learning and improvement in his teams,
+				and is always looking for ways to encourage knowledge sharing and collaboration.
 			</p>
 
-			<div class="gap-16 md:flex">
-				<section class="md:w-1/2">
+			<div class="gap-16 md:flex pb-8">
+				<section class="md:w-3/5">
 					<h4 class="mb-8 uppercase block border-b pb-3 border-slate-200">Skills</h4>
-					<ul class="mb-16 text-sm pl-4">
+					<ul class="text-sm pl-4">
 						<li>
 							Full-stack development (.NET Core, Node, TypeScript, Svelte, Next.js, React, Angular)
 						</li>
-						<li>UI development (HTML, CSS, SASS, JavaScript)</li>
+						<li>UI development (HTML, CSS, SASS, JavaScript, Storybook, Design Systems)</li>
 						<li>Azure and AWS cloud engineering</li>
 						<li>Technical architecture/design</li>
 						<li>DevOps (Azure, ADO, GitHub, Terraform)</li>
-						<li>MS Fabric engineering</li>
+						<li>MS Fabric data engineering</li>
 						<li>AI chatbot development</li>
-						<li>Team leadership, planning and Agile coaching</li>
+						<li>Delivery management (SCRUM, Kanban, Waterfall) and Agile coaching</li>
+						<li>Team leadership, training, scheduling, recruitment and planning</li>
 					</ul>
 				</section>
-				<section class="md:w-1/2">
+				<section class="md:w-2/5">
 					<h4 class="mb-8 uppercase block border-b pb-3 border-slate-200">Certifications</h4>
-					<ul class="mb-16 text-sm pl-4">
-						<li>Microsoft Certified: Azure Solutions Architect Expert</li>
-						<li>Microsoft Certified: Azure Developer Associate</li>
-						<li>Microsoft Certified: DevOps Engineer Expert</li>
+					<ul class="text-sm pl-4">
+						<li>MS Certified: Azure Solutions Architect Expert</li>
+						<li>MS Certified: Azure Developer Associate</li>
+						<li>MS Certified: DevOps Engineer Expert</li>
 						<li>GitHub Actions</li>
 						<li>AWS Certified Solutions Architect - Associate</li>
 						<li>Professional Scrum Master (Scrum.org)</li>
@@ -140,23 +146,32 @@
 			<ul class="list-none px-0 mb-8">
 				<li class="px-0">
 					<h4 class="uppercase text-sm flex justify-between">
-						<span>Group Manager - Avanade UK</span> <span>2018 to current</span>
+						<span>Head of Front-End and Group Manager - Avanade UK</span>
+						<span>2018 to current</span>
 					</h4>
+					<p class="text-sm py-4">
+						At Avanade UK, Steve has led numerous high-profile projects and initiatives, driving
+						innovation and excellence in front-end development. He is also an active member of the
+						Agile and technology communities, where he leads training sessions and provides
+						guidance.
+					</p>
 					<ul class="list-none pl-6 ml-4 my-8 text-sm leading-relaxed border-l border-slate-200">
 						<JobExperienceItem
 							title="Tech Lead/Architect/Fabric and AI Engineer – Forthcoming Product"
 							technologies={[
-								'Azure',
 								'ADO',
-								'TypeScript',
+								'Azure',
+								'CI/CD',
+								'Data engineering',
+								'Engineering management',
+								'MS Fabric',
+								'OpenAI',
+								'Server-Side Events (SSE)',
 								'Svelte',
 								'tailwindcss',
-								'Terraform',
-								'CI/CD',
 								'Tech architecture',
-								'Engineering management',
-								'OpenAI',
-								'Server-Side Events (SSE)'
+								'Terraform',
+								'TypeScript'
 							]}
 						>
 							<p>Fabric, AI, ML, Svelte, Azure</p>
@@ -167,6 +182,7 @@
 								'ADO',
 								'Azure',
 								'CI/CD',
+								'Data engineering',
 								'Engineering management',
 								'OpenAI',
 								'Server-Side Events (SSE)',
@@ -178,13 +194,12 @@
 							]}
 						>
 							<p>
-								Led the technical design and delivery of the platform that drives the gold medal
-								winning Avanade Intelligent Garden, showcased at the RHS Chelsea Flower Show. I set
-								the overall technical direction while staying hands-on with the code across the
-								stack, from the Svelte 5 front-end to the Node.js microservices and Cosmos database.
-								Designed the architecture to make sure it’s scalable and maintainable, helped
-								troubleshoot complex issues and guided the team to ensure best practices were being
-								met.
+								Led the technical design and delivery the gold medal winning Avanade Intelligent
+								Garden, showcased at the RHS Chelsea Flower Show 2025. He set the overall technical
+								direction while staying hands-on with the code across the stack, from the Svelte 5
+								front-end to the Node.js microservices and Cosmos database. Designed the
+								architecture to make sure it’s scalable and maintainable, helped troubleshoot
+								complex issues and guided the team to ensure best practices were being met.
 							</p>
 							<p>
 								Built the Tree Talk component using Azure OpenAI, Node.js, Server-Side Events (SSE)
@@ -310,6 +325,13 @@
 					<h4 class="uppercase text-sm flex justify-between">
 						<span>AKQA - various roles</span> <span>2004 to 2018</span>
 					</h4>
+					<p class="text-sm py-4">
+						At AKQA, Steve progressed from HTML Producer to Technical Delivery Manager and Technical
+						Lead. He worked on a variety of tech stacks, project types and clients - from IoT
+						platforms for major UK consumer tech brands to campaign sites for the BBC and Marks and
+						Spencer. He learnt how to use modern development practices and tools, including Agile
+						methodologies, CI/CD pipelines, and cloud services.
+					</p>
 					<ul class="list-none pl-6 ml-4 my-8 text-sm leading-relaxed border-l border-slate-200">
 						<JobExperienceItem
 							title="Technical Delivery Manager/Scrum Master – Consumer Tech"

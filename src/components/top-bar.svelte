@@ -32,7 +32,7 @@
 </script>
 
 <div
-	class="sticky top-0 z-10 flex items-center justify-between gap-2 bg-slate-950 px-4 py-4 sm:px-6"
+	class="sticky top-0 z-10 flex items-center justify-between gap-2 bg-slate-950 px-4 py-4 sm:px-6 print:hidden"
 >
 	<a href="/" aria-label="Back to home page">
 		<h1 class="text-left">

@@ -1,8 +1,8 @@
 <script lang="ts">
 	import logo from '$lib/assets/logo.webp';
 	import '../app.css';
-	import { onMount } from 'svelte';
 	import ModeSwitch from '../components/mode-switch.svelte';
+	import { onMount } from 'svelte';
 
 	// Reactive variable to store scroll position
 	const initialImageWidth = 250;
@@ -41,6 +41,7 @@
 	</a>
 	<div class="flex scale-90 items-center gap-3 text-white sm:scale-100">
 		<ModeSwitch />
+		<a href="/bio" aria-label="Go to Steve's bio page"> CV </a>
 		<a href="https://github.com/speaktosteve" aria-label="Go to GitHub profile">
 			<svg viewBox="0 0 98 96" width="25" height="24" xmlns="http://www.w3.org/2000/svg"
 				><path

@@ -17,10 +17,6 @@
 	/>
 </svelte:head>
 
-<h1 class="text-4xl font-bold mx-auto text-center hidden print:block">
-	Steve Smith - Engineering/Dev Lead
-</h1>
-
 <div class="bg-banner bg-cover py-4 pb-8 text-slate-200 print:text-black">
 	<div class="m-4 mx-auto bg-black/30 p-6 backdrop-blur-lg lg:max-w-[50rem] print:my-0 print:py-0">
 		<h2 class="pb-6 text-3xl text-center uppercase">Steve Smith</h2>
@@ -98,15 +94,18 @@
 
 			<p>
 				Steve leads cross-discipline teams to deliver technical projects for international
-				organisations. He calls on his experience in technology and delivery, particularly in
-				front-end web development and cloud engineering, to drive projects and ensure the team are
-				working efficiently, using modern engineering best practices to rapidly and safely deliver
-				software that is robust, scalable, and engages the user.
+				organisations calling upon extensive experience in technology and delivery, particularly in
+				front-end web development and cloud engineering,
+			</p>
+			<p>
+				He drives projects, ensuring teams are working efficiently and leveraging modern engineering
+				best practices to rapidly and safely deliver software that is robust, scalable, and engages
+				the user.
 			</p>
 			<p class="pb-8">
-				Steve loves mentoring and coaching others, helping them to grow their skills and advance
-				their careers. He believes in fostering a culture of learning and improvement in his teams,
-				and is always looking for ways to encourage knowledge sharing and collaboration.
+				He thrives when mentoring and coaching others, helping them to grow their skills and advance
+				their careers. He believes in fostering a culture of learning and improvement in teams, and
+				is always looking for ways to encourage knowledge sharing and collaboration.
 			</p>
 
 			<div class="gap-16 md:flex pb-8">
@@ -150,10 +149,9 @@
 						<span>2018 to current</span>
 					</h4>
 					<p class="text-sm py-4">
-						At Avanade UK, Steve has led numerous high-profile projects and initiatives, driving
-						innovation and excellence in front-end development. He is also an active member of the
-						Agile and technology communities, where he leads training sessions and provides
-						guidance.
+						Led numerous high-profile projects and initiatives, driving innovation and excellence in
+						front-end development. Active member of the Agile and technology communities, leading
+						training sessions and providing guidance.
 					</p>
 					<ul class="list-none pl-6 ml-4 my-8 text-sm leading-relaxed border-l border-slate-200">
 						<JobExperienceItem
@@ -194,8 +192,8 @@
 							]}
 						>
 							<p>
-								Led the technical design and delivery the gold medal winning Avanade Intelligent
-								Garden, showcased at the RHS Chelsea Flower Show 2025. He set the overall technical
+								Led the technical design and delivery of the gold medal winning Avanade Intelligent
+								Garden, showcased at the RHS Chelsea Flower Show 2025. Set the overall technical
 								direction while staying hands-on with the code across the stack, from the Svelte 5
 								front-end to the Node.js microservices and Cosmos database. Designed the
 								architecture to make sure it’s scalable and maintainable, helped troubleshoot
@@ -244,8 +242,11 @@
 						>
 							<p>
 								Front-end lead on a number of assets created at The Dock to showcase the application
-								of emerging tech such as Gen AI. I led small teams to deliver complex interfaces
-								using Next.js and React in an agile environment.
+								of emerging tech such as Gen AI.
+							</p>
+							<p>
+								Led development teams to deliver complex interfaces with complex business rules
+								using Next.js and React in an Agile environment.
 							</p>
 							<p>
 								Introduced engineering best-practices such as automated testing, Storybook, CI/CD
@@ -269,7 +270,7 @@
 							<p>
 								Led a combined onshore/offshore team of designers, developers, testers and BAs to
 								deliver a responsive React and .NET Core web app for a UK-based service provider.
-								Responsibilities included client management, agile coaching, development lead and
+								Responsibilities included client management, Agile coaching, development lead and
 								hands-on front-end development.
 							</p>
 						</JobExperienceItem>
@@ -309,12 +310,11 @@
 						>
 							<p>
 								Delivery Lead role on an ambitious project to define the new digital workplace using
-								SharePoint for a multi-national FMCG client. As definition moved into execution
-								Steve assumed a Scrum Master role, working closely with the Product Owner and
-								distributed development team to ensure the Scrum processes were understood and
-								leveraged and to help the Product Owner define and prioritise requirements. Used
-								DevOps experience to create build and deployment pipelines to streamline development
-								processes.
+								SharePoint for a multi-national FMCG client. As definition moved into execution,
+								assumed a Scrum Master role, working closely with the Product Owner and distributed
+								development team to ensure the Scrum processes were understood and leveraged and to
+								help the Product Owner define and prioritise requirements. Used DevOps experience to
+								create build and deployment pipelines to streamline development processes.
 							</p>
 						</JobExperienceItem>
 					</ul>
@@ -326,15 +326,14 @@
 						<span>AKQA - various roles</span> <span>2004 to 2018</span>
 					</h4>
 					<p class="text-sm py-4">
-						At AKQA, Steve progressed from HTML Producer to Technical Delivery Manager and Technical
-						Lead. He worked on a variety of tech stacks, project types and clients - from IoT
-						platforms for major UK consumer tech brands to campaign sites for the BBC and Marks and
-						Spencer. He learnt how to use modern development practices and tools, including Agile
-						methodologies, CI/CD pipelines, and cloud services.
+						Progressed from HTML Producer to Technical Delivery Manager and Technical Lead. Worked
+						on a variety of tech stacks, project types and clients - from IoT platforms for Dyson to
+						campaign sites for the BBC and Marks and Spencer. Learnt how to use modern development
+						practices and tools, including Agile methodologies, CI/CD pipelines, and cloud services.
 					</p>
 					<ul class="list-none pl-6 ml-4 my-8 text-sm leading-relaxed border-l border-slate-200">
 						<JobExperienceItem
-							title="Technical Delivery Manager/Scrum Master – Consumer Tech"
+							title="Technical Delivery Manager/Scrum Master – Dyson"
 							technologies={[
 								'.NET C#',
 								'ADO',
@@ -347,11 +346,11 @@
 							]}
 						>
 							<p>
-								Led team to build a platform and native mobile applications to support a major
-								consumer technology client’s new robotic vacuum cleaner. The platform supported one
-								million robotic devices at launch. Responsibilities include designing and
-								implementing a DevOps and Cloud Architecture strategy, managing onshore/offshore
-								development team and Agile Coaching of the team and client-side Product Owner.
+								Led team to build a platform and native mobile applications to support a Dyson’s new
+								robotic vacuum cleaner. The platform supported one million robotic devices at
+								launch. Responsibilities include designing and implementing a DevOps and Cloud
+								Architecture strategy, managing onshore/offshore development team and Agile Coaching
+								of the team and client-side Product Owner.
 							</p>
 						</JobExperienceItem>
 
@@ -403,8 +402,8 @@
 						>
 							<p>
 								Moved from being a Senior Web Developer to a Software Engineer and then a Senior
-								Software Engineer. Steve developed web applications and web services using .NET MVC
-								for clients such as Fiat and the British Army.
+								Software Engineer. Developed web applications and web services using .NET MVC for
+								clients such as Fiat and the British Army.
 							</p>
 							<ul>
 								<li>Technical design and implementation using the latest .NET technologies</li>

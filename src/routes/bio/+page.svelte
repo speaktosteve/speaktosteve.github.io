@@ -92,17 +92,17 @@
 				</li>
 			</ul>
 
-			<p class="text-sm">
+			<p class="print:text-sm">
 				Steve leads cross-discipline teams to deliver technical projects for international
 				organisations calling upon extensive experience in technology and delivery, particularly in
 				front-end web development and cloud engineering,
 			</p>
-			<p class="text-sm">
+			<p class="print:text-sm">
 				He drives projects, ensuring teams are working efficiently and leveraging modern engineering
 				best practices to rapidly and safely deliver software that is robust, scalable, and engages
 				the user.
 			</p>
-			<p class="pb-8 text-sm print:pb-0">
+			<p class="pb-8 print:text-sm print:pb-0">
 				He thrives when mentoring and coaching others, helping them to grow their skills and advance
 				their careers. He believes in fostering a culture of learning and improvement in teams, and
 				is always looking for ways to encourage knowledge sharing and collaboration.

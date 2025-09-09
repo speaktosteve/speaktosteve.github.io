@@ -17,7 +17,7 @@
 	/>
 </svelte:head>
 
-<div class="bg-banner bg-cover py-4 pb-8 text-slate-200 print:text-black">
+<div class="bg-banner bg-cover py-4 pb-8 print:pb-0 text-slate-200 print:text-black">
 	<div class="m-4 mx-auto bg-black/30 p-6 backdrop-blur-lg lg:max-w-[50rem] print:my-0 print:py-0">
 		<h2 class="pb-6 text-3xl text-center uppercase">Steve Smith</h2>
 		<h3 class="pb-6 text-xl text-center uppercase">
@@ -31,7 +31,7 @@
 		<section
 			class="prose mx-auto dark:prose-invert prose-code:before:hidden prose-code:after:hidden print:py-0"
 		>
-			<ul class="pt-0 pb-8 flex text-xs px-0 gap-2 justify-between mb-8">
+			<ul class="pt-0 pb-8 flex text-xs px-0 gap-2 justify-between mb-8 print:mb-0">
 				<li class="flex items-center gap-2">
 					<svg
 						viewBox="0 0 24 24"
@@ -92,23 +92,23 @@
 				</li>
 			</ul>
 
-			<p>
+			<p class="text-sm">
 				Steve leads cross-discipline teams to deliver technical projects for international
 				organisations calling upon extensive experience in technology and delivery, particularly in
 				front-end web development and cloud engineering,
 			</p>
-			<p>
+			<p class="text-sm">
 				He drives projects, ensuring teams are working efficiently and leveraging modern engineering
 				best practices to rapidly and safely deliver software that is robust, scalable, and engages
 				the user.
 			</p>
-			<p class="pb-8">
+			<p class="pb-8 text-sm print:pb-0">
 				He thrives when mentoring and coaching others, helping them to grow their skills and advance
 				their careers. He believes in fostering a culture of learning and improvement in teams, and
 				is always looking for ways to encourage knowledge sharing and collaboration.
 			</p>
 
-			<div class="gap-16 md:flex pb-8">
+			<div class="gap-16 md:flex pb-8 print:pb-0">
 				<section class="md:w-3/5">
 					<h4 class="mb-8 uppercase block border-b pb-3 border-slate-200">Skills</h4>
 					<ul class="text-sm pl-4">

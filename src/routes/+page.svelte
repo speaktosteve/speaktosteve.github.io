@@ -1,8 +1,10 @@
 <script lang="ts">
 	import { POSTS_LIST } from '$lib/shared/shared.constant';
-	import PostCard from '../components/post-card.svelte';
 	import Banner from '../components/banner.svelte';
+	import Contact from '../components/contact.svelte';
 	import ContentWrapper from '../components/content-wrapper.svelte';
+	import PostCard from '../components/post-card.svelte';
+	import SiteTitle from '../components/site-title.svelte';
 
 	const featuredPosts = POSTS_LIST.filter((post) => post.isFeatured && !post.isDisabled);
 	const devOpsPosts = POSTS_LIST.filter((post) => post.topic === 'devops' && !post.isDisabled);
@@ -21,13 +23,12 @@
 	/>
 </svelte:head>
 
-<Banner
-	siteDescription="More my own online notebook than any genuine thought leadership. If you find something useful
-		then happy&nbsp;days!"
-/>
+<SiteTitle />
+
 <ContentWrapper>
+	<Contact />
 	<h4
-		class="m-12 mb-8 hidden border-b border-slate-800 pb-4 text-center lg:block dark:border-slate-600"
+		class="mt-4 mb-8 hidden border-b border-slate-800 pb-4 text-center lg:block dark:border-slate-600"
 	>
 		Featured Articles
 	</h4>

@@ -8,24 +8,25 @@
 	</head>
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-X05H4RZLZQ"></script>
 	<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
 
-	gtag('config', 'G-X05H4RZLZQ');
+		gtag('config', 'G-X05H4RZLZQ');
 
+		const copyToClipboard = (element) => {
+			// Get the text field
+			var copyText = document.getElementById('myInput');
 
-	function copyToClipboard(element) {
-		// Get the text field
-		var copyText = document.getElementById("myInput");
+			// Select the text field
+			copyText.select();
+			copyText.setSelectionRange(0, 99999); // For mobile devices
 
-		// Select the text field
-		copyText.select();
-		copyText.setSelectionRange(0, 99999); // For mobile devices
-
-		// Copy the text inside the text field
-		navigator.clipboard.writeText(copyText.value);
-	}
+			// Copy the text inside the text field
+			navigator.clipboard.writeText(copyText.value);
+		};
 	</script>
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">%sveltekit.body%</div>

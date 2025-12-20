@@ -41,10 +41,10 @@
 
 <div
 	bind:this={container}
-	class="mt-[-1rem] rounded-t-xl bg-white px-0 pt-4 dark:bg-slate-900 print:text-black"
+	class="mt-[-1rem] bg-white px-0 pt-4 dark:bg-slate-900 print:text-black shadow-xl"
 >
 	<div
-		class="scale-[2] rounded-t-xl bg-white pb-12 dark:bg-slate-900"
+		class="scale-[2] bg-white pb-12 dark:bg-slate-900"
 		style="transform: translateY({scrollY * -0.5}px);"
 	>
 		<slot />

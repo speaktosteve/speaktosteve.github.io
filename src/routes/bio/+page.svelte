@@ -73,6 +73,7 @@
 						<li>Certified ScrumMaster (Scrum Alliance)</li>
 						<li>Azure Power Platform Fundamentals</li>
 						<li>Azure Data Fundamentals</li>
+						<li>BSc Computing (Hons)</li>
 					</ul>
 				</section>
 			</div>

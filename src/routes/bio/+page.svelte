@@ -15,7 +15,7 @@
 	/>
 	<meta
 		name="keywords"
-		content="blog, front-end, dev-ops, azure, next.js, css, tailwind, static web apps, github actions, environment variables"
+		content="blog, front-end, devops, azure, next.js, css, tailwind, static web apps, github actions, environment variables"
 	/>
 </svelte:head>
 
@@ -35,8 +35,8 @@
 			</p>
 			<p>
 				He drives projects, ensuring teams are working efficiently and leveraging modern engineering
-				best practices to rapidly and safely deliver software that is robust, scalable, and engages
-				the user.
+				best practices to rapidly and safely deliver software that is secure, robust, scalable, and
+				engages the user.
 			</p>
 			<p>
 				He thrives when mentoring and coaching others, helping them to grow their skills and advance
@@ -89,20 +89,21 @@
 					<p class="text-sm py-4">
 						Led numerous high-profile projects and initiatives, driving innovation and excellence in
 						front-end development. Active member of the Agile and technology communities, leading
-						training sessions and providing guidance.
+						training sessions and providing guidance. Speaker at conferences and events on topics
+						such as cloud engineering, front-end development and AI.
 					</p>
 					<ul class="list-none pl-6 ml-4 my-8 text-sm leading-relaxed border-l border-slate-200">
 						<JobExperienceItem
-							title="Tech Lead/Architect/Fabric and AI Engineer – Forthcoming Product"
+							title="Tech Lead/Architect/Fabric and AI Engineer - IoT, Data & AI Platform"
 							technologies={[
 								'ADO',
 								'Azure',
 								'CI/CD',
 								'Data engineering',
+								'DevOps',
 								'Engineering management',
 								'MS Fabric',
 								'OpenAI',
-								'Server-Side Events (SSE)',
 								'Svelte',
 								'tailwindcss',
 								'Tech architecture',
@@ -110,7 +111,18 @@
 								'TypeScript'
 							]}
 						>
-							<p>Fabric, AI, ML, Svelte, Azure</p>
+							<p>
+								Architected, designed and delivered a IoT, data and AI platform and web front-end
+								for a large-scale SaaS product using Microsoft Foundry, Fabric, Azure, and Svelte.
+								The platform leverages various Microsoft technologies to ingest, process and store
+								large volumes of IoT data, providing real-time insights and analytics to end-users.
+								<br /> Includes the design and build of specialist agents to support the platform's AI
+								capabilities and respond to user queries.
+							</p>
+							<p>
+								Ran the team of developers, testers and security specialists to produce a scalable,
+								secure, efficient and maintainable platform.
+							</p>
 						</JobExperienceItem>
 						<JobExperienceItem
 							title="Tech Lead/Architect – Avanade Intelligent Garden"
@@ -119,6 +131,7 @@
 								'Azure',
 								'CI/CD',
 								'Data engineering',
+								'DevOps',
 								'Engineering management',
 								'OpenAI',
 								'Server-Side Events (SSE)',
@@ -134,8 +147,9 @@
 								Garden, showcased at the RHS Chelsea Flower Show 2025. Set the overall technical
 								direction while staying hands-on with the code across the stack, from the Svelte 5
 								front-end to the Node.js microservices and Cosmos database. Designed the
-								architecture to make sure it’s scalable and maintainable, helped troubleshoot
-								complex issues and guided the team to ensure best practices were being met.
+								architecture and engineering processes to ensure the delivery of secure, scalable
+								and maintainable software, helped troubleshoot complex issues and guided the team to
+								ensure best practices were being met.
 							</p>
 							<p>
 								Built the Tree Talk component using Azure OpenAI, Node.js, Server-Side Events (SSE)
@@ -145,19 +159,20 @@
 						</JobExperienceItem>
 
 						<JobExperienceItem
-							title="Infrastructure, Dev-Ops and Dev Lead"
+							title="Infrastructure, DevOps and Dev Lead"
 							technologies={[
 								'.NET Core',
 								'ADO',
 								'Azure',
 								'CI/CD',
+								'DevOps',
 								'Engineering management',
 								'Tech architecture',
 								'Terraform'
 							]}
 						>
 							<p>
-								Led the management of the infrastructure and dev-ops practices for a high-profile,
+								Led the management of the infrastructure and devops practices for a high-profile,
 								high-demand national healthcare programme using Terraform, Azure DevOps and Azure.
 								Led developers to design and develop resilient software for managing bulk
 								operations. Coached the development team to ensure best practices were implemented
@@ -170,6 +185,7 @@
 								'AWS',
 								'Bootstrap',
 								'CI/CD',
+								'DevOps',
 								'Engineering management',
 								'Next.js',
 								'React',
@@ -180,7 +196,7 @@
 						>
 							<p>
 								Front-end lead on a number of assets created at The Dock to showcase the application
-								of emerging tech such as Gen AI.
+								of emerging tech such as GenAI.
 							</p>
 							<p>
 								Led development teams to deliver complex interfaces with complex business rules
@@ -198,6 +214,7 @@
 								'Bootstrap',
 								'CI/CD',
 								'Delivery lead/client management',
+								'DevOps',
 								'Engineering management',
 								'React',
 								'Storybook',

@@ -62,7 +62,9 @@
 					</ul>
 				</section>
 				<section class="md:w-2/5">
-					<h4 class="mb-8 uppercase block border-b pb-3 border-slate-200">Certifications &amp; Qualifications</h4>
+					<h4 class="mb-8 uppercase block border-b pb-3 border-slate-200">
+						Certifications &amp; Qualifications
+					</h4>
 					<ul class="text-sm pl-4">
 						<li>MS Certified: DevOps Engineer Expert</li>
 						<li>MS Certified: Azure Developer Associate</li>
@@ -72,6 +74,7 @@
 						<li>AWS Certified Solutions Architect - Associate</li>
 						<li>Professional Scrum Master (Scrum.org)</li>
 						<li>Certified ScrumMaster (Scrum Alliance)</li>
+						<li>BSc Computing (Hons)</li>
 					</ul>
 				</section>
 			</div>

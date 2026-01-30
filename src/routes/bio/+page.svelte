@@ -62,17 +62,16 @@
 					</ul>
 				</section>
 				<section class="md:w-2/5">
-					<h4 class="mb-8 uppercase block border-b pb-3 border-slate-200">Certifications</h4>
+					<h4 class="mb-8 uppercase block border-b pb-3 border-slate-200">Certifications &amp; Qualifications</h4>
 					<ul class="text-sm pl-4">
-						<li>MS Certified: Azure Solutions Architect Expert</li>
-						<li>MS Certified: Azure Developer Associate</li>
 						<li>MS Certified: DevOps Engineer Expert</li>
+						<li>MS Certified: Azure Developer Associate</li>
+						<li>MS Certified: Azure Data Fundamentals</li>
+						<li>MS Certified: Azure Power Platform Fundamentals</li>
 						<li>GitHub Actions</li>
 						<li>AWS Certified Solutions Architect - Associate</li>
 						<li>Professional Scrum Master (Scrum.org)</li>
 						<li>Certified ScrumMaster (Scrum Alliance)</li>
-						<li>Azure Power Platform Fundamentals</li>
-						<li>Azure Data Fundamentals</li>
 					</ul>
 				</section>
 			</div>

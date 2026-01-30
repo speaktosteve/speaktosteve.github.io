@@ -94,7 +94,7 @@
 					</p>
 					<ul class="list-none pl-6 ml-4 my-8 text-sm leading-relaxed border-l border-slate-200">
 						<JobExperienceItem
-							title="Tech Lead/Architect/Fabric and AI Engineer - IoT, Data & AI Platform"
+							title="Tech Lead/Architect - IoT, Data & AI Platform"
 							technologies={[
 								'ADO',
 								'Azure',
@@ -208,7 +208,7 @@
 							</p>
 						</JobExperienceItem>
 						<JobExperienceItem
-							title="Delivery and Dev Lead"
+							title="Delivery and Tech Lead"
 							technologies={[
 								'Agile coaching',
 								'Bootstrap',

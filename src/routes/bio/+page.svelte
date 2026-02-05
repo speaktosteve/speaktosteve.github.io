@@ -67,6 +67,7 @@
 					</h4>
 					<ul class="text-sm pl-4">
 						<li>MS Certified: DevOps Engineer Expert</li>
+						<li>MS Certified: Azure AI Engineer Associate</li>
 						<li>MS Certified: Azure Developer Associate</li>
 						<li>MS Certified: Azure Data Fundamentals</li>
 						<li>MS Certified: Azure Power Platform Fundamentals</li>

@@ -24,14 +24,14 @@
 <ContentWrapper>
 	<Contact />
 
-	<article class="relative bg-white px-4 py-2 dark:bg-slate-900 print:py-2">
+	<article class="relative bg-white px-4 py-2 dark:bg-slate-900 print:py-2 print:px-0">
 		<section
 			class="prose mx-auto dark:prose-invert prose-code:before:hidden prose-code:after:hidden print:py-0 print:text-sm text-sm lg:text-base"
 		>
 			<p>
-				Steve leads cross-discipline teams to deliver technical projects for international
-				organisations calling upon extensive experience in technology and delivery, particularly in
-				front-end web development and cloud engineering,
+				With extensive experience spanning front-end and full-stack development and cloud-native
+				infrastructure, Steve brings cross-discipline teams together to deliver high-impact
+				technical projects for international organisations.
 			</p>
 			<p>
 				He drives projects, ensuring teams are working efficiently and leveraging modern engineering
@@ -47,12 +47,15 @@
 			<div class="gap-16 md:flex pb-8 print:pb-0">
 				<section class="md:w-3/5">
 					<h4 class="mb-8 uppercase block border-b pb-3 border-slate-200">Skills</h4>
-					<ul class="text-sm pl-4">
+					<ul class="text-sm pl-4 print:leading-tight">
 						<li>
 							Full-stack development (.NET Core, Node, TypeScript, Svelte, Next.js, React, Angular)
 						</li>
 						<li>UI development (HTML, CSS, SASS, JavaScript, Storybook, Design Systems)</li>
-						<li>Azure and AWS cloud engineering</li>
+						<li>
+							Azure and AWS cloud engineering - most recently working withIoT and Event Hubs,
+							Container Apps, Cosmos DB, Redis Cache, Azure Front Door, Azure Functions
+						</li>
 						<li>Technical architecture/design</li>
 						<li>DevOps (Azure, ADO, GitHub, Terraform)</li>
 						<li>MS Fabric data engineering</li>
@@ -65,7 +68,7 @@
 					<h4 class="mb-8 uppercase block border-b pb-3 border-slate-200">
 						Certifications &amp; Qualifications
 					</h4>
-					<ul class="text-sm pl-4">
+					<ul class="text-sm pl-4 print:leading-tight">
 						<li>MS Certified: DevOps Engineer Expert</li>
 						<li>MS Certified: Azure AI Engineer Associate</li>
 						<li>MS Certified: Azure Developer Associate</li>
@@ -80,7 +83,9 @@
 				</section>
 			</div>
 
-			<h4 class="mb-8 uppercase block border-b pb-3 border-slate-200">Recent Experience</h4>
+			<h4 class="mb-8 uppercase block border-b pb-3 border-slate-200 print:pt-16">
+				Recent Experience
+			</h4>
 			<ul class="list-none px-0 mb-8">
 				<li class="px-0">
 					<h4 class="uppercase text-sm flex justify-between">

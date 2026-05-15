@@ -138,10 +138,9 @@
 								'TypeScript'
 							]}
 						>
-							<p>Oversaw the transition of a major healthcare client</p>
 							<p>
-								Ran multiple teams of developers, testers and DevOps specialists to produce a
-								scalable, secure, efficient and maintainable cloud-based platform.
+								Ran multiple teams of developers, testers and DevOps specialists to develop and
+								deliver a scalable, secure, efficient and maintainable cloud-based platform.
 							</p>
 							<p>
 								Accountable for the end‑to‑end technical delivery across multiple contracts. Owned

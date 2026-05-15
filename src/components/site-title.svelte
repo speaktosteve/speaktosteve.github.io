@@ -7,7 +7,7 @@
 		class="m-4 mx-auto bg-black/30 p-6 backdrop-blur-lg lg:max-w-[50rem] print:my-0 print:py-0 print:min-h-0 text-center"
 	>
 		<h2 class="pb-6 text-3xl uppercase">Steve Smith</h2>
-		<h3 class="pb-8 text-xl uppercase">Engineering Lead | Architect | Full-Stack Developer</h3>
+		<h3 class="pb-8 text-xl uppercase">Engineering Lead | Cloud Engineer | Full-Stack Developer</h3>
 		{#if $page.url.pathname !== '/bio'}
 			<a
 				href="/bio"

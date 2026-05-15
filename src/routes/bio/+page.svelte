@@ -5,6 +5,7 @@
 	import ContentWrapper from '../../components/content-wrapper.svelte';
 	import JobExperienceItem from '../../components/job-experience-item.svelte';
 	import SiteTitle from '../../components/site-title.svelte';
+	import { p } from 'motion/react-client';
 </script>
 
 <svelte:head>
@@ -29,19 +30,44 @@
 			class="prose mx-auto dark:prose-invert prose-code:before:hidden prose-code:after:hidden print:py-0 print:text-sm text-sm lg:text-base"
 		>
 			<p>
-				With extensive experience spanning front-end and full-stack development and cloud-native
-				infrastructure, Steve brings cross-discipline teams together to deliver high-impact
-				technical projects for international organisations.
+				I manage technical teams to deliver complex projects for global clients. By leveraging my
+				background in software development - specifically front-end/full-stack engineering - I
+				ensure my teams work efficiently, adhere to engineering best practices, and build products
+				that truly engage the user.
 			</p>
 			<p>
-				He drives projects, ensuring teams are working efficiently and leveraging modern engineering
-				best practices to rapidly and safely deliver software that is secure, robust, scalable, and
-				engages the user.
+				<b>Core Areas:</b>
 			</p>
+			<ul>
+				<li>
+					Architecture & Leadership: Architecting and delivering modern, cloud-native applications
+				</li>
+				<li>
+					Agile Delivery: Coaching clients on the agile delivery of complex portfolios to ensure
+					rapid, safe, and scalable software releases.
+				</li>
+				<li>
+					Team Development: Leading cross-discipline teams of front and back-end developer and
+					testers, providing the training and mentorship needed to advance their careers.
+				</li>
+				<li>
+					Cloud Infrastructure and DevOps: Designing and deploying performant, highly available
+					platforms using Azure, AWS and GitHub, holding multiple technical certifications.
+				</li>
+				<li>
+					Award-Winning Delivery: Lead developer for high-impact projects including Avanade
+					Intelligent Garden and the BAFTA-nominated BBC Story of Life app.
+				</li>
+				<li>
+					Specialized Skills: Delivering performant, responsive web applications using modern
+					frameworks such as Svelte and Next.js
+				</li>
+			</ul>
+
 			<p>
-				He thrives when mentoring and coaching others, helping them to grow their skills and advance
-				their careers. He believes in fostering a culture of learning and improvement in teams, and
-				is always looking for ways to encourage knowledge sharing and collaboration.
+				I thrive on bringing people together to deliver robust, secure, and high-impact technical
+				projects for global organizations. If you're looking for a leader who values continuous
+				learning and collaborative engineering, let's connect.
 			</p>
 
 			<div class="gap-16 md:flex pb-8 print:pb-0">
@@ -99,6 +125,33 @@
 						such as cloud engineering, front-end development and AI.
 					</p>
 					<ul class="list-none pl-6 ml-4 my-8 text-sm leading-relaxed border-l border-slate-200">
+						<JobExperienceItem
+							title="Head of Engineering - Major Healthcare Client"
+							technologies={[
+								'AWS',
+								'CI/CD',
+								'DevOps',
+								'Engineering management',
+								'GitHub Actions',
+								'GitHub Copilot',
+								'Tech architecture',
+								'TypeScript'
+							]}
+						>
+							<p>Oversaw the transition of a major healthcare client</p>
+							<p>
+								Ran multiple teams of developers, testers and DevOps specialists to produce a
+								scalable, secure, efficient and maintainable cloud-based platform.
+							</p>
+							<p>
+								Accountable for the end‑to‑end technical delivery across multiple contracts. Owned
+								the technical strategy, architecture coherence, and engineering delivery. Provided a
+								single point of technical authority, aligning multiple squads and stakeholders,
+								maintaining quality and standards, managing integration complexity, and ensuring
+								engineering outputs demonstrably support outcomes such as reduced waiting times,
+								released capacity, and scalable national adoption.
+							</p>
+						</JobExperienceItem>
 						<JobExperienceItem
 							title="Tech Lead/Architect - IoT, Data & AI Platform"
 							technologies={[
